@@ -8,6 +8,8 @@ module.exports = {
       colors: {
         'primary-normal': '#7b68ee',
         'primary-hover':  '#0056b3',
+        'secondary-normal': '#FFFFFF',
+        'secondary-hover':  '#7b68ee',
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
         success: '#0070f3',
@@ -32,6 +34,9 @@ module.exports = {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',
         medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
       },
+      animation: {
+        'bounce-low': 'bounce 3s linear infinite',
+      }
     },
   },
   plugins: [],

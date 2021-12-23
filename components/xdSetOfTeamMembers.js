@@ -1,4 +1,4 @@
-export default function xdSetOfTeamMembers({fields}){
+export default function xdSetOfTeamMembers({entry}){
     return (
         <>
             XDSetOfTeamMembers

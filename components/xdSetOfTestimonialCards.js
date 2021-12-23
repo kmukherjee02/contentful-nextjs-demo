@@ -1,4 +1,4 @@
-export default function XDSetOfTestimonialCards(){
+export default function XDSetOfTestimonialCards({entry}){
     return (
         <>
             XDSetOfTestimonialCards

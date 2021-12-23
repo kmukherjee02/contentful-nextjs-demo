@@ -1,4 +1,5 @@
-export default function XDSectionWithImage({fields}){
+export default function XDSectionWithImage({entry}){
+    console.log(entry)
     return (
         <>
             XDSectionWithImage

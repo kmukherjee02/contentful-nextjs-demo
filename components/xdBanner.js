@@ -1,4 +1,4 @@
-export default function XDBanner(){
+export default function XDBanner({entry}){
     return (
         <>
             XDBanner

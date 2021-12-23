@@ -13,17 +13,17 @@ export default function Section ({sectionType, section, ArrayKey, sys}) {
           case 'xdHeader':
             return (<XDHeader entry={section.fields} /> )
           case 'xdHeroImage':
-            return ( <XDHeroImage fields={section.fields} /> )
+            return ( <XDHeroImage entry={section.fields} /> )
           case 'xdSetOfCard':
-            return ( <XDSetOfCard fields={section.fields} /> )
+            return ( <XDSetOfCard entry={section.fields} /> )
           case 'xdSectionWithImage':
-            return ( <XDSectionWithImage fields={section.fields} /> )
+            return ( <XDSectionWithImage entry={section.fields} /> )
           case 'xdBanner':
-            return ( <XDBanner fields={section.fields} /> )
+            return ( <XDBanner entry={section.fields} /> )
           case 'xdSetOfTestimonialCards':
-            return ( <XDSetOfTestimonialCards fields={section.fields} /> )
+            return ( <XDSetOfTestimonialCards entry={section.fields} /> )
           case 'xdSetOfTeamMembers':
-            return ( <XDSetOfTeamMembers fields={section.fields} /> )
+            return ( <XDSetOfTeamMembers entry={section.entry} /> )
           default:
             console.log("Section type not found: " + sectionType);
             return ( <div data-content-type='not-found'>Illegal Section Type</div> )
@@ -31,7 +31,7 @@ export default function Section ({sectionType, section, ArrayKey, sys}) {
       }
 
     return (
-      <div  className='section'>
+      <div  className='w-screen'>
        {renderSection()}
       </div>
     )
