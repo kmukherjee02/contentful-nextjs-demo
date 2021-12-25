@@ -1,32 +1,18 @@
-import Container from '../components/container';
-import Layout from '../components/layout';
+import LandingPage from '../components/landingPage';
 import { fetchXDLandingEntriesBySlug } from '../lib/api';
-import Head from 'next/head';
-import Sections from '../components/sections';
-import utilStyles from '../styles/util.module.css';
 
-export default function Index({ fields }) {
+
+export default function Index({ page }) {
   return (
-    <>
-      <Layout preview={false}>
-        <Head>
-          <title>{fields.name}</title>
-        </Head>
-        <Container>
-          <Sections sections={fields.sections} />
-        </Container>
-      </Layout>
-    </>
+     <LandingPage page={page} /> 
   )
 }
 
-
-
 export async function getStaticProps({ preview = false }) {
-  const homePage = await fetchXDLandingEntriesBySlug("home");
+  const homePage = await fetchXDLandingEntriesBySlug();
     return {
       props: { 
-        fields: homePage[0].fields
+        page: homePage[0].fields
       },
     }
 }

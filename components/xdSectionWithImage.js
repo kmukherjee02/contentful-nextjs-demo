@@ -32,7 +32,7 @@ export default function XDSectionWithImage({entry}){
             {entry.imageWithTextAlignment === 'left' && <XDImageWithText entry={entry.imageWithText.fields} />}
             <div className="w-full lg:w-1/2 mx-16">
                 <div className="lg:max-w-lg">
-                    <h2 class="text-sm title-font font-bold text-orange-500 tracking-widest mb-1">{entry.caption}</h2>
+                    <h2 className="text-sm title-font font-bold text-orange-500 tracking-widest mb-1">{entry.caption}</h2>
                     <h1 className="text-2xl font-medium tracking-wide text-gray-800 dark:text-white lg:text-4xl">{entry.title}</h1>
                     <p className="mt-2 text-gray-600 dark:text-gray-300">{entry.description}</p>
                     {renderDetails()} 
