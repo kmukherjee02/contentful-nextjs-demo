@@ -10,7 +10,7 @@ export default function PageNotFound() {
                 <title>404 Page Not Found</title>
             </Head>
             <Container>
-                <div className="flex items-center justify-center w-screen h-screen bg-gradient-to-r from-indigo-600 to-blue-400">
+                <div className="flex items-center justify-center h-screen bg-gradient-to-r from-indigo-600 to-blue-400">
                     <div className="px-40 py-20 bg-white rounded-md shadow-xl">
                         <div className="flex flex-col items-center">
                             <h1 className="font-bold text-blue-600 text-9xl">404</h1>

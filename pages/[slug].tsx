@@ -23,8 +23,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const homePage = await fetchXDLandingEntriesBySlug(params.preview, params.slug as string);
+export const getStaticProps: GetStaticProps = async ({ params, preview = false }) => {
+    const homePage = await fetchXDLandingEntriesBySlug(preview, params.slug as string);
     if(homePage?.length > 0){
       return {
         props: { 
@@ -37,4 +37,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         page: {}
       }
     }
-  }
+}
