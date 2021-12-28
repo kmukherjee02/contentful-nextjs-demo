@@ -31,7 +31,7 @@ export default function Section ({sectionType, section, ArrayKey, sys}) {
       }
 
     return (
-      <div  className='w-screen'>
+      <div  className=''>
        {renderSection()}
       </div>
     )
