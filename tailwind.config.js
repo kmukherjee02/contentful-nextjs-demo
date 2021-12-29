@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       colors: {
         'primary-normal': '#7b68ee',
-        'primary-hover':  '#0056b3',
+        'primary-hover':  '#3e57d0',
         'secondary-normal': '#FFFFFF',
         'secondary-hover':  '#7b68ee',
         'accent-2': '#EAEAEA',
@@ -36,6 +36,10 @@ module.exports = {
       },
       animation: {
         'bounce-low': 'bounce 3s linear infinite',
+      },
+      transitionProperty: {
+        'height': 'height',
+        'width': 'width'
       }
     },
   },
