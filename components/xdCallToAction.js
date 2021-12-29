@@ -1,18 +1,18 @@
 import Link from "next/link"
+import ButtonAnimated from './ButtonAnimated'
 
-export default function XDCallToAction({entry}){
+
+
+export default function XDCallToAction({entry}){   
     return (
         <>
            {entry.fields.link ? 
                 <Link href={`${entry.fields.link}`}>
-                    <button className="bg-primary-normal hover:bg-primary-hover text-white font-bold py-3 px-8 rounded">
-                        {entry.fields.name}
-                    </button>
+                    <ButtonAnimated entry={entry.fields} />
                 </Link>
             : 
-                <button className="bg-primary-normal hover:bg-primary-hover text-white font-bold py-3 px-8 rounded">
-                    {entry.fields.name}
-                </button>
+                <ButtonAnimated entry={entry.fields} />
+
             }
         </>
     )
