@@ -11,9 +11,9 @@ export default function XDLink({entry}){
                 <Link href={entry.href} passHref>
                     {
                         entry.displayStyle === 'Button' ? 
-                            <div className=''>
+                            <>
                                 <ButtonAnimated entry={entry} />
-                            </div>
+                            </>
                         :  
                         <a target={entry.target} className='inline-flex py-2 mr-2 text-lg cursor-pointer underline text-primary-normal'>
                                 {entry.label}

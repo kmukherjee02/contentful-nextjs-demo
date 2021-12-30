@@ -5,9 +5,9 @@ import XDCallToAction from './xdCallToAction';
 
 export default function XDHeader({entry}){
     return (
-        <div className="bg-transparent ">
+        <div className="bg-transparent">
             <header className="sticky top-0 z-50 text-gray-600 body-font bg-transparent">
-                <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+                <div className="container mx-auto py-5 flex items-center justify-between">
                     <Link href={entry.logoHyperlink} passHref>
                         <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                             <ContentfulImage 
@@ -18,10 +18,28 @@ export default function XDHeader({entry}){
                             />
                         </a>
                     </Link>
-                    <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-                        <XDNavigationMenu entry={entry.navigation} /> 
-                    </nav>
-                    <XDCallToAction entry={entry.callToAction} />
+                    <div className="hidden lg:flex justify-between">
+                        <nav className="flex justify-center items-center">
+                            <XDNavigationMenu entry={entry.navigation} /> 
+                        </nav>
+                        <XDCallToAction entry={entry.callToAction} />
+                    </div>
+                    <div className="lg:hidden flex items-center justify-end">
+                        <button className="outline-none mobile-menu-button">
+                            <svg
+                                className="w-12 h-8 text-gray-500"
+                                x-show="!showMenu"
+                                fill="none"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="4"
+                                viewBox="0 0 40 24"
+                                stroke="white"
+                            >
+                                <path d="M4 6h30M4 12h30M4 18h30"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </header>
         </div>

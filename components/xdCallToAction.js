@@ -7,8 +7,10 @@ export default function XDCallToAction({entry}){
     return (
         <>
            {entry.fields.link ? 
-                <Link href={`${entry.fields.link}`}>
-                    <ButtonAnimated entry={entry.fields} />
+                <Link href={`${entry.fields.link.fields.href}`}>
+                    <>
+                        <ButtonAnimated entry={entry.fields} />
+                    </>
                 </Link>
             : 
                 <ButtonAnimated entry={entry.fields} />
