@@ -12,9 +12,9 @@ export default function XDLink({entry, className=defaultClassnames}){
                 <Link href={entry.href} passHref>
                     {
                         entry.displayStyle === 'Button' ? 
-                            <div className=''>
+                            <>
                                 <ButtonAnimated entry={entry} />
-                            </div>
+                            </>
                         :  
                         <a target={entry.target} className={className}>
                                 {entry.label}

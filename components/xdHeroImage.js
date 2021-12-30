@@ -12,20 +12,24 @@ export default function ({ entry }) {
     const backgroundImage = getBackgroundImageUrl(entry.backgroundImage?.fields?.file?.url);
     return (
         <div 
-            className={cn('flex justify-center w-full', {
+            className={cn('bg-gradient-to-b from-hero-bg-500 via-hero-bg-400 via-hero-bg-300 via-hero-bg-200 to-hero-bg-100 flex justify-center w-full max-h-[900px] -mt-24 mb-24 pt-8 md:pt-16 lg:pt-24 relative z-10', {
                 [`${backgroundImage}`] : backgroundImage !== undefined
             })}>
-            <section className="text-gray-600 body-font mx-50 ">
-                <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-                    <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{entry.title}</h1>
-                        <p className="mb-8 leading-relaxed">{entry.description}</p>
-                        <div className="flex justify-center">
+            <section className="text-gray-600 body-font">
+                <div className="container mx-auto py-24 flex lg:flex-row flex-col items-center ">
+                    <div className="lg:flex-grow lg:w-1/2 flex flex-col items-center mb-12 xl:pr-20 pr-5">
+                        <h1 className="font-dosis font-bold text-center lg:text-left text-3xl lg:text-[3.4rem] leading-normal mb-5 font-medium text-white">
+                            {entry.title}
+                        </h1>
+                        <p className="mb-8 text-center lg:text-left text-white leading-relaxed">
+                            {entry.description}
+                        </p>
+                        <div className="mx-auto flex flex-col md:flex-row justify-center md:justify-evenly lg:justify-start w-1/2 lg:w-full">
                             {buttons}
                         </div>
                     </div>
                     {entry.image?.fields.file.url && 
-                        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+                        <div className="lg:max-w-lg lg:w-1/2">
                             <ContentfulImage 
                                 src={entry.image.fields.file.url} 
                                 width={550}
@@ -36,6 +40,9 @@ export default function ({ entry }) {
                     }    
                 </div>
             </section>
+            <div className='absolute -bottom-px -z-10'>
+                <img src='/images/hero-bottom-shape.png' /> 
+            </div>
         </div>
     )
 }
