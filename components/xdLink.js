@@ -11,7 +11,7 @@ export default function XDLink({entry}){
                 <Link href={entry.href} passHref>
                     {
                         entry.displayStyle === 'Button' ? 
-                            <div className=''>
+                            <div>
                                 <ButtonAnimated entry={entry} />
                             </div>
                         :  

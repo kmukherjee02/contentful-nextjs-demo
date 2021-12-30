@@ -1,28 +1,33 @@
 import { useState } from 'react';
 import cn from 'classnames';
 
-export default function AnimatedButton({entry}) {
-	const [isHovered, setIsHovered] = useState(false);
-    const [mousePositionEnter, setMousePositionEnter] = useState({});
-	const [mousePositionLeave, setMousePositionLeave] = useState({});
+interface IButtonAnimatedProps {
+	entry: Record<string, any>;
+}
+
+const ButtonAnimated:React.FC<IButtonAnimatedProps> = ({entry}: IButtonAnimatedProps) =>  {
+	const [isHovered, setIsHovered] = useState<boolean>(false);
+    const [mousePositionEnter, setMousePositionEnter] = useState<Record<string, any>>({});
+	const [mousePositionLeave, setMousePositionLeave] = useState<Record<string, any>>({});
     
 
-	const findMousePosition = (e) => {
+	const findMousePosition = (e: React.MouseEvent<HTMLElement>) : Record<string, string> => {
 		const rect = e.currentTarget.getBoundingClientRect();
 		const x = e.clientX - rect.left;
 		const y = e.clientY - rect.top;
 		return { top: `${y}px`, left: `${x}px` };
 	};
-	const handleMouseEnter = (e) => {
+	const handleMouseEnter = (e:React.MouseEvent<HTMLElement>) : void => {
 		setIsHovered(true);
-		e.target.querySelector('span.btn-fill').removeAttribute('style');
-        setMousePositionEnter(findMousePosition(e))
+		const currentButton = e.target as HTMLElement;
+		currentButton.querySelector('span.btn-fill').removeAttribute('style');
+        setMousePositionEnter(findMousePosition(e));
 	};
-	const handleMouseLeave = (e) => {
+	const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) : void => {
 		setIsHovered(false);
         setMousePositionLeave(findMousePosition(e))
 	};
-    const handleAnimation = () => {
+    const handleAnimation = () : Record<string, string> => {
         if (entry.theme === 'primary' || entry.theme === 'secondary') {
             return isHovered ?  mousePositionEnter : mousePositionLeave
         }
@@ -51,3 +56,5 @@ export default function AnimatedButton({entry}) {
 		</a>
 	);
 };
+
+export default ButtonAnimated;
