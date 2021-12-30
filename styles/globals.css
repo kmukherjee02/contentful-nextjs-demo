@@ -2,3 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.heroIcon path {
+	stroke-width: inherit !important;
+}
