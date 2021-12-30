@@ -4,18 +4,18 @@ import XDIcon from './xdIcon';
 
 export default function XDCard({ entry }) {
     console.log('xdCard entry', entry);
-    const { iconName } = entry.icon.fields
+    const iconSize = 'h-14 w-14'
     return (
-        <div className="xl:w-1/3 md:w-1/2 p-4">
-            <div className="border border-gray-200 p-6 rounded-lg shadow-lg">
-                <div className={cn("w-10 h-10 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4", {
+        <div className="xl:w-1/3 md:w-1/2 p-3 group hover:-translate-y-3 ease-out duration-500 transition-transform will-change-transform">
+            <div className="p-7 rounded-lg shadow-lg">
+                <div className={cn(`flex items-center justify-center rounded-full text-orange-500 mb-4 ${iconSize}`, {
                     'mx-auto': entry.alignment === 'center',
                     'ml-0 mr-auto': entry.alignment === 'left',
                     'mr-0 ml-auto': entry.alignment === 'right',
                 })}>
-                    <XDIcon className="stroke-1" entry={entry.icon.fields} />
+                    <XDIcon className={`${iconSize} ml-1.5 stroke-1 group-hover:rotate-y-180 ease-in duration-500 transition-transform will-change-transform`} entry={entry.icon.fields} />
                 </div>
-                <h2 className={cn("text-lg text-gray-900 font-medium title-font mb-2", {
+                <h2 className={cn("text-lg text-gray-900 font-bold title-font mb-2", {
                     'text-center': entry.alignment === 'center',
                     'text-left': entry.alignment === 'left',
                     'text-right': entry.alignment === 'right',
@@ -25,12 +25,12 @@ export default function XDCard({ entry }) {
                     'text-left': entry.alignment === 'left',
                     'text-right': entry.alignment === 'right',
                 })}>{entry.description}</p>
-                <div className={cn('flex', {
+                <div className={cn('flex font-bold text-orange-500', {
                     'justify-center': entry.alignment === 'center',
                     'justify-start': entry.alignment === 'left',
                     'justify-end': entry.alignment === 'right',
                 })}>
-                    <XDLink entry={entry.link.fields} />
+                    <XDLink entry={entry.link.fields} className={'inline-flex py-2 mr-2 cursor-pointer underline'} />
                 </div>
             </div>
         </div>

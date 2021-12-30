@@ -1,3 +1,31 @@
+const plugin = require('tailwindcss/plugin');
+
+const rotateY = plugin(function ({ addUtilities }) {
+  addUtilities({
+    '.rotate-y-180': {
+      transform: 'rotateY(180deg)',
+    },
+  })
+});
+
+const typography = plugin(function ({ addUtilities, theme }) {
+  addUtilities({
+    '.section-title': {
+      color: theme('colors.primary-normal'),
+      'font-size': '38px',
+      'font-weight': 700,
+      'margin-bottom': '20px',
+    },
+    '.section-subtitle': {
+      'font-size': '16px',
+      'font-weight': 700,
+      'letter-spacing': '0.5px',
+      'text-transform': 'uppercase',
+    }
+  })
+});
+
+
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -7,9 +35,9 @@ module.exports = {
     extend: {
       colors: {
         'primary-normal': '#7b68ee',
-        'primary-hover':  '#3e57d0',
+        'primary-hover': '#3e57d0',
         'secondary-normal': '#FFFFFF',
-        'secondary-hover':  '#7b68ee',
+        'secondary-hover': '#7b68ee',
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
         success: '#0070f3',
@@ -40,8 +68,11 @@ module.exports = {
       transitionProperty: {
         'height': 'height',
         'width': 'width'
-      }
+      },
+      strokeWidth: {
+        '1': '0.9px',
+      },
     },
   },
-  plugins: [],
+  plugins: [rotateY],
 }

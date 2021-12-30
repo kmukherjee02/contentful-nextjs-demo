@@ -1,7 +1,8 @@
 import Link from "next/link";
 import ButtonAnimated from "./ButtonAnimated";
 
-export default function XDLink({entry}){
+const defaultClassnames = 'inline-flex py-2 mr-2 text-lg cursor-pointer underline text-primary-normal'
+export default function XDLink({entry, className=defaultClassnames}){
     return (
         <>
             {
@@ -15,7 +16,7 @@ export default function XDLink({entry}){
                                 <ButtonAnimated entry={entry} />
                             </div>
                         :  
-                        <a target={entry.target} className='inline-flex py-2 mr-2 text-lg cursor-pointer underline text-primary-normal'>
+                        <a target={entry.target} className={className}>
                                 {entry.label}
                         </a>
                     }
