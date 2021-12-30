@@ -4,6 +4,16 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    container: {
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        md: '1rem',
+        lg: '3rem',
+        xl: '5rem',
+        '2xl': '10rem' 
+      },
+    },
     extend: {
       colors: {
         'primary-normal': '#7b68ee',
@@ -12,6 +22,11 @@ module.exports = {
         'secondary-hover':  '#7b68ee',
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
+        'hero-bg-100': '#2dbcdc',
+        'hero-bg-200': '#0095ce',
+        'hero-bg-300': '#006dba',
+        'hero-bg-400': '#00429b',
+        'hero-bg-500': '#370b6f',
         success: '#0070f3',
         cyan: '#79FFE1',
       },
@@ -23,6 +38,10 @@ module.exports = {
       },
       lineHeight: {
         tight: 1.2,
+      },
+      fontFamily: {
+        'sans': ['Catamaran', 'sans-serif'],
+        'dosis': ['Dosis', 'sans-serif']
       },
       fontSize: {
         '5xl': '2.5rem',
