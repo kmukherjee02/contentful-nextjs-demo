@@ -8,9 +8,9 @@ export default function XDCallToAction({entry}){
         <>
            {entry.fields.link ? 
                 <Link href={`${entry.fields.link.fields.href}`}>
-                    <div>
+                    <>
                         <ButtonAnimated entry={entry.fields} />
-                    </div>
+                    </>
                 </Link>
             : 
                 <ButtonAnimated entry={entry.fields} />
