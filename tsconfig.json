@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/api/preview.js", "components/xdHeroImage.js", "components/xdHeroImage.js"  ],
+, "pages/api/preview.js"],
   "exclude": [
     "node_modules"
   ]

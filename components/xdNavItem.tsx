@@ -1,14 +1,19 @@
 import Link from 'next/link';
 import cn from 'classnames';
 
-export default function NavItem({entry, isChildNavItem}){
+interface IXDNavigationItemProps {
+	entry: Record<string, any>;
+    isChildNavItem?:  boolean;
+}
+
+const XDNavItem:React.FC<IXDNavigationItemProps> = ({entry, isChildNavItem}: IXDNavigationItemProps) => {
    
-    let childMenu = entry.children?.map((item, idx) => {
+    let childMenu = entry.children?.map((item: Record<string, any>, idx:number) => {
         return (
-            <NavItem entry={item.fields} key={idx} isChildNavItem />
+            <XDNavItem entry={item.fields} key={idx} isChildNavItem />
         )
     })
-    const navItemClasses = cn('flex text-sm font-medium', {
+    const navItemClasses:string = cn('flex text-sm font-medium', {
         'text-white': isChildNavItem === undefined
     })
     return (
@@ -25,7 +30,7 @@ export default function NavItem({entry, isChildNavItem}){
                             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth='4' d='M19 9l-7 7-7-7' />
                         </svg>
                     </button>
-                    <nav tabIndex='0' className='border border-2 bg-white invisible border-gray-800 rounded w-60 absolute left-0 top-full transition-all opacity-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-1'>
+                    <nav tabIndex={0} className='border border-2 bg-white invisible border-gray-800 rounded w-60 absolute left-0 top-full transition-all opacity-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-1'>
                         <ul className='py-1'>    
                             {childMenu}  
                         </ul>
@@ -36,3 +41,5 @@ export default function NavItem({entry, isChildNavItem}){
         </li>
     )
 }
+
+export default XDNavItem;

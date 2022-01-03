@@ -3,7 +3,11 @@ import Link from 'next/link';
 import XDNavigationMenu from './xdNavigationMenu';
 import XDCallToAction from './xdCallToAction';
 
-export default function XDHeader({entry}){
+interface IXDHeaderProps {
+	entry: Record<string, any>;
+}
+
+const XDHeader:React.FC<IXDHeaderProps> = ({entry}: IXDHeaderProps) => {
     return (
         <div className="bg-transparent">
             <header className="sticky top-0 z-50 text-gray-600 body-font bg-transparent">
@@ -45,3 +49,5 @@ export default function XDHeader({entry}){
         </div>
     )
 }
+
+export default XDHeader;
