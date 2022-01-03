@@ -16,7 +16,7 @@ const XDHeroImage:React.FC<IXDHeroImageProps> = ({entry}: IXDHeroImageProps) => 
     const backgroundImage = getBackgroundImageUrl(entry.backgroundImage?.fields?.file?.url);
     return (
         <div 
-            className={cn('bg-gradient-to-b from-hero-bg-500 via-hero-bg-400 via-hero-bg-300 via-hero-bg-200 to-hero-bg-100 flex justify-center w-full max-h-[900px] -mt-24 mb-24 pt-8 md:pt-16 lg:pt-24 relative z-10', {
+            className={cn('bg-gradient-to-b from-hero-bg-500 via-hero-bg-400 via-hero-bg-300 via-hero-bg-200 to-hero-bg-100 flex justify-center w-full max-h-[900px] -mt-24 pt-8 md:pt-16 lg:pt-24 relative z-10', {
                 [`${backgroundImage}`] : backgroundImage !== undefined
             })}>
             <section className="text-gray-600 body-font">
