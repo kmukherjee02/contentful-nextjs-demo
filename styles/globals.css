@@ -5,3 +5,12 @@
 .heroIcon path {
 	stroke-width: inherit !important;
 }
+.about-our-company-fill {
+	background: url(/images/slider-2.jpg) no-repeat;
+    background-position: 47% 53%;
+	background-clip: text;
+    -webkit-background-clip: text;
+	text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}

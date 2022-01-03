@@ -39,8 +39,8 @@ module.exports = {
 				DEFAULT: '1rem',
 				sm: '2rem',
 				md: '1rem',
-				lg: '3rem',
-				xl: '5rem',
+				lg: '.5rem',
+				xl: '3.5rem',
 				'2xl': '10rem'
 			},
 		},
@@ -77,6 +77,8 @@ module.exports = {
 				'dosis': ['Dosis', 'sans-serif']
 			},
 			fontSize: {
+				'sm': ['.94rem', '1.6rem'],
+				'4xl': ['2.3rem', '3.25rem'], 
 				'5xl': '2.5rem',
 				'6xl': '2.75rem',
 				'7xl': '4.5rem',
@@ -85,6 +87,7 @@ module.exports = {
 			boxShadow: {
 				small: '0 5px 10px rgba(0, 0, 0, 0.12)',
 				medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+				'img-w-txt': '-1px 3px 20px 0px rgba(82, 90, 101, 0.10)'
 			},
 			animation: {
 				'bounce-low': 'bounce 3s linear infinite',
