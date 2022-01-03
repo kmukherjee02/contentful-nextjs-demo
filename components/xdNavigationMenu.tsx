@@ -1,8 +1,12 @@
 import XDNavItem from "./xdNavItem";
 
-export default function XDNavigationMenu({entry}){
+interface IXDNavigationMenuProps {
+	entry: Record<string, any>;
+}
+
+const XDNavigationMenu:React.FC<IXDNavigationMenuProps> = ({entry}: IXDNavigationMenuProps) => {
     let navMenu = entry.fields.navigationItems.map(
-        (navItem, idx) => {
+        (navItem: Record<string, any>, idx:number) => {
             return (
                 <ul className="" key={idx}> 
                     <XDNavItem entry={navItem.fields} />
@@ -12,3 +16,5 @@ export default function XDNavigationMenu({entry}){
     )
     return navMenu;
 }
+
+export default XDNavigationMenu;

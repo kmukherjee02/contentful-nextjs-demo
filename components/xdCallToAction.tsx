@@ -1,9 +1,11 @@
 import Link from "next/link"
 import ButtonAnimated from './ButtonAnimated'
 
+interface IXDCallToActionProps {
+	entry: Record<string, any>;
+}
 
-
-export default function XDCallToAction({entry}){   
+const XDCallToAction:React.FC<IXDCallToActionProps> = ({entry}: IXDCallToActionProps) =>  {   
     return (
         <>
            {entry.fields.link ? 
@@ -19,3 +21,5 @@ export default function XDCallToAction({entry}){
         </>
     )
 }
+
+export default XDCallToAction;

@@ -1,8 +1,16 @@
 import Link from "next/link";
 import ButtonAnimated from "./ButtonAnimated";
 
-const defaultClassnames = 'inline-flex py-2 mr-2 text-lg cursor-pointer underline text-primary-normal'
-export default function XDLink({entry, className=defaultClassnames}){
+const defaultClassnames:string = 'inline-flex py-2 mr-2 text-lg cursor-pointer underline text-primary-normal'
+
+interface IXDLinkProps {
+	entry: Record<string, any>;
+    className?: string;
+    key?: number;
+}
+const XDLink:React.FC<IXDLinkProps> = ({entry, className=defaultClassnames}: IXDLinkProps) => {
+    const buttonClasses: string = '';
+    const linkClasses: string = '';
     return (
         <>
             {
@@ -25,3 +33,5 @@ export default function XDLink({entry, className=defaultClassnames}){
         </>
     )
 }
+
+export default XDLink;

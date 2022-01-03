@@ -3,8 +3,12 @@ import {getBackgroundImageUrl} from '../lib/utilities';
 import XDLink from "./xdLink";
 import cn from 'classnames'
 
-export default function ({ entry }) {
-    const buttons = entry.buttons?.map((item,index) => {
+interface IXDHeroImageProps {
+	entry: Record<string, any>;
+}
+
+const XDHeroImage:React.FC<IXDHeroImageProps> = ({entry}: IXDHeroImageProps) => {
+    const buttons = entry.buttons?.map((item: Record<string, any>,index: number) => {
         return (
             <XDLink entry={item.fields} key={index} />
         )
@@ -46,3 +50,5 @@ export default function ({ entry }) {
         </div>
     )
 }
+
+export default XDHeroImage;
