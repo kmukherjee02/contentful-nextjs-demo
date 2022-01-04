@@ -5,7 +5,7 @@ interface IButtonAnimatedProps {
 	entry: Record<string, any>;
 }
 
-const ButtonAnimated:React.FC<IButtonAnimatedProps> = ({entry}: IButtonAnimatedProps) =>  {
+const ButtonAnimated = ({entry}: IButtonAnimatedProps) =>  {
 	const [isHovered, setIsHovered] = useState<boolean>(false);
     const [mousePositionEnter, setMousePositionEnter] = useState<Record<string, any>>({});
 	const [mousePositionLeave, setMousePositionLeave] = useState<Record<string, any>>({});
@@ -37,10 +37,10 @@ const ButtonAnimated:React.FC<IButtonAnimatedProps> = ({entry}: IButtonAnimatedP
 	return (
 		<div className={cn('', {'text-center':  entry.theme ==='primary' || entry.theme ==='secondary'})}>
 			<a
-				className={cn('inline-flex py-3 px-8 m-1 text-base font-medium rounded relative z-10 overflow-hidden shadow-lg cursor-pointer', {
+				className={cn('inline-flex py-4 px-8 m-1 text-base font-medium rounded relative z-10 overflow-hidden shadow-lg cursor-pointer', {
 	                'bg-primary-normal text-white': entry.theme ==='primary',
 	                'bg-white text-primary-normal hover:text-white transition-colors duration-400': entry.theme === 'secondary',
-	                'hover:text-white border-l-2 border-primary-normal w-full': entry.theme === 'tertiary'
+	                'px-3 font-semibold hover:text-white border-l-2 border-primary-normal w-full': entry.theme === 'tertiary'
 	            })}
 				onMouseEnter={(e) => handleMouseEnter(e)}
 				onMouseLeave={(e) => handleMouseLeave(e)}
