@@ -3,9 +3,9 @@ import Layout from './layout';
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function PageNotFound() {
+export default function PageNotFound({preview}) {
     return (
-        <Layout preview={false}>
+        <Layout preview={preview}>
             <Head>
                 <title>404 Page Not Found</title>
             </Head>

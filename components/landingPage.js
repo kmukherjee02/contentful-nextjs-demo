@@ -3,9 +3,9 @@ import Layout from './layout';
 import Head from 'next/head';
 import Sections from './sections';
 
-export default function LandingPage({page}){
+export default function LandingPage({preview, page}){
     return (
-        <Layout preview={false}>
+        <Layout preview={preview}>
         <Head>
           <title>{page.name}</title>
         </Head>

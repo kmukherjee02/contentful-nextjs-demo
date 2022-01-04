@@ -1,5 +1,6 @@
 import Container from './container'
 import cn from 'classnames'
+import Link from 'next/link'
 
 export default function Alert({ preview }) {
   return (
@@ -12,16 +13,15 @@ export default function Alert({ preview }) {
       <Container>
         <div className="py-2 text-center text-sm">
           {preview ? (
-            <>
+            <div className={'h-8'}>
               This is page is a preview.{' '}
-              <a
-                href="/api/exit-preview"
-                className="underline hover:text-cyan duration-200 transition-colors"
-              >
+              <Link href={"/api/exitPreview"} passHref>
+              <a className="underline hover:text-cyan duration-200 transition-colors" >
                 Click here
-              </a>{' '}
+              </a>
+              </Link>{' '}
               to exit preview mode.
-            </>
+            </div>
           ) : (
             <></>
           )}

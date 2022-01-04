@@ -4,14 +4,14 @@ import PageNotFound from '@components/pageNotFound';
 import {fetchXDLandingEntriesBySlug, fetchAllXDLandingEntries} from '@lib/api';
 
 
-export default function Slug({page}){
+export default function Slug({preview, page}){
   if(JSON.stringify(page) !== '{}'){
     return (
-      <LandingPage page={page} /> 
+      <LandingPage preview={preview} page={page} /> 
     )
   }
   return (
-    <PageNotFound />
+    <PageNotFound preview={preview}/>
   )
 }
 
@@ -28,6 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ params, preview = false }
     if(homePage?.length > 0){
       return {
         props: { 
+          preview: preview,
           page: homePage[0].fields
         },
       }
