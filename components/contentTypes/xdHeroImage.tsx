@@ -1,5 +1,5 @@
-import ContentfulImage from "./contentful-image";
-import {getBackgroundImageUrl} from '../lib/utilities';
+import ContentfulImage from "../contentful-image";
+import {getBackgroundImageUrl} from '@lib/utilities';
 import XDLink from "./xdLink";
 import cn from 'classnames'
 

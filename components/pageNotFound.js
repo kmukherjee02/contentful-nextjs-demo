@@ -1,5 +1,5 @@
-import Container from '../components/container';
-import Layout from '../components/layout';
+import Container from './container';
+import Layout from './layout';
 import Head from 'next/head';
 import Link from 'next/link';
 

@@ -1,4 +1,4 @@
-import ContentfulImage from './contentful-image';
+import ContentfulImage from '../contentful-image';
 
 interface IXDImageWithTextProps {
 	entry: Record<string, any>;

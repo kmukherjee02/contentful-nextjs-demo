@@ -1,5 +1,5 @@
 import Link from "next/link"
-import ButtonAnimated from './ButtonAnimated'
+import ButtonAnimated from '../ButtonAnimated'
 
 interface IXDCallToActionProps {
 	entry: Record<string, any>;

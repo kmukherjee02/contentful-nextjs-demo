@@ -1,4 +1,4 @@
-import ContentfulImage from './contentful-image'
+import ContentfulImage from '../contentful-image'
 import Link from 'next/link';
 import XDNavigationMenu from './xdNavigationMenu';
 import XDCallToAction from './xdCallToAction';

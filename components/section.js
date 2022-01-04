@@ -1,10 +1,10 @@
-import XDHeader from './xdHeader';
-import XDHeroImage from './xdHeroImage';
-import XDSetOfCard from './xdSetOfCard';
-import XDSectionWithImage from './xdSectionWithImage';
-import XDBanner from './xdBanner';
-import XDSetOfTestimonialCards  from './xdSetOfTestimonialCards';
-import XDSetOfTeamMembers from './xdSetOfTeamMembers';
+import XDHeader from './contentTypes/xdHeader';
+import XDHeroImage from './contentTypes/xdHeroImage';
+import XDSetOfCard from './contentTypes/xdSetOfCard';
+import XDSectionWithImage from './contentTypes/xdSectionWithImage';
+import XDBanner from './contentTypes/xdBanner';
+import XDSetOfTestimonialCards  from './contentTypes/xdSetOfTestimonialCards';
+import XDSetOfTeamMembers from './contentTypes/xdSetOfTeamMembers';
 
 export default function Section ({sectionType, section, ArrayKey, sys}) {
     //console.log(section);

@@ -1,7 +1,7 @@
-import Container from '../components/container';
-import Layout from '../components/layout';
+import Container from './container';
+import Layout from './layout';
 import Head from 'next/head';
-import Sections from '../components/sections';
+import Sections from './sections';
 
 export default function LandingPage({page}){
     return (

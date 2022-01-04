@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ButtonAnimated from "./ButtonAnimated";
+import ButtonAnimated from "../ButtonAnimated";
 
 const defaultClassnames:string = 'inline-flex py-2 mr-2 text-lg cursor-pointer underline text-primary-normal'
 

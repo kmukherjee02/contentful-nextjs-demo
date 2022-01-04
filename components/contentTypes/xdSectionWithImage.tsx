@@ -1,7 +1,7 @@
 import XDImageWithText from './xdImageWithText';
 import XDSetOfCallToAction from './xdSetOfCallToActions';
 import XDSetOfProgressBar from './xdSetOfProgressBar';
-import ButtonAnimated from './ButtonAnimated';
+import ButtonAnimated from '../ButtonAnimated';
 import cn from 'classnames';
 
 interface IXDSectionWithImageProps {
