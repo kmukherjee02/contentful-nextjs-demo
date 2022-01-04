@@ -8,9 +8,8 @@ interface IXDSectionWithImageProps {
 	entry: Record<string, any>;
 }
 
-const XDSectionWithImage: React.FC<IXDSectionWithImageProps> = ({ entry }: IXDSectionWithImageProps) =>  {
+const XDSectionWithImage = ({ entry }: IXDSectionWithImageProps) =>  {
 	const renderDetails = () : JSX.Element => {
-		// console.log(entry);
 		switch (entry.detail.sys.contentType.sys.id) {
 			case 'xdSetOfCallToAction':
 				return (
@@ -48,7 +47,7 @@ const XDSectionWithImage: React.FC<IXDSectionWithImageProps> = ({ entry }: IXDSe
     )
 
 	return (
-		<section className='container mx-auto py-10 lg:py-24'>
+		<section className='container mx-auto py-16 lg:py-24'>
 			<div className='flex flex-col lg:flex-row lg:items-center justify-between'>
 				{entry.imageWithTextAlignment === 'left' && imgWithTextComponent}
 				<div className='lg:w-1/2 lg:mr-24 px-3'>
@@ -60,7 +59,7 @@ const XDSectionWithImage: React.FC<IXDSectionWithImageProps> = ({ entry }: IXDSe
 					>
 						{entry.caption}
 					</h6>
-					<h2 className='font-dosis text-4xl font-bold  mb-5'>
+					<h2 className='font-dosis text-2xl lg:text-4xl font-bold  mb-5'>
 						{entry.title}
 					</h2>
 					<p className='mt-2 text-sm text-gray-600'>

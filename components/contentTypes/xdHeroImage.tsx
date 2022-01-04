@@ -7,7 +7,7 @@ interface IXDHeroImageProps {
 	entry: Record<string, any>;
 }
 
-const XDHeroImage:React.FC<IXDHeroImageProps> = ({entry}: IXDHeroImageProps) => {
+const XDHeroImage = ({entry}: IXDHeroImageProps) => {
     const buttons = entry.buttons?.map((item: Record<string, any>,index: number) => {
         return (
             <XDLink entry={item.fields} key={index} />

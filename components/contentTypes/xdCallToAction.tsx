@@ -5,7 +5,7 @@ interface IXDCallToActionProps {
 	entry: Record<string, any>;
 }
 
-const XDCallToAction:React.FC<IXDCallToActionProps> = ({entry}: IXDCallToActionProps) =>  {   
+const XDCallToAction = ({entry}: IXDCallToActionProps) =>  {   
     return (
         <>
            {entry.fields.link ? 

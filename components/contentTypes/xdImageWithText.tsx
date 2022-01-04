@@ -4,7 +4,7 @@ interface IXDImageWithTextProps {
 	entry: Record<string, any>;
 }
 
-const XDImageWithText: React.FC<IXDImageWithTextProps> = ({entry,}: IXDImageWithTextProps) => {
+const XDImageWithText = ({entry}: IXDImageWithTextProps) => {
 	
     const aboutOurCompanyImgText = (
         <div className='bg-white h-[160px] w-[210px] py-5 px-8 border-b-2 border-orange-light shadow-img-w-txt absolute bottom-[25px] left-[25px] lg:left-[-75px]'>

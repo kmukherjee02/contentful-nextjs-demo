@@ -7,7 +7,7 @@ interface IXDHeaderProps {
 	entry: Record<string, any>;
 }
 
-const XDHeader:React.FC<IXDHeaderProps> = ({entry}: IXDHeaderProps) => {
+const XDHeader = ({entry}: IXDHeaderProps) => {
     return (
         <div className="bg-transparent">
             <header className="sticky top-0 z-50 text-gray-600 body-font bg-transparent">

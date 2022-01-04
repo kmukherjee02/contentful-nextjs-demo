@@ -6,7 +6,7 @@ interface IXDNavigationItemProps {
     isChildNavItem?:  boolean;
 }
 
-const XDNavItem:React.FC<IXDNavigationItemProps> = ({entry, isChildNavItem}: IXDNavigationItemProps) => {
+const XDNavItem = ({entry, isChildNavItem}: IXDNavigationItemProps) => {
    
     let childMenu = entry.children?.map((item: Record<string, any>, idx:number) => {
         return (
@@ -20,7 +20,7 @@ const XDNavItem:React.FC<IXDNavigationItemProps> = ({entry, isChildNavItem}: IXD
         <li className='list-none'>
             <div className='p-4'>
             {entry.slug ? 
-                <Link href={entry.slug}> 
+                <Link href={entry.slug} passHref> 
                     <button className={navItemClasses}>{entry.label}</button>
                 </Link>
                 :
