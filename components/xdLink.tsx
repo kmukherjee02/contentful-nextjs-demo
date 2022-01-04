@@ -8,7 +8,7 @@ interface IXDLinkProps {
     className?: string;
     key?: number;
 }
-const XDLink:React.FC<IXDLinkProps> = ({entry, className=defaultClassnames}: IXDLinkProps) => {
+const XDLink = ({entry, className=defaultClassnames}: IXDLinkProps) => {
     const buttonClasses: string = '';
     const linkClasses: string = '';
     return (

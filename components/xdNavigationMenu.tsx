@@ -4,7 +4,7 @@ interface IXDNavigationMenuProps {
 	entry: Record<string, any>;
 }
 
-const XDNavigationMenu:React.FC<IXDNavigationMenuProps> = ({entry}: IXDNavigationMenuProps) => {
+const XDNavigationMenu = ({entry}: IXDNavigationMenuProps) => {
     let navMenu = entry.fields.navigationItems.map(
         (navItem: Record<string, any>, idx:number) => {
             return (

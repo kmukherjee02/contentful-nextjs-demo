@@ -6,7 +6,7 @@ interface IXDNavigationItemProps {
     isChildNavItem?:  boolean;
 }
 
-const XDNavItem:React.FC<IXDNavigationItemProps> = ({entry, isChildNavItem}: IXDNavigationItemProps) => {
+const XDNavItem = ({entry, isChildNavItem}: IXDNavigationItemProps) => {
    
     let childMenu = entry.children?.map((item: Record<string, any>, idx:number) => {
         return (
