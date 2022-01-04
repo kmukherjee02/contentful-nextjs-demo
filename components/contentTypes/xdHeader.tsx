@@ -11,7 +11,7 @@ const XDHeader = ({entry}: IXDHeaderProps) => {
     return (
         <div className="bg-transparent">
             <header className="sticky top-0 z-50 text-gray-600 body-font bg-transparent">
-                <div className="container mx-auto py-5 flex items-center justify-between">
+                <div className="container mx-auto flex items-center justify-between">
                     <Link href={entry.logoHyperlink} passHref>
                         <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                             <ContentfulImage 
