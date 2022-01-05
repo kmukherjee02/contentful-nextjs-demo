@@ -14,3 +14,22 @@
     -webkit-text-fill-color: transparent;
     line-height: 1.1;
 }
+.testimonial-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 4; 
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical
+}
+/* overrides default styling for owl carousel dots */
+.owl-dots {
+    margin-top: 2rem !important;
+}
+.owl-dots > .owl-dot > span {
+    background-color: #fff !important;
+    transition: all 400ms linear !important;
+}
+.owl-dots > .owl-dot.active > span {
+    background-color: #7b68ee !important;
+}
