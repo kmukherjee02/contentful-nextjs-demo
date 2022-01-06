@@ -29,7 +29,7 @@ const XDTestimonialCard = ({ entry }: IXDTestimonialCardProps) => {
 	));
 
 	return (
-		<div className='bg-gray-50 h-[400px] rounded-md py-8 px-4 relative'>
+		<div className='bg-gray-50 rounded-md py-8 px-4 relative'>
 			<div className='text-center mb-4'>
 				<ul>
 					{stars}
@@ -40,13 +40,13 @@ const XDTestimonialCard = ({ entry }: IXDTestimonialCardProps) => {
 					{testimonial}
 				</p>
 			</div>
-			<div className='h-[90px] w-[90px] mx-auto mb-4 border-4 border-white border-b-primary-normal border-l-primary-normal rounded-full overflow-hidden'>
+			<div className='h-[90px] w-[90px] mx-auto mt-12 mb-4 border-4 border-white border-b-primary-normal border-l-primary-normal rounded-full overflow-hidden'>
 				{/* next/image not used due to issues w/ Owl carousel */}
 				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img src={personImgSrc} alt={`photo of ${name}`} />
 			</div>
 			<div className='text-center'>
-				<h3 className='font-dosis font-bold text-xl mb-2'>
+				<h3>
 					{name}
 				</h3>
 				<p className='font-medium'>
