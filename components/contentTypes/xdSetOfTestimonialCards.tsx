@@ -17,12 +17,12 @@ const XDSetOfTestimonialCards = ({entry}: IXDSetOfTestimonialCardsProps) => {
     });
 
     return (
-        <div className='container mx-auto px-20 pt-24 pb-12'>
+        <div className='container mx-auto md:pt-24 pt-12 pb-12'>
             <div className='text-center'>
-                <h6 className='font-dosis font-bold text-orange-light uppercase mb-2'>
+                <h6>
                     {entry.caption}
                 </h6>
-                <h2 className='font-dosis font-bold text-5xl'>
+                <h2 className='font-extrabold'>
                     {entry.title}
                 </h2>
             </div>

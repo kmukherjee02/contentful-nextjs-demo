@@ -1,7 +1,7 @@
 import ContentfulImage from "../contentful-image";
 import {getBackgroundImageUrl} from '@lib/utilities';
 import XDLink from "./xdLink";
-import cn from 'classnames'
+import cn from 'classnames';
 
 interface IXDHeroImageProps {
 	entry: Record<string, any>;
@@ -25,7 +25,7 @@ const XDHeroImage = ({entry}: IXDHeroImageProps) => {
                         <h1 className="font-dosis font-bold text-center lg:text-left text-3xl lg:text-[3.4rem] leading-normal mb-5 font-medium text-white">
                             {entry.title}
                         </h1>
-                        <p className="mb-8 text-center lg:text-left text-white leading-relaxed">
+                        <p className="text-center lg:text-left text-white mb-8">
                             {entry.description}
                         </p>
                         <div className="mx-auto flex flex-col md:flex-row justify-center md:justify-evenly lg:justify-start w-1/2 lg:w-full">

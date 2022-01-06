@@ -15,12 +15,12 @@ export default function XDCard({ entry }) {
                 })}>
                     <XDIcon className={`${iconSize} ml-1.5 stroke-1 group-hover:rotate-y-180 ease-in duration-500 transition-transform will-change-transform`} entry={entry.icon.fields} />
                 </div>
-                <h3 className={cn("text-xl text-primary-dark font-dosis font-bold mt-12 mb-4", {
+                <h3 className={cn("mt-12 mb-4", {
                     'text-center': entry.alignment === 'center',
                     'text-left': entry.alignment === 'left',
                     'text-right': entry.alignment === 'right',
                 })}>{entry.title}</h3>
-                <p className={cn("leading-relaxed text-gray-500 text-base", {
+                <p className={cn("", {
                     'text-center': entry.alignment === 'center',
                     'text-left': entry.alignment === 'left',
                     'text-right': entry.alignment === 'right',

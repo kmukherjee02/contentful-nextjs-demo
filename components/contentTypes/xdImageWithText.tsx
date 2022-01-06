@@ -8,10 +8,10 @@ const XDImageWithText = ({entry}: IXDImageWithTextProps) => {
 	
     const aboutOurCompanyImgText = (
         <div className='bg-white h-[160px] w-[210px] py-5 px-8 border-b-2 border-orange-light shadow-img-w-txt absolute bottom-[25px] left-[25px] lg:left-[-75px]'>
-            <h2 className='font-dosis font-bold text-7xl about-our-company-fill'>
+            <h2 className='text-7xl about-our-company-fill'>
 				{entry.imageText?.match(/\d/g)}
 			</h2>
-            <h5 className='font-dosis font-bold text-orange-light'>
+            <h5>
 				{entry.imageText?.match(/[^\d]/g)}
 			</h5>
         </div>

@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useOnScreen } from '@lib/hooks'
 
 interface IXDProgressBarProps {
@@ -11,7 +11,7 @@ const XDProgressBar = ({ entry }: IXDProgressBarProps) => {
 
 	return (
 		<div ref={divRef} className='w-full mb-4'>
-			<h6 className='font-dosis font-semibold text-primary-normal mb-2'>
+			<h6 className='font-semibold text-primary-normal'>
 				{entry.title}
 				<span className='float-right'>
 					{entry.progressAmount}

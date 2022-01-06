@@ -8,26 +8,6 @@ const rotateY = plugin(function ({ addUtilities }) {
 	})
 });
 
-const typography = plugin(function ({ addUtilities, theme }) {
-	addUtilities({
-		'.section-title': {
-			'font-family': theme('fontFamily.dosis'),
-			color: theme('colors.primary-dark'),
-			'font-size': '38px',
-			'line-height': 1.4,
-			'font-weight': 800,
-		},
-		'.section-subtitle': {
-			'font-size': '16px',
-			'font-weight': 700,
-			'letter-spacing': '0.5px',
-			'line-height': 1.4,
-			'text-transform': 'uppercase',
-		}
-	})
-});
-
-
 module.exports = {
 	content: [
 		'./pages/**/*.{js,ts,jsx,tsx}',
@@ -101,5 +81,5 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [rotateY, typography],
+	plugins: [rotateY],
 }

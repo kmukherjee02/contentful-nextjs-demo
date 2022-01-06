@@ -52,7 +52,7 @@ const XDSectionWithImage = ({ entry }: IXDSectionWithImageProps) =>  {
 				{entry.imageWithTextAlignment === 'left' && imgWithTextComponent}
 				<div className='lg:w-1/2 lg:mr-24 px-3'>
 					<h6
-						className={cn('font-dosis font-bold mb-4', {
+						className={cn('', {
 							'text-primary-normal': entry.theme === 'primary',
 							'text-orange-light': entry.theme === 'secondary',
 						})}
@@ -62,7 +62,7 @@ const XDSectionWithImage = ({ entry }: IXDSectionWithImageProps) =>  {
 					<h2 className='font-dosis text-2xl lg:text-4xl font-bold  mb-5'>
 						{entry.title}
 					</h2>
-					<p className='mt-2 text-sm text-gray-600'>
+					<p className='text-sm'>
 						{entry.description}
 					</p>
 					{renderDetails()}

@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-dosis font-bold
+    } 
+    h2 {
+        @apply text-3xl lg:text-4xl mb-5;
+    }
+    h3 {
+        @apply text-xl mb-2
+    }
+    h5, h6 {
+        @apply text-base text-orange-light uppercase mb-2;
+    }
+    p{
+        @apply text-neutral-600 leading-8 text-sm md:text-base;
+    }
+}
 .heroIcon path {
 	stroke-width: inherit !important;
 }
@@ -14,6 +31,7 @@
     -webkit-text-fill-color: transparent;
     line-height: 1.1;
 }
+/* line clamp not available w/ tailwinds */
 .testimonial-text {
     overflow: hidden;
     text-overflow: ellipsis;

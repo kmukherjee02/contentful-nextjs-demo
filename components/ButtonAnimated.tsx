@@ -45,7 +45,7 @@ const ButtonAnimated = ({entry}: IButtonAnimatedProps) =>  {
 				onMouseEnter={(e) => handleMouseEnter(e)}
 				onMouseLeave={(e) => handleMouseLeave(e)}
 			>
-				{entry.name ? entry.name : entry.label}
+				{entry.buttonText ? entry.buttonText : entry.label}
 	
 				<span
 					className={cn(`${isHovered ? `w-[225%] h-[562.5px] `:`w-0`} btn-fill absolute -z-10 transition-{height width}`, {
