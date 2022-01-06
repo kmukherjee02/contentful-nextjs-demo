@@ -17,7 +17,7 @@ export default function Meta() {
         name="description"
         content={`A statically generated site demonstrating the power of Next.js and ${CMS_NAME}.`}
       />
-      <meta property="og:image" content={"https://contentful-nextjs-demo-opal.vercel.app/images/XTIVIA-wallpaper-400,png"} />
+      <meta property="og:image" content={"https://contentful-nextjs-demo-opal.vercel.app/images/XTIVIA-wallpaper-400.png"} />
     </Head>
   )
 }
