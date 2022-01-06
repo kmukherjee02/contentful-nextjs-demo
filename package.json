@@ -16,6 +16,7 @@
     "react-owl-carousel": "^2.3.3"
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.8",
     "@types/react": "^17.0.38",
     "autoprefixer": "^10.4.0",
     "contentful-import": "^8.2.28",

@@ -28,9 +28,12 @@
   },
   "include": [
     "next-env.d.ts",
+    "**/*.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "pages/api/preview.js"],
+    "**/*.tsx",
+    "pages/api/preview.js",
+    "pages/api/exitPreview.js"
+  ],
   "exclude": [
     "node_modules"
   ]
