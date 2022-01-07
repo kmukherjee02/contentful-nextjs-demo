@@ -38,9 +38,9 @@ function MyApp({ pageProps, Component } : AppProps) {
                     });`
             }} 
       />
+      <Script id="popup-maker" strategy="afterInteractive" async src="https://apiv2.popupsmart.com/api/377842" />
       <Component {...pageProps} />
     </> 
-
   )
 }
 
