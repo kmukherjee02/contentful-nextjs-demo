@@ -32,7 +32,8 @@ module.exports = {
 			boxShadow: {
 				small: '0 5px 10px rgba(0, 0, 0, 0.12)',
 				medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
-				'img-w-txt': '-1px 3px 20px 0px rgba(82, 90, 101, 0.10)'
+				'img-w-txt': '-1px 3px 20px 0px rgba(82, 90, 101, 0.10)',
+				'mobile-header': '0 5px 40px 0 rgba(0, 0, 0, .11)'
 			},
 			colors: {
 				'primary-normal': '#7b68ee',

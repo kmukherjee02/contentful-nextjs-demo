@@ -7,7 +7,7 @@ export default function Alert({ preview }) {
     <div
       className={cn('', {
         'bg-accent-7 border-accent-7 text-white': preview,
-        'bg-accent-1 border-accent-2': !preview,
+        'bg-accent-1 border-accent-2 hidden': !preview,
       })}
     >
       <Container>
