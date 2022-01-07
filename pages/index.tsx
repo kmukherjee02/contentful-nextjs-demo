@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 import LandingPage from '@components/landingPage';
-import { fetchXDLandingEntriesBySlug } from '@lib/api';
+import { fetchXDLandingEntriesBySlug } from '@lib/service/api';
 
 
 export default function Index({ preview, page }) {

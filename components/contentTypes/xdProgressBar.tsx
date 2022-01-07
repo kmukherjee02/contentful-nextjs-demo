@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useOnScreen } from '@lib/hooks'
+import { useOnScreen } from '@lib/hooks/hooks'
 
 interface IXDProgressBarProps {
 	entry: Record<string, any>;

@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { CMS_NAME } from '@lib/constants'
+import { CMS_NAME } from '@lib/utilities/constants'
 
 export default function Meta() {
   return (

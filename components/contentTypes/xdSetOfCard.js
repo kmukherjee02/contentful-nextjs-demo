@@ -1,7 +1,6 @@
 import XDCard from "./xdCard";
 
 export default function xdSetOfCard({entry}){
-     //console.log(entry);
     const cards = entry.cards.map((item,index) => {
         return (
             <XDCard entry={item.fields} key={index} />

@@ -1,4 +1,4 @@
-import { fetchPreviewXDLandingEntriesBySlug } from '@lib/api'
+import { fetchPreviewXDLandingEntriesBySlug } from '@lib/service/api'
 
 export default async function preview(req, res) {
   const { secret, slug } = req.query

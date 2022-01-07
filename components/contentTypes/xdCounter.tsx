@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { setInterval } from 'timers/promises';
-import { useOnScreen } from '../../lib/hooks'
+import { useOnScreen } from '../../lib/hooks/hooks'
 
 interface IXDCounterProps {
 	entry: Record<string, any>;

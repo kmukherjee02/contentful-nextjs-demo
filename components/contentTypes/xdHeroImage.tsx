@@ -45,7 +45,7 @@ const XDHeroImage = ({entry}: IXDHeroImageProps) => {
                 </div>
             </section>
             <div className='absolute -bottom-px -z-10'>
-                <img src='/images/hero-bottom-shape.png' /> 
+                <img src='/images/hero-bottom-shape.png' alt="hero-bottom"/> 
             </div>
         </div>
     )

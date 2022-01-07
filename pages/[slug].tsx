@@ -1,7 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import LandingPage from '@components/landingPage';
 import PageNotFound from '@components/pageNotFound';
-import {fetchXDLandingEntriesBySlug, fetchAllXDLandingEntries} from '@lib/api';
+import {fetchXDLandingEntriesBySlug, fetchAllXDLandingEntries} from '@lib/service/api';
 
 
 export default function Slug({preview, page}){

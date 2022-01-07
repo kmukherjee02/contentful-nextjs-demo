@@ -3,7 +3,6 @@ import Section from "./section"
 export default function Sections({sections}){
     let secs = sections.map(
         (section, idx) => {
-            //console.log(section);
             return (
                 <Section
                     sectionType={section.sys.contentType.sys.id}
