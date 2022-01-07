@@ -3,7 +3,6 @@ import cn from 'classnames';
 import XDIcon from './xdIcon';
 
 export default function XDCard({ entry }) {
-    // console.log('xdCard entry', entry);
     const iconSize = 'h-14 w-14'
     return (
         <div className="xl:w-1/3 md:w-1/2 p-3 group hover:-translate-y-3 ease-out duration-500 transition-transform will-change-transform">
