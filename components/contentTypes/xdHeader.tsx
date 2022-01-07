@@ -22,12 +22,13 @@ const XDHeader = ({entry}: IXDHeaderProps) => {
                             />
                         </a>
                     </Link>
-                    <div className="hidden lg:flex justify-between">
-                        <nav className="flex justify-center items-center">
+                    <div className="hidden flex-1 lg:flex justify-around">
+                        <nav className="ml-16 flex justify-center items-center">
                             <XDNavigationMenu entry={entry.navigation} /> 
                         </nav>
                         <XDCallToAction entry={entry.callToAction} />
                     </div>
+                    {/* mobile hamburger */}
                     <div className="lg:hidden flex items-center justify-end">
                         <button className="outline-none mobile-menu-button">
                             <svg
