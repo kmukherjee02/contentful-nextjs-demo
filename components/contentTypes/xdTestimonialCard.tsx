@@ -1,5 +1,6 @@
 import StarIcon from '../../public/icons/star.svg';
 import HalfStarIcon from '../../public/icons/half-star.svg';
+import {getAbsoluteImageUrlInWebp} from '@lib/utilities';
 
 interface IXDTestimonialCardProps {
 	entry: Record<string, any>;
@@ -8,7 +9,7 @@ const XDTestimonialCard = ({ entry }: IXDTestimonialCardProps) => {
 	const { testimonial, receivedFrom }: Record<string, any> = entry;
 	let { rating }: Record<string, any> = entry;
 	const { name, designation, image }: Record<string, any> = receivedFrom.fields;
-	const personImgSrc: string = image.fields.file.url;
+	const personImgSrc: string = getAbsoluteImageUrlInWebp(image.fields.file.url);
 	const starGold: string = '#ffce39';
 
 	const convertNumOfStarsToArr = () : number[] => {

@@ -3,13 +3,14 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import XDCallToAction from './xdCallToAction';
 import XDCounter from "./xdCounter";
 import cn from 'classnames'
+import {getAbsoluteImageUrlInWebp} from '@lib/utilities';
 
 interface IXDBanner {
 	entry: Record<string, any>;
 }
 const XDBanner = ({entry}: IXDBanner) => {
     const { cta, counter,  description, image } = entry;
-    const bgImgSrc: string = image.fields.file.url;
+    const bgImgSrc: string = getAbsoluteImageUrlInWebp(image.fields.file.url);
    
     const counters: JSX.Element = counter?.map((item: Record<string, any>,index: number) => (
         <XDCounter entry={item} key={index} />

@@ -18,6 +18,7 @@ export default function Meta() {
         content={`A statically generated site demonstrating the power of Next.js and ${CMS_NAME}.`}
       />
       <meta name="robots" content="noindex" />
+      <meta httpEquiv="Content-Security-Policy" content="script-src 'none'"></meta>
       <meta property="og:image" content="https://contentful-nextjs-demo-opal.vercel.app/images/XTIVIA-wallpaper-400.png" />
       <meta property="og:image:secure_url" content="https://contentful-nextjs-demo-opal.vercel.app/images/XTIVIA-wallpaper-400.png" /> 
       <meta property="og:image:type" content="image/jpeg" /> 
