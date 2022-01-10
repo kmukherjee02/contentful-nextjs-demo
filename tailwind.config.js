@@ -28,12 +28,16 @@ module.exports = {
 		extend: {
 			animation: {
 				'bounce-low': 'bounce 3s linear infinite',
+				'fixed-header-fade-in': 'fixed-header-fade-in 500ms ease-in-out'
 			},
 			boxShadow: {
 				small: '0 5px 10px rgba(0, 0, 0, 0.12)',
 				medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
 				'img-w-txt': '-1px 3px 20px 0px rgba(82, 90, 101, 0.10)',
-				'mobile-header': '0 5px 40px 0 rgba(0, 0, 0, .11)'
+				'fixed-header': '0 2px 28px 0 rgba(0, 0, 0, .06)',
+				'mobile-header': '0 5px 40px 0 rgba(0, 0, 0, 0.11)',
+				'mobile-nav-menu': '0 7px 13px 0 rgba(0, 0, 0, 0.10)',
+				'fixed-header-dropdown': '0px 0px 15px 0px rgba(0, 0, 0, 0.10)'
 			},
 			colors: {
 				'primary-normal': '#7b68ee',
@@ -64,6 +68,18 @@ module.exports = {
 				'6xl': '2.75rem',
 				'7xl': '4.5rem',
 				'8xl': '6.25rem',
+			},
+			keyframes: {
+				'fixed-header-fade-in': {
+					'0%': {
+						opacity: 0,
+						transform: 'translate3d(0,-100%,0)'
+					},
+					'100%': {
+						opacity: 1,
+						transform: 'translateZ(0)'
+					}
+				}
 			},
 			letterSpacing: {
 				tighter: '-.04em',

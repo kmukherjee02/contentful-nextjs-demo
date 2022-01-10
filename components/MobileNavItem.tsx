@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useCloseNavOnUrlChange } from '../lib/hooks/hooks' 
 import Link from 'next/link';
 import PlusIcon from '../public/icons/plus.svg';
 import MinusIcon from '../public/icons/minus.svg';
@@ -7,27 +7,23 @@ import cn from 'classnames';
 
 interface IMobileNavItemProps {
     entry: Record<string, any>;
+    fixedHeader?: boolean;
     isChildNavItem?:  boolean;
 }
 const MobileNavItem = ({entry, isChildNavItem}: IMobileNavItemProps) => {
-    const router = useRouter();
     const [isChildMenuOpen, setIsChildMenuOpen] = useState<boolean>(false);
-    const navItemClasses:string = cn('flex justify-between text-sm  w-full py-3 pl-8 border-b', {
+    
+    const mobileNavItemClasses:string = cn('flex justify-between text-sm  w-full py-3 pl-8 border-t', {
         'text-trueGray-500': isChildNavItem === undefined,
         'pl-16': isChildNavItem
     })
-
     let childMenu:JSX.Element = entry.children?.map((item: Record<string, any>, idx:number) => {
         return (
             <MobileNavItem entry={item.fields} key={idx} isChildNavItem />
         )
     });
 
-    useEffect(() => {
-        const handleRouteChange = () => {setIsChildMenuOpen(false)}
-        router.events.on('routeChangeStart', handleRouteChange)
-        return () => {router.events.off('routeChangeStart', handleRouteChange)}
-    }, [router.events]);
+    useCloseNavOnUrlChange(setIsChildMenuOpen);
 
     return (
         <li className={cn('', {
@@ -36,12 +32,12 @@ const MobileNavItem = ({entry, isChildNavItem}: IMobileNavItemProps) => {
         })}>
             {entry.slug ? 
                 <Link href={entry.slug} passHref> 
-                    <button className={navItemClasses}>{entry.label}</button>
+                    <button className={mobileNavItemClasses}>{entry.label}</button>
                 </Link>
             :
                 <div className='group relative dropdown'>
                     <div className='flex items-center' onClick={() => {setIsChildMenuOpen(!isChildMenuOpen)}}>
-                        <button className={`${navItemClasses}`}>
+                        <button className={`${mobileNavItemClasses}`}>
                             {entry.label}
                             <span className={isChildMenuOpen ? 'hidden' : 'block'}>
                                 <PlusIcon height={20} width={20}/>
