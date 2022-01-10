@@ -21,7 +21,7 @@ const XDNavItem = ({entry, fixedHeader, isChildNavItem}: IXDNavigationItemProps)
     });
     
     return (
-        <li className={cn('list-none', {
+        <li className={cn('list-none ', {
             'nav-item': isChildNavItem === undefined,
             [`border border-1 hover:bg-zinc-50 ${navItemTransition} nav-child-menu-item`]: isChildNavItem,
         })}>
@@ -38,7 +38,7 @@ const XDNavItem = ({entry, fixedHeader, isChildNavItem}: IXDNavigationItemProps)
                             'stroke-neutral-600': fixedHeader
                         })}/>
                     </button>
-                    <nav tabIndex={0} className={cn('bg-white h-auto w-60 rounded absolute left-0 top-0 opacity-0 group-hover:opacity-100 group-hover:top-10 transition-all duration-300 ease-in-out', {
+                    <nav tabIndex={0} className={cn('bg-white h-auto w-60 rounded absolute left-0 top-16 group-hover:top-10 invisible group-hover:visible opacity-0 group-hover:opacity-100  transition-all duration-300 ease-in-out', {
                         'border border-2 border-gray-800': !fixedHeader,
                         'shadow-fixed-header-dropdown': fixedHeader
                     })}>
