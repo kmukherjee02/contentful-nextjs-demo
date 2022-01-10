@@ -28,12 +28,12 @@ export default function XDCard({ entry }: IXDCardProps) {
                     'text-left': entry.alignment === 'left',
                     'text-right': entry.alignment === 'right',
                 })}>{entry.description}</p>
-                <div className={cn('flex font-bold text-orange mt-4', {
+                <div className={cn('flex font-bold mt-4', {
                     'justify-center': entry.alignment === 'center',
                     'justify-start': entry.alignment === 'left',
                     'justify-end': entry.alignment === 'right',
                 })}>
-                    <XDLink entry={entry.link.fields} className={'font-dosis tracking-widest inline-flex py-2 mr-2 cursor-pointer underline'} />
+                    <XDLink entry={entry.link.fields} className={'inline-flex py-2 mr-2'} />
                 </div>
             </div>
         </div>
