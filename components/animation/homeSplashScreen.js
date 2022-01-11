@@ -18,7 +18,7 @@ export function initHomeAnimation() {
     ;
 }
 
-//
+// animation has everything coming in from scale:0 instead of sliding in from the side
 // export function initHomeAnimation() {
 //     gsap.set(".splash-stage, .splash-title, .splash-description, .splash-buttons", { autoAlpha: 1 });
 //     homeAnimation.from(".splash-title",
