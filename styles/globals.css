@@ -63,3 +63,7 @@
 .owl-dots > .owl-dot.active > span {
     background-color: #7b68ee !important;
 }
+/* visibility will be set by gsap after pageload */
+[class^="splash-"] {
+    visibility:hidden;
+} 
