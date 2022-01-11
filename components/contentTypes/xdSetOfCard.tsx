@@ -1,7 +1,15 @@
 import XDCard from "./xdCard";
 
-export default function xdSetOfCard({entry}){
-    const cards = entry.cards.map((item,index) => {
+interface IXDSetOfCardProps {
+    entry: {
+        cards: Record<string, any>[],
+        [key: string]: any;
+    };
+}
+
+
+export default function xdSetOfCard({ entry }: IXDSetOfCardProps){
+    const cards = entry.cards.map((item: { fields: Record<string, any>; }, index: number) => {
         return (
             <XDCard entry={item.fields} key={index} />
         )

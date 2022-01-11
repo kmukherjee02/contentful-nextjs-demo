@@ -18,6 +18,18 @@
     p{
         @apply text-neutral-600 leading-8 text-sm md:text-base;
     }
+    a {
+        @apply cursor-pointer inline-flex;
+    }
+    .link-primary {
+        @apply text-neutral-600 hover:text-primary-normal;
+    }
+    .link-secondary {
+        @apply font-dosis text-orange underline;
+    }
+    .link-tertiary {
+        @apply text-primary-normal;
+    }
 }
 .heroIcon path {
 	stroke-width: inherit !important;

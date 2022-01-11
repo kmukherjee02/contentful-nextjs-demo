@@ -2,7 +2,11 @@ import XDLink from "./xdLink";
 import cn from 'classnames';
 import XDIcon from './xdIcon';
 
-export default function XDCard({ entry }) {
+interface IXDCardProps {
+	entry: Record<string, any>;
+}
+
+export default function XDCard({ entry }: IXDCardProps) {
     const iconSize = 'h-14 w-14'
     return (
         <div className="xl:w-1/3 md:w-1/2 p-3 group hover:-translate-y-3 ease-out duration-500 transition-transform will-change-transform">
@@ -24,12 +28,12 @@ export default function XDCard({ entry }) {
                     'text-left': entry.alignment === 'left',
                     'text-right': entry.alignment === 'right',
                 })}>{entry.description}</p>
-                <div className={cn('flex font-bold text-orange mt-4', {
+                <div className={cn('flex font-bold mt-4', {
                     'justify-center': entry.alignment === 'center',
                     'justify-start': entry.alignment === 'left',
                     'justify-end': entry.alignment === 'right',
                 })}>
-                    <XDLink entry={entry.link.fields} className={'font-dosis tracking-widest inline-flex py-2 mr-2 cursor-pointer underline'} />
+                    <XDLink entry={entry.link.fields} className={'inline-flex py-2 mr-2'} />
                 </div>
             </div>
         </div>
