@@ -9,9 +9,9 @@ interface IXDSetOfCardProps {
 
 
 export default function xdSetOfCard({ entry }: IXDSetOfCardProps){
-    const cards = entry.cards.map((item: { fields: Record<string, any>; }, index: number) => {
+    const cards = entry.cards.map((item: { sys: { id: string }, fields: Record<string, any>; }, index: number) => {
         return (
-            <XDCard entry={item.fields} key={index} />
+            <XDCard entry={item.fields} id={item.sys.id} key={index} />
         )
     })
     return (
