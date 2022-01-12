@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 
 const duration = 0.5
 
-export const initMouseInCardAnimation = (cardSelector: string, iconSelector: string) => {
+export const initMouseInCardAnimation = (cardSelector: string, iconSelector?: string) => {
 	const tl = gsap.timeline({ defaults: { delay: 0 }});
 	tl.to(
 		cardSelector, 
@@ -12,7 +12,7 @@ export const initMouseInCardAnimation = (cardSelector: string, iconSelector: str
 			ease: "sine.out"
 		},
 	);
-	tl.to(
+	iconSelector && tl.to(
 		iconSelector,
 		{
 			rotateY: 180,
@@ -23,7 +23,7 @@ export const initMouseInCardAnimation = (cardSelector: string, iconSelector: str
 	);
 }
 
-export const initMouseOutCardAnimation = (cardSelector: string, iconSelector: string) => {
+export const initMouseOutCardAnimation = (cardSelector: string, iconSelector?: string) => {
 	const tl = gsap.timeline();
 	tl.to(
 		cardSelector, 
@@ -33,7 +33,7 @@ export const initMouseOutCardAnimation = (cardSelector: string, iconSelector: st
 			ease: "sine.out"
 		},
 	);
-	tl.to(
+	iconSelector && tl.to(
 		iconSelector,
 		{
 			rotateY: 0,
