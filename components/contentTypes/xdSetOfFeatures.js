@@ -1,6 +1,6 @@
-import FeatureA from './features/FeatureA';
-import FeatureB from './features/FeatureB';
-import FeatureC from './features/FeatureC';
+import FeatureA from './features/featureA';
+import FeatureB from './features/featureB';
+import FeatureC from './features/featureC';
 
 export default function xdSetOfFeatures({entry}){
     console.log(entry);
