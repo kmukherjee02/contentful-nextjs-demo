@@ -1,6 +1,7 @@
 import XDHeader from './contentTypes/xdHeader';
 import XDHeroImage from './contentTypes/xdHeroImage';
 import XDSetOfCard from './contentTypes/xdSetOfCard';
+import XDSetOfFeatures from './contentTypes/xdSetOfFeatures';
 import XDSectionWithImage from './contentTypes/xdSectionWithImage';
 import XDBanner from './contentTypes/xdBanner';
 import XDSetOfTestimonialCards  from './contentTypes/xdSetOfTestimonialCards';
@@ -16,6 +17,8 @@ export default function Section ({sectionType, section, ArrayKey, sys}) {
             return ( <XDHeroImage entry={section.fields} /> )
           case 'xdSetOfCard':
             return ( <XDSetOfCard entry={section.fields} /> )
+          case 'xdSetOfFeatures':
+              return ( <XDSetOfFeatures entry={section.fields} /> )
           case 'xdSectionWithImage':
             return ( <XDSectionWithImage entry={section.fields} /> )
           case 'xdBanner':
