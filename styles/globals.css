@@ -3,67 +3,73 @@
 @tailwind utilities;
 
 @layer base {
-    h1, h2, h3, h4, h5, h6 {
-        @apply font-dosis font-bold
-    } 
-    h2 {
-        @apply text-3xl lg:text-4xl mb-5;
-    }
-    h3 {
-        @apply text-xl mb-2
-    }
-    h5, h6 {
-        @apply text-base text-orange-light uppercase mb-2;
-    }
-    p{
-        @apply text-neutral-600 leading-8 text-sm md:text-base;
-    }
-    a {
-        @apply cursor-pointer inline-flex;
-    }
-    .link-primary {
-        @apply text-neutral-600 hover:text-primary-normal;
-    }
-    .link-secondary {
-        @apply font-dosis text-orange underline;
-    }
-    .link-tertiary {
-        @apply text-primary-normal;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-dosis font-bold;
+  }
+  h2 {
+    @apply text-3xl lg:text-4xl mb-5;
+  }
+  h3 {
+    @apply text-xl mb-2;
+  }
+  h5,
+  h6 {
+    @apply text-base text-orange-light uppercase mb-2;
+  }
+  p {
+    @apply text-neutral-600 leading-8 text-sm md:text-base;
+  }
+  a {
+    @apply cursor-pointer inline-flex;
+  }
+  .link-primary {
+    @apply text-neutral-600 hover:text-primary-normal;
+  }
+  .link-secondary {
+    @apply font-dosis text-orange underline;
+  }
+  .link-tertiary {
+    @apply text-primary-normal;
+  }
 }
 .heroIcon path {
-	stroke-width: inherit !important;
+  stroke-width: inherit !important;
 }
 .about-our-company-fill {
-	background: url(/images/slider-2.jpg) no-repeat;
-    background-position: 47% 53%;
-	background-clip: text;
-    -webkit-background-clip: text;
-	text-fill-color: transparent;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.1;
+  background: url(../public/images/slider-2.jpg) no-repeat;
+  background-position: 47% 53%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
 }
 /* line clamp not available w/ tailwinds */
 .testimonial-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    line-clamp: 4; 
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 /* overrides default styling for owl carousel dots */
 .owl-dots {
-    margin-top: 2rem !important;
+  margin-top: 2rem !important;
 }
 .owl-dots > .owl-dot > span {
-    background-color: #fff !important;
-    transition: all 400ms linear !important;
+  background-color: #fff !important;
+  transition: all 400ms linear !important;
 }
 .owl-dots > .owl-dot.active > span {
-    background-color: #7b68ee !important;
+  background-color: #7b68ee !important;
 }
 /* visibility will be set by gsap after pageload */
 [class^="splash-"] {
-    visibility:hidden;
-} 
+  visibility: hidden;
+}

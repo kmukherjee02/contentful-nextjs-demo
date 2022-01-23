@@ -23,7 +23,7 @@ export function useCloseNavOnUrlChange(setState: Dispatch<SetStateAction<boolean
   const router: NextRouter = useRouter();
   useEffect(() => {
     const handleRouteChange = () => {setState(false)};
-    router.events.on('routeChangeStart', handleRouteChange);
-    return () => {router.events.off('routeChangeStart', handleRouteChange)};
-  }, [router.events]);
+    router?.events?.on('routeChangeStart', handleRouteChange);
+    return () => {router?.events?.off('routeChangeStart', handleRouteChange)};
+  }, [router?.events]);
 }
