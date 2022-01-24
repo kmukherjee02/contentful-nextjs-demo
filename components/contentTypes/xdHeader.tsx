@@ -13,7 +13,6 @@ interface IXDHeaderProps {
   entry: Record<string, any>;
 }
 const XDHeader = ({ entry }: IXDHeaderProps) => {
-  console.log({ headerProps: entry });
   const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
   const [fixedHeader, setFixedHeader] = useState<boolean>(false);
 
@@ -39,7 +38,10 @@ const XDHeader = ({ entry }: IXDHeaderProps) => {
       { threshold: 0.8 }
     );
     const heroDiv = document.querySelector(".hero-image");
-    observer.observe(heroDiv);
+    console.log({ heroDiv });
+    if (heroDiv) {
+      observer.observe(heroDiv);
+    }
   }, [fixedHeader]);
 
   return (

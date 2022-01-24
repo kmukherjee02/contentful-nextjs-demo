@@ -1,4 +1,6 @@
-const headerProps = {
+import XDHeader from "@components/contentTypes/xdHeader";
+
+const entry = {
   name: "Home Page Header",
   logo: {
     metadata: {
@@ -1163,3 +1165,15 @@ const headerProps = {
     },
   },
 };
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+  title: "Sections/01 Header",
+  component: "Header",
+};
+
+export const xdHeaderSection = (args) => (
+  <div style={{ backgroundColor: "#292C86" }}>
+    <XDHeader {...args} entry={entry} />
+  </div>
+);
