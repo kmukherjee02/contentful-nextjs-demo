@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import ChevronDown from "../../public/icons/chevron-down.svg";
 import cn from "classnames";
 
@@ -46,10 +47,17 @@ const XDNavItem = ({
               className={`${navItemClasses} group-hover:text-primary-normal`}
             >
               {entry.label}
-              chevron down
-              {/* <ChevronDown className={cn(`h-3 w-3 mt-1 ml-0.5 group-hover:stroke-primary-normal ${navItemTransition}`, {
-                            'stroke-neutral-600': fixedHeader
-                        })}/> */}
+              <Image
+                src={ChevronDown}
+                layout="fill"
+                className={cn(
+                  `h-3 w-3 mt-1 ml-0.5 group-hover:stroke-primary-normal ${navItemTransition}`,
+                  {
+                    "stroke-neutral-600": fixedHeader,
+                  }
+                )}
+                alt="open"
+              />
             </button>
             <nav
               tabIndex={0}

@@ -1,13 +1,13 @@
-// import * as NextImage from "next/image";
+import * as NextImage from "next/image";
 
 import "../styles/globals.css";
 
-// const OriginalNextImage = NextImage.default;
-// console.log({ OriginalNextImage });
-// Object.defineProperty(NextImage, "default", {
-//   configurable: true,
-//   value: (props) => <OriginalNextImage {...props} unoptimized />,
-// });
+// storybook must use deoptimized version of Next Image
+const OriginalNextImage = NextImage.default;
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+});
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

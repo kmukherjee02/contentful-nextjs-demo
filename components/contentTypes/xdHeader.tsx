@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useCloseNavOnUrlChange } from "../../lib/hooks/hooks";
 import ContentfulImage from "../contentful-image";
 import Link from "next/link";
@@ -12,6 +13,7 @@ interface IXDHeaderProps {
   entry: Record<string, any>;
 }
 const XDHeader = ({ entry }: IXDHeaderProps) => {
+  console.log({ headerProps: entry });
   const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
   const [fixedHeader, setFixedHeader] = useState<boolean>(false);
 
@@ -90,26 +92,29 @@ const XDHeader = ({ entry }: IXDHeaderProps) => {
               }}
             >
               <span className={isMobileNavOpen ? "hidden" : "block"}>
-                mobile hamburger icon
-                {/* <MobileNavHamburgerIcon
-                  height={20}
-                  width={40}
+                {/* mobile hamburger icon */}
+                <Image
+                  src={MobileNavHamburgerIcon}
+                  height={100}
+                  width={100}
                   className={cn("", {
                     "stroke-black": fixedHeader,
                     "stroke-white": !fixedHeader,
                   })}
-                /> */}
+                  alt="open menu"
+                />
               </span>
               <span className={isMobileNavOpen ? "block" : "hidden"}>
-                x icon
-                {/* <XIcon
+                <Image
+                  src={XIcon}
                   height={25}
                   width={40}
                   className={cn("", {
                     "fill-black": fixedHeader,
                     "fill-white": !fixedHeader,
                   })}
-                /> */}
+                  alt="close menu"
+                />
               </span>
             </button>
           </div>

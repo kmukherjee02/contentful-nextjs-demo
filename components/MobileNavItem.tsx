@@ -51,13 +51,10 @@ const MobileNavItem = ({ entry, isChildNavItem }: IMobileNavItemProps) => {
             <button className={`${mobileNavItemClasses}`}>
               {entry.label}
               <span className={isChildMenuOpen ? "hidden" : "block"}>
-                {/* plus icon */}
                 <Image src={PlusIcon} height={20} width={20} alt="open" />
-                {/* <PlusIcon height={20} width={20} /> */}
               </span>
               <span className={isChildMenuOpen ? "block" : "hidden"}>
-                minus icon
-                {/* <MinusIcon height={20} width={20} /> */}
+                <Image src={MinusIcon} height={20} width={20} alt="open" />
               </span>
             </button>
           </div>
