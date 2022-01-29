@@ -26,7 +26,7 @@ const XDTestimonialCard = ({ entry }: IXDTestimonialCardProps) => {
         {star === 0.5 ? (
           <Image
             src={HalfStarIcon}
-            fill={starGold}
+            // fill={starGold}
             height={25}
             width={25}
             alt="Half Star"
@@ -34,7 +34,7 @@ const XDTestimonialCard = ({ entry }: IXDTestimonialCardProps) => {
         ) : (
           <Image
             src={StarIcon}
-            fill={starGold}
+            // fill={starGold}
             height={25}
             width={25}
             alt="Star"
