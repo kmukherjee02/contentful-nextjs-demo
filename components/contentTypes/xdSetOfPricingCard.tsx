@@ -1,5 +1,5 @@
 import XDPricingCard from "./xdPricingCard";
-import { useState } from "react";
+import {useEffect,useState} from "react";
 
 interface IXDSetOfPricingProps {
   entry: {
@@ -8,10 +8,10 @@ interface IXDSetOfPricingProps {
   };
 }
 
-const xdSetOfPricingCard = ({entry}: IXDSetOfPricingProps) => {
+
+const XdSetOfPricingCard = ({entry}: IXDSetOfPricingProps) => {
 
   const [pricingPeriod, setPricingPeriod] = useState<string>("mo");
-
 
   const setPricePreiod = (val: string) => {   
     setPricingPeriod(val);
@@ -75,4 +75,4 @@ const xdSetOfPricingCard = ({entry}: IXDSetOfPricingProps) => {
   );
 }
 
-export default xdSetOfPricingCard;
+export default XdSetOfPricingCard;
