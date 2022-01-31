@@ -7,8 +7,10 @@ import XDBanner from './contentTypes/xdBanner';
 import XDSetOfTestimonialCards  from './contentTypes/xdSetOfTestimonialCards';
 import XDSetOfTeamMembers from './contentTypes/xdSetOfTeamMembers';
 import XDHubSpotWithImage from './contentTypes/xdHubSpotWithImage'; 
+import XDSetOfPricingCard from './contentTypes/xdSetOfPricingCard';
 
 export default function Section ({sectionType, section, ArrayKey, sys}) {
+ 
     const renderSection = () => {
         switch (sectionType) {
           case 'xdHeader':
@@ -29,6 +31,8 @@ export default function Section ({sectionType, section, ArrayKey, sys}) {
             return ( <XDSetOfTeamMembers entry={section.fields} /> )
           case 'xdHubSpotWithImage':
             return ( <XDHubSpotWithImage entry={section.fields} /> )
+          case 'xdSetOfPricing':
+            return ( <XDSetOfPricingCard entry={section.fields} /> )
           default:
             console.log("Section type not found: " + sectionType);
             return ( <div data-content-type='not-found'>Illegal Section Type</div> )
