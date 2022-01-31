@@ -8,11 +8,9 @@ interface IXDSetOfPricingProps {
   };
 }
 
-export default function xdSetOfPricingCard({ entry }: IXDSetOfPricingProps) {
-  console.log(entry, entry);
+const xdSetOfPricingCard = ({entry}: IXDSetOfPricingProps) => {
 
   const [pricingPeriod, setPricingPeriod] = useState<string>("mo");
- 
 
 
   const setPricePreiod = (val: string) => {   
@@ -76,3 +74,5 @@ export default function xdSetOfPricingCard({ entry }: IXDSetOfPricingProps) {
     </>
   );
 }
+
+export default xdSetOfPricingCard;
