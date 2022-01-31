@@ -8,7 +8,6 @@ import XDSetOfTestimonialCards  from './contentTypes/xdSetOfTestimonialCards';
 import XDSetOfTeamMembers from './contentTypes/xdSetOfTeamMembers';
 import XDHubSpotWithImage from './contentTypes/xdHubSpotWithImage'; 
 import XDSetOfPricingCard from './contentTypes/xdSetOfPricingCard';
-
 export default function Section ({sectionType, section, ArrayKey, sys}) {
  
     const renderSection = () => {
