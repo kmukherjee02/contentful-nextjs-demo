@@ -15,7 +15,7 @@ export default function Slug({preview, page}){
   )
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const  getStaticPaths: GetStaticPaths = async () => {
   const paths = await fetchAllXDLandingEntries();
   return {
     paths,
