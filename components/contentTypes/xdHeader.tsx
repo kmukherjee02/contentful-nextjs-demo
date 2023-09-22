@@ -32,7 +32,7 @@ const XDHeader = ({entry}: IXDHeaderProps) => {
 
     return (
         <div className='h-20'>
-            <header className={cn('text-gray-600 body-font w-full py-4 z-50 top-0  left-0', {
+            <header className={cn('text-gray-600 body-font w-full py-4 z-50 left-0', {
                 'absolute bg-transparent lg:shadow-none shadow-mobile-header transition duration-[400ms]': !fixedHeader,
                 'fixed bg-white shadow-fixed-header animate-fixed-header-fade-in': fixedHeader
             })}>
