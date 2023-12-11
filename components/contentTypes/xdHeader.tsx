@@ -7,11 +7,15 @@ import XDCallToAction from './xdCallToAction';
 import MobileNavHamburgerIcon from '../../public/icons/mobile-nav-hamburger.svg';
 import XIcon from '../../public/icons/x.svg';
 import cn from 'classnames';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 
 interface IXDHeaderProps {
 	entry: Record<string, any>;
+    sys: Record<string, unknown>;
 }
-const XDHeader = ({entry}: IXDHeaderProps) => {
+const XDHeader = ({entry, sys}: IXDHeaderProps) => {
+    const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+  
     const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
     const [fixedHeader, setFixedHeader] = useState<boolean>(false);
     
@@ -27,7 +31,9 @@ const XDHeader = ({entry}: IXDHeaderProps) => {
             entry.isIntersecting ? setFixedHeader(false) : setFixedHeader(true)
         }, {threshold: .8});
         const heroDiv = document.querySelector('.hero-image');
-        observer.observe(heroDiv);
+        if (heroDiv) {
+            observer.observe(heroDiv);
+        }
     }, [fixedHeader]);
 
     return (
@@ -37,23 +43,21 @@ const XDHeader = ({entry}: IXDHeaderProps) => {
                 'fixed bg-white shadow-fixed-header animate-fixed-header-fade-in': fixedHeader
             })}>
                 <div className='container mx-auto flex items-center justify-between relative'>
-                    <Link href={entry.logoHyperlink} passHref>
-                        <a className='flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0'>
-                            <ContentfulImage 
-                                src={fixedHeader ? entry.logoAlt.fields.file.url : entry.logo.fields.file.url} 
-                                width={123}
-                                height={35}
-                                alt={entry.logo.fields.file.title}
-                            />
-                        </a>
-                    </Link>
+                    <div {...inspectorProps({ fieldId: 'logo' })}>
+                        <Link href={entry.logoHyperlink} passHref >
+                            <a className='flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0' >
+                                <ContentfulImage 
+                                    src={fixedHeader ? entry.logoAlt.fields.file.url : entry.logo.fields.file.url} 
+                                    width={123}
+                                    height={35}
+                                    alt={entry.logo.fields.file.title}
+                                />
+                            </a>
+                        </Link>
+                    </div>
                     <div className='hidden flex-1 lg:flex justify-around'>
-                        <nav className={cn('ml-16 flex justify-center items-center', {
-                            'text-white': !fixedHeader,
-                        })}>
-                            <XDNavigationMenu entry={entry.navigation} fixedHeader={fixedHeader}/> 
-                        </nav>
-                        <XDCallToAction entry={entry.callToAction} />
+                        <XDNavigationMenu entry={entry.navigation} fixedHeader={fixedHeader} /> 
+                        <div {...inspectorProps({ fieldId: 'callToAction' })}><XDCallToAction entry={entry.callToAction} /></div>
                     </div>
 
                     {/* mobile nav */}
@@ -73,9 +77,7 @@ const XDHeader = ({entry}: IXDHeaderProps) => {
                             </span>
                         </button>
                     </div>
-                    <nav className={`${isMobileNavOpen ?' h-[300px]' : 'h-0'} w-[95%] bg-white absolute top-full left-1/2 -translate-x-1/2 mt-2 overflow-y-scroll transition-[height] duration-300 ease-in shadow-mobile-nav-menu mobile-nav-menu`}>
-                        <XDNavigationMenu entry={entry.navigation} fixedHeader={fixedHeader} isMobile />
-                    </nav>
+                        <XDNavigationMenu entry={entry.navigation} fixedHeader={fixedHeader} isMobile isMobileNavOpen={isMobileNavOpen} />
                 </div>
             </header>
         </div>

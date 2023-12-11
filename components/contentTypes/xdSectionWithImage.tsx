@@ -3,12 +3,16 @@ import XDSetOfCallToAction from './xdSetOfCallToActions';
 import XDSetOfProgressBar from './xdSetOfProgressBar';
 import ButtonAnimated from '../ButtonAnimated';
 import cn from 'classnames';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 
 interface IXDSectionWithImageProps {
 	entry: Record<string, any>;
+    sys: Record<string, unknown>;
 }
 
-const XDSectionWithImage = ({ entry }: IXDSectionWithImageProps) =>  {
+const XDSectionWithImage = ({ entry, sys }: IXDSectionWithImageProps) =>  {
+    const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+    
 	const renderDetails = () : JSX.Element => {
 		switch (entry.detail.sys.contentType.sys.id) {
 			case 'xdSetOfCallToAction':
@@ -40,9 +44,9 @@ const XDSectionWithImage = ({ entry }: IXDSectionWithImageProps) =>  {
 				);
 		}
 	};
-    const imgWithTextComponent:JSX.Element = (
-        <div className='mx-auto p-2 lg:p-0 lg:w-2/5'>
-            <XDImageWithText entry={entry.imageWithText.fields} />
+    const imgWithTextComponent:JSX.Element = entry?.imageWithText?.fields && (
+        <div className='mx-auto p-2 lg:p-0 lg:w-2/5' {...inspectorProps({ fieldId: 'imageWithText' })}>
+            <XDImageWithText entry={entry?.imageWithText?.fields} />
         </div>
     )
 
@@ -56,18 +60,21 @@ const XDSectionWithImage = ({ entry }: IXDSectionWithImageProps) =>  {
 							'text-primary-normal': entry.theme === 'primary',
 							'text-orange-light': entry.theme === 'secondary',
 						})}
+                        {...inspectorProps({ fieldId: 'caption' })}
 					>
 						{entry.caption}
 					</h6>
-					<h2 className='font-dosis text-2xl lg:text-4xl font-bold  mb-5'>
+					<h2 className='font-dosis text-2xl lg:text-4xl font-bold  mb-5' {...inspectorProps({ fieldId: 'title' })}>
 						{entry.title}
 					</h2>
-					<p className='text-sm'>
+					<p className='text-sm' {...inspectorProps({ fieldId: 'description' })}>
 						{entry.description}
 					</p>
-					{renderDetails()}
+					<div {...inspectorProps({ fieldId: 'detail' })}>
+                        {renderDetails()}
+                    </div>
 					{entry.button && (
-						<div className='inline-block my-4'>
+						<div className='inline-block my-4' {...inspectorProps({ fieldId: 'button' })}>
 							<ButtonAnimated entry={entry.button.fields} />
 						</div>
 					)}

@@ -1,16 +1,19 @@
 import XDPricingCard from "./xdPricingCard";
 import {useEffect,useState} from "react";
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 
 interface IXDSetOfPricingProps {
   entry: {
     cards: Record<string, any>[];
     [key: string]: any;
   };
+  sys: Record<string, unknown>;
 }
 
 
-const XdSetOfPricingCard = ({entry}: IXDSetOfPricingProps) => {
-
+const XdSetOfPricingCard = ({entry, sys}: IXDSetOfPricingProps) => {
+    const inspectorProps = useContentfulInspectorMode({entryId: sys?.id});
+   
   const [pricingPeriod, setPricingPeriod] = useState<string>("mo");
 
   const setPricePreiod = (val: string) => {   
@@ -18,12 +21,13 @@ const XdSetOfPricingCard = ({entry}: IXDSetOfPricingProps) => {
   };
 
   const pricingCards = entry.pricingPlans.map(
-    (item: { fields: Record<string, any> }, index: number) => {
+    (item: { fields: Record<string, any>; sys:  Record<string, unknown>}, index: number) => {
       return (
         <XDPricingCard
           entry={item.fields}
           pricingPeriod={pricingPeriod}
           key={index}
+          sys={item.sys}
         />
       );
     }
@@ -36,13 +40,13 @@ const XdSetOfPricingCard = ({entry}: IXDSetOfPricingProps) => {
           <div className="flex flex-col text-center w-full mb-20">                      
               
                 {entry.title && (
-                  <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">
+                  <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900" {...inspectorProps({ fieldId: 'title' })}>
                     {entry.title}
                   </h1>
                 )}
 
                 {entry.description && (
-                  <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">
+                  <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500" {...inspectorProps({ fieldId: 'description' })}>
                     {entry.description}
                   </p>
                 )}
@@ -64,7 +68,7 @@ const XdSetOfPricingCard = ({entry}: IXDSetOfPricingProps) => {
               
            
           </div>
-          <div className="flex flex-wrap -m-4">
+          <div className="flex flex-wrap -m-4" {...inspectorProps({ fieldId: 'pricingPlans' })}>
             {/* Repeate Card */}
             {pricingCards}
             {/* Repeate Card */}

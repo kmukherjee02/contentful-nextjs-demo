@@ -1,6 +1,7 @@
 import { fetchPreviewXDLandingEntriesBySlug } from '@lib/service/api'
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function preview(req, res) {
+export default async function preview(req: NextApiRequest, res: NextApiResponse) {
   const { secret, slug } = req.query
 
   if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET || !slug) {
@@ -8,7 +9,7 @@ export default async function preview(req, res) {
   }
 
   // Fetch the headless CMS to check if the provided `slug` exists
-  const landingPage = await fetchPreviewXDLandingEntriesBySlug(slug)
+  const landingPage = await fetchPreviewXDLandingEntriesBySlug(slug as string)
 
   // If the slug doesn't exist prevent preview mode from being enabled
   if (!landingPage) {
@@ -17,6 +18,7 @@ export default async function preview(req, res) {
 
   // Enable Preview Mode by setting the cookies
   res.setPreviewData({})
+  
 
   // Redirect to the path from the fetched landing page
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities

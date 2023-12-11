@@ -13,25 +13,25 @@ export default function Section ({sectionType, section, ArrayKey, sys}) {
     const renderSection = () => {
         switch (sectionType) {
           case 'xdHeader':
-            return (<XDHeader entry={section.fields} /> )
+            return (<XDHeader entry={section.fields} sys={section.sys} /> )
           case 'xdHeroImage':
-            return ( <XDHeroImage entry={section.fields} /> )
+            return ( <XDHeroImage entry={section.fields} sys={section.sys}/> )
           case 'xdSetOfCard':
-            return ( <XDSetOfCard entry={section.fields} /> )
+            return ( <XDSetOfCard entry={section.fields} sys={section.sys} /> )
           case 'xdSetOfFeatures':
-              return ( <XDSetOfFeatures entry={section.fields} /> )
+              return ( <XDSetOfFeatures entry={section.fields} sys={section.sys} /> )
           case 'xdSectionWithImage':
-            return ( <XDSectionWithImage entry={section.fields} /> )
+            return ( <XDSectionWithImage entry={section.fields} sys={section.sys} /> )
           case 'xdBanner':
-            return ( <XDBanner entry={section.fields} /> )
+            return ( <XDBanner entry={section.fields} sys={section.sys} /> )
           case 'xdSetOfTestimonialCards':
-            return ( <XDSetOfTestimonialCards entry={section.fields} /> )
+            return ( <XDSetOfTestimonialCards entry={section.fields} sys={section.sys} /> )
           case 'xdSetOfTeamMembers':
-            return ( <XDSetOfTeamMembers entry={section.fields} /> )
+            return ( <XDSetOfTeamMembers entry={section.fields} sys={section.sys} /> )
           case 'xdHubSpotWithImage':
-            return ( <XDHubSpotWithImage entry={section.fields} /> )
+            return ( <XDHubSpotWithImage entry={section.fields} sys={section.sys} /> )
           case 'xdSetOfPricing':
-            return ( <XDSetOfPricingCard entry={section.fields} /> )
+            return ( <XDSetOfPricingCard entry={section.fields} sys={section.sys}/> )
           default:
             console.log("Section type not found: " + sectionType);
             return ( <div data-content-type='not-found'>Illegal Section Type</div> )
