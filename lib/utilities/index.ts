@@ -4,6 +4,6 @@ export function getAbsoluteImageUrlInWebp(url : string){
 } 
 
 export function getBackgroundImageUrl(url : string){
-    if (url) return 'bg-[url(' + getAbsoluteImageUrlInWebp(url) + ')]';
+    if (url) return 'url(' + getAbsoluteImageUrlInWebp(url) + ')';
     return undefined; 
 }

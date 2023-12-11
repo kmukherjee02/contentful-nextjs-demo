@@ -33,7 +33,7 @@
     "**/*.tsx",
     "pages/api/preview.js",
     "pages/api/exitPreview.js"
-  ],
+, "components/contentTypes/features/FeatureA.tsx"  ],
   "exclude": [
     "node_modules"
   ]

@@ -984,6 +984,16 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@contentful/live-preview@^2.12.5":
+  version "2.12.5"
+  resolved "https://registry.yarnpkg.com/@contentful/live-preview/-/live-preview-2.12.5.tgz#eed1ad3d33eae421c455df8761244f2733d1214b"
+  integrity sha512-dL1/ymaxGChvZeb82M1aeQiIRZHf16PEO74R9QEVUs34GXLEzqTXLTrtsDIoyx6sNO1S9JFLKV+A0xktsqDYTw==
+  dependencies:
+    "@contentful/rich-text-types" "^16.2.0"
+    "@contentful/visual-sdk" "^1.0.0-alpha.34"
+    graphql-tag "^2.12.6"
+    lodash.isequal "^4.5.0"
+
 "@contentful/rich-text-react-renderer@^15.10.1":
   version "15.10.1"
   resolved "https://registry.npmjs.org/@contentful/rich-text-react-renderer/-/rich-text-react-renderer-15.10.1.tgz"
@@ -997,6 +1007,16 @@
   integrity sha512-OeAYewiCQnHJlT6Dlqlsm645AuVSRLQHttyvg/Tru0quQZxDOTUC+hyA6m9NxgGjhynixVI2zqr2GfMpEm+Cjg==
   dependencies:
     ajv "^8.8.2"
+
+"@contentful/rich-text-types@^16.2.0":
+  version "16.3.0"
+  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-16.3.0.tgz#d44145a43b32d61eb4d6a82d3001cdfddbbda42e"
+  integrity sha512-OfQmAu5bxE0CgQA3WlUleVej+ifFG/iXmB2DmUl4EyWyFue1aiIvfjxQhcDRSH4n1jUNMJ6L1wInZL8uV5m3TQ==
+
+"@contentful/visual-sdk@^1.0.0-alpha.34":
+  version "1.0.0-alpha.34"
+  resolved "https://registry.yarnpkg.com/@contentful/visual-sdk/-/visual-sdk-1.0.0-alpha.34.tgz#c193aaca5b64ecb34c62903594423b9be36de35c"
+  integrity sha512-umPTFWfh3gNNmruyIRD5jgcQQN3KIzSd/6DaoTxPpz+ud3O+g4zYItytJoD0iZaEz1+V9ciVFw+C5+Xe57RvMg==
 
 "@eslint/eslintrc@^1.0.5":
   version "1.0.5"
@@ -3129,6 +3149,13 @@ graceful-fs@^4.1.2:
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.8.tgz"
   integrity sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==
 
+graphql-tag@^2.12.6:
+  version "2.12.6"
+  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.12.6.tgz#d441a569c1d2537ef10ca3d1633b48725329b5f1"
+  integrity sha512-FdSNcu2QQcWnM2VNvSCCDCVS5PpPqpzgFT8+GXzqJuoDd0CBncxCY278u4mhRO7tMgo2JjgJA5aZ+nWSQ/Z+xg==
+  dependencies:
+    tslib "^2.1.0"
+
 gsap@^3.9.1:
   version "3.9.1"
   resolved "https://registry.npmjs.org/gsap/-/gsap-3.9.1.tgz"
@@ -3794,6 +3821,11 @@ lodash.debounce@^4.0.8:
   version "4.0.8"
   resolved "https://registry.npmjs.org/lodash.debounce/-/lodash.debounce-4.0.8.tgz"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
+
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
 
 lodash.isplainobject@^4.0.6:
   version "4.0.6"
@@ -5250,6 +5282,11 @@ tslib@^1.8.1, tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
+
+tslib@^2.1.0:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.2.tgz#703ac29425e7b37cd6fd456e92404d46d1f3e4ae"
+  integrity sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==
 
 tsutils@^3.21.0:
   version "3.21.0"

@@ -2,6 +2,7 @@ import XDLink from "./xdLink";
 import cn from 'classnames';
 import XDIcon from './xdIcon';
 import { initMouseInCardAnimation, initMouseOutCardAnimation } from "../animation/cardAnimation";
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 
 interface IXDCardProps {
 	entry: Record<string, any>;
@@ -9,6 +10,10 @@ interface IXDCardProps {
 }
 
 export default function XDCard({ entry, id }: IXDCardProps) {
+    const inspectorProps = useContentfulInspectorMode({
+		entryId: id,
+	});
+
     const iconSize = 'h-14 w-14'
     const cardId = `c${id}`
     const iconId = entry.icon ? `i${entry.icon.sys.id}` : ''
@@ -28,7 +33,7 @@ export default function XDCard({ entry, id }: IXDCardProps) {
                         'mx-auto': entry.alignment === 'center',
                         'ml-0 mr-auto': entry.alignment === 'left',
                         'mr-0 ml-auto': entry.alignment === 'right',
-                    })}>
+                    })} {...inspectorProps({ fieldId: 'icon' })}>
                         <XDIcon className={`${iconSize} ml-1.5 stroke-1 group-hover:rotate-y-180 ease-in duration-500 transition-transform will-change-transform`} id={iconId} entry={entry.icon.fields} />
                     </div>
                 )}
@@ -38,7 +43,8 @@ export default function XDCard({ entry, id }: IXDCardProps) {
                             'text-center': entry.alignment === 'center',
                             'text-left': entry.alignment === 'left',
                             'text-right': entry.alignment === 'right',
-                    })}>
+                    })}
+                    {...inspectorProps({ fieldId: 'title' })}>
                         {entry.title}
                     </h3>
                 )}
@@ -47,7 +53,8 @@ export default function XDCard({ entry, id }: IXDCardProps) {
                         'text-center': entry.alignment === 'center',
                         'text-left': entry.alignment === 'left',
                         'text-right': entry.alignment === 'right',
-                    })}>
+                    })}
+                    {...inspectorProps({ fieldId: 'description' })}>
                         {entry.description}
                     </p>
                 )}
@@ -56,7 +63,7 @@ export default function XDCard({ entry, id }: IXDCardProps) {
                         'justify-center': entry.alignment === 'center',
                         'justify-start': entry.alignment === 'left',
                         'justify-end': entry.alignment === 'right',
-                    })}>
+                    })} {...inspectorProps({ fieldId: 'link' })}>
                         <XDLink entry={entry.link.fields} className={'inline-flex py-2 mr-2'} />
                     </div>
                 )}

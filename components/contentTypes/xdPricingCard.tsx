@@ -1,12 +1,18 @@
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+
 interface IXDPricingCardProps {
   entry: Record<string, any>;
+  sys : Record<string, unknown>;
   pricingPeriod: string;
 }
 
 export default function XDPricingCard({
   entry,
+  sys,
   pricingPeriod,
 }: IXDPricingCardProps) {
+    const inspectorProps = useContentfulInspectorMode({entryId: sys?.id});
+
   const pricingCardSDescription = entry.description.content[0].content.map(
     (item: any, index: number) => {
       return (
@@ -31,7 +37,7 @@ export default function XDPricingCard({
   );
   
   return (
-    <div className="p-4 xl:w-1/4 md:w-1/2 w-full">
+    <div className="p-4 xl:w-1/4 md:w-1/2 w-full" {...inspectorProps({ fieldId: 'title' })}>
       <div className={entry.popular ?"h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden  hover:border-indigo-500" :"h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden  hover:border-indigo-500"} >
         {entry.popular && (
           <span className="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">

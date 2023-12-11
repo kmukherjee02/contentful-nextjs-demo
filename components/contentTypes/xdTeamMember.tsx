@@ -1,14 +1,18 @@
 import ContentfulImage from '@components/contentful-image';
+import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import {getAbsoluteImageUrlInWebp} from '@lib/utilities';
 
 interface IXDTeamMemberProps {
 	entry: Record<string, any>;
+    sys: Record<string, unknown>;
 }
 
-export default function XDTeamMember({ entry }: IXDTeamMemberProps) {
+export default function XDTeamMember({ entry, sys }: IXDTeamMemberProps) {
+    const inspectorProps = useContentfulInspectorMode({entryId: sys?.id});
+
     const iconSize = 'h-14 w-14'
     return (
-        <div className="p-4 lg:w-1/4 md:w-1/2">
+        <div className="p-4 lg:w-1/4 md:w-1/2" {...inspectorProps({ fieldId: 'title' })}>
             <div className="h-full flex flex-col items-center text-center">
                 
                 <ContentfulImage className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4" 
