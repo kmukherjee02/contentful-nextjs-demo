@@ -12,14 +12,13 @@ interface IXDHeroImageProps {
 
 const XDHeroImage = ({ entry, sys }: IXDHeroImageProps) => {
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
-  
+    
+    const backgroundImage = entry.backgroundImage?.fields?.file?.url;
 	const buttons = entry.buttons?.map(
 		(item: Record<string, any>, index: number) => {
 			return <XDLink entry={item.fields} key={index} />;
 		}
 	);
-
-	const backgroundImage = entry.backgroundImage?.fields?.file?.url;
 
 	useEffect(() => {
 		initHomeAnimation();
@@ -31,13 +30,11 @@ const XDHeroImage = ({ entry, sys }: IXDHeroImageProps) => {
 				'relative bg-gradient-to-b from-hero-bg-500 via-hero-bg-200 to-hero-bg-100 flex justify-center w-full max-h-[900px] -mt-20 pt-8 md:pt-16 lg:pt-24 z-10 hero-image'
 			)}
 			style={{
-				backgroundImage: `${
-					backgroundImage ? `url(${backgroundImage})` : undefined
-				}`,
+				backgroundImage: backgroundImage ? `url('${backgroundImage}')` : undefined,
 			}}
-			{...inspectorProps({ fieldId: 'backgroundImage' })}>
+			>
 			<section className='text-gray-600 body-font'>
-				<div className='container mx-auto py-24 flex lg:flex-row flex-col items-center '>
+				<div className='container mx-auto py-24 flex lg:flex-row flex-col items-center' >
 					<div className='splash-stage lg:flex-grow lg:w-1/2 flex flex-col items-center mb-12 xl:pr-20 pr-5'>
 						<h1
 							className='splash-title text-white text-center lg:text-left text-3xl lg:text-[3.4rem] leading-normal mb-5'
