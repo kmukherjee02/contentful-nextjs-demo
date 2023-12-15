@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { hubSpotFormCreate, HubSpotFormDetails } from '@lib/utilities/hubSpot';
 
-type HubSpotFormType = {
+type HubSpotFormProps = {
     formDetail: HubSpotFormDetails,
     height: string
 }
 
-export function HubSpotForm({ formDetail, height } : HubSpotFormType) {
+export function HubSpotForm({ formDetail, height } : HubSpotFormProps) {
     useEffect(() => {
         hubSpotFormCreate(formDetail)
     }, [formDetail])

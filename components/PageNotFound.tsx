@@ -1,9 +1,13 @@
-import Container from './container';
+import Container from './Container';
 import Layout from './Layout';
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function PageNotFound({ preview }) {
+type PageNotFoundProps = {
+    preview?: boolean;
+}
+
+export default function PageNotFound({ preview }: PageNotFoundProps) {
 	return (
 		<Layout preview={preview}>
 			<Head>

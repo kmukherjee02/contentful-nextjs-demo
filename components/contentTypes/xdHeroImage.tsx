@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { initHomeAnimation } from '../animation/homeSplashScreen';
-import ContentfulImage from '../contentful-image';
+import ContentfulImage from '../ContentfulImage';
 import XDLink from './xdLink';
 import cn from 'classnames';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
@@ -12,8 +12,8 @@ interface IXDHeroImageProps {
 
 const XDHeroImage = ({ entry, sys }: IXDHeroImageProps) => {
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
-    
-    const backgroundImage = entry.backgroundImage?.fields?.file?.url;
+
+	const backgroundImage = entry.backgroundImage?.fields?.file?.url;
 	const buttons = entry.buttons?.map(
 		(item: Record<string, any>, index: number) => {
 			return <XDLink entry={item.fields} key={index} />;
@@ -30,11 +30,12 @@ const XDHeroImage = ({ entry, sys }: IXDHeroImageProps) => {
 				'relative bg-gradient-to-b from-hero-bg-500 via-hero-bg-200 to-hero-bg-100 flex justify-center w-full max-h-[900px] -mt-20 pt-8 md:pt-16 lg:pt-24 z-10 hero-image'
 			)}
 			style={{
-				backgroundImage: backgroundImage ? `url('${backgroundImage}')` : undefined,
-			}}
-			>
+				backgroundImage: backgroundImage
+					? `url('${backgroundImage}')`
+					: undefined,
+			}}>
 			<section className='text-gray-600 body-font'>
-				<div className='container mx-auto py-24 flex lg:flex-row flex-col items-center' >
+				<div className='container mx-auto py-24 flex lg:flex-row flex-col items-center'>
 					<div className='splash-stage lg:flex-grow lg:w-1/2 flex flex-col items-center mb-12 xl:pr-20 pr-5'>
 						<h1
 							className='splash-title text-white text-center lg:text-left text-3xl lg:text-[3.4rem] leading-normal mb-5'
@@ -46,11 +47,13 @@ const XDHeroImage = ({ entry, sys }: IXDHeroImageProps) => {
 							{...inspectorProps({ fieldId: 'description' })}>
 							{entry.description}
 						</p>
-						<div className='splash-buttons mx-auto flex flex-col md:flex-row justify-center md:justify-evenly lg:justify-start w-1/2 lg:w-full' {...inspectorProps({ fieldId: 'buttons' })}>
+						<div
+							className='splash-buttons mx-auto flex flex-col md:flex-row justify-center md:justify-evenly lg:justify-start w-1/2 lg:w-full'
+							{...inspectorProps({ fieldId: 'buttons' })}>
 							{buttons}
 						</div>
 					</div>
-					{entry.image?.fields.file.url && (
+					{entry.image?.fields?.file?.url && (
 						<div className='splash-image lg:max-w-lg lg:w-1/2'>
 							<ContentfulImage
 								src={entry.image.fields.file.url}

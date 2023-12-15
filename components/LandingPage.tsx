@@ -1,7 +1,7 @@
-import Container from './container';
+import Container from './Container';
 import Layout from './Layout';
 import Head from 'next/head';
-import Sections from './sections';
+import Sections from './Sections';
 
 type LandingPageProps = {
 	preview: boolean;

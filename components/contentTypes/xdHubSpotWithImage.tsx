@@ -1,5 +1,5 @@
 import Script from 'next/script'
-import { HubSpotForm } from '../hubSpotForm'
+import { HubSpotForm } from '../HubSpotForm'
 import {hubSpotFormCreate} from '@lib/utilities/hubSpot'
 import {getAbsoluteImageUrlInWebp} from '@lib/utilities/index';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';

@@ -1,4 +1,4 @@
-import ContentfulImage from '@components/contentful-image';
+import ContentfulImage from '@components/ContentfulImage';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import {getAbsoluteImageUrlInWebp} from '@lib/utilities';
 
