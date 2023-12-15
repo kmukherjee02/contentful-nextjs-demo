@@ -1,5 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import LandingPage from '@components/landingPage';
+import LandingPage from '@components/LandingPage';
 import PageNotFound from '@components/pageNotFound';
 import {
 	fetchXDLandingEntriesBySlug,
