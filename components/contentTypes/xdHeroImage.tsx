@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { initHomeAnimation } from '../animation/homeSplashScreen';
 import ContentfulImage from '../contentful-image';
 import XDLink from './xdLink';
