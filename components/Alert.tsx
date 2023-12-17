@@ -1,10 +1,8 @@
-import Container from './Container';
-import cn from 'classnames';
+import Container from '@components/Container';
 import Link from 'next/link';
+import { AlertProps } from 'types';
+import cn from 'classnames';
 
-type AlertProps = {
-	preview: boolean;
-};
 
 export default function Alert({ preview }: AlertProps) {
 	return (

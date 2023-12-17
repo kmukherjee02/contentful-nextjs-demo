@@ -1,11 +1,8 @@
-import Container from './Container';
-import Layout from './Layout';
 import Head from 'next/head';
 import Link from 'next/link';
-
-type PageNotFoundProps = {
-    preview?: boolean;
-}
+import Container from '@components/Container';
+import Layout from '@components/Layout';
+import { PageNotFoundProps } from 'types';
 
 export default function PageNotFound({ preview }: PageNotFoundProps) {
 	return (

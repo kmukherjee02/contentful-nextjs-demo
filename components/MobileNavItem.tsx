@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useCloseNavOnUrlChange } from '../lib/hooks/hooks' 
 import Link from 'next/link';
-import PlusIcon from '../public/icons/plus.svg';
-import MinusIcon from '../public/icons/minus.svg';
+import PlusIcon from '@icons/plus.svg';
+import MinusIcon from '@icons/minus.svg';
+import { useCloseNavOnUrlChange } from '@lib/hooks/hooks'; 
 import cn from 'classnames';
 
 interface IMobileNavItemProps {

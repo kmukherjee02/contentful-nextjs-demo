@@ -1,8 +1,5 @@
 import { format } from 'date-fns'
-
-type DateProps = {
-    dateString: string;
-}
+import { DateProps } from 'types'
 
 export default function DateComponent({ dateString }: DateProps) {
   return (
