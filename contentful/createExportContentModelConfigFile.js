@@ -1,11 +1,14 @@
 /** This script creates the JSON config file that the
- *  Contentful CLI export needs to run
+ *  Contentful CLI export needs to run.
+ * 
+ *  EXPORT CONFIG IS FOR CONTENT MODEL ONLY USED TO 
+ *  HELP GENERATE TYPES
  */
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config({ path: '../.env.local' });
 
-const exportConfigFile = 'exportConfig.json';
+const exportConfigFile = 'exportContentModelConfig.json';
 const exportConfigFilePath = path.join(__dirname, exportConfigFile);
 
 // if exportConfig.json
@@ -33,9 +36,10 @@ const exportConfig = {
 	managementToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
 	environmentId: 'master',
 	exportDir: './',
-	contentFile: 'exportData.json',
+	contentFile: 'contentModelData.json',
 	skipRoles: true,
-	skipWebhooks: true
+	skipWebhooks: true,
+    skipContent: true,
 };
 
 writeExportConfigFile(exportConfig, 'written');
