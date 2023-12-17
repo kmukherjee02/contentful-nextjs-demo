@@ -7,3 +7,7 @@ export interface TypeNavigationMenuFields {
 
 export type TypeNavigationMenuSkeleton = EntrySkeletonType<TypeNavigationMenuFields, "navigationMenu">;
 export type TypeNavigationMenu<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeNavigationMenuSkeleton, Modifiers, Locales>;
+
+export function isTypeNavigationMenu<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeNavigationMenu<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'navigationMenu'
+}

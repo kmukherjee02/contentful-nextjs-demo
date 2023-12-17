@@ -11,3 +11,7 @@ export interface TypeAddressCardFields {
 
 export type TypeAddressCardSkeleton = EntrySkeletonType<TypeAddressCardFields, "addressCard">;
 export type TypeAddressCard<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeAddressCardSkeleton, Modifiers, Locales>;
+
+export function isTypeAddressCard<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeAddressCard<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'addressCard'
+}

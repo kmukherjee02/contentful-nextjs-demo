@@ -12,3 +12,7 @@ export interface TypeXdLinkFields {
 
 export type TypeXdLinkSkeleton = EntrySkeletonType<TypeXdLinkFields, "xdLink">;
 export type TypeXdLink<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdLinkSkeleton, Modifiers, Locales>;
+
+export function isTypeXdLink<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdLink<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdLink'
+}

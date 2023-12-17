@@ -1,10 +1,8 @@
-import Section from './Section';
-
-type SectionsProps = {
-	sections: Record<string, any>[];
-};
+import { SectionsProps } from 'types';
+import Section from '@components/Section';
 
 export default function Sections({ sections }: SectionsProps) {
+
 	return (
 		<>
 			{sections.map((section, idx) => (
@@ -13,7 +11,6 @@ export default function Sections({ sections }: SectionsProps) {
 					section={section}
 					key={section.sys.id}
 					arrayKey={idx}
-					sys={section.sys}
 				/>
 			))}
 		</>

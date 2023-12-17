@@ -17,3 +17,7 @@ export interface TypeXdSectionWithImageFields {
 
 export type TypeXdSectionWithImageSkeleton = EntrySkeletonType<TypeXdSectionWithImageFields, "xdSectionWithImage">;
 export type TypeXdSectionWithImage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdSectionWithImageSkeleton, Modifiers, Locales>;
+
+export function isTypeXdSectionWithImage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdSectionWithImage<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdSectionWithImage'
+}

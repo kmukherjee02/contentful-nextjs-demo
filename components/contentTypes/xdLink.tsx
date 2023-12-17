@@ -1,36 +1,35 @@
 import Link from "next/link";
-import ButtonAnimated from "../ButtonAnimated";
+import ButtonAnimated from "@components/ButtonAnimated";
+import { XDLinkProps } from "types";
 import cn from 'classnames';
 
 const defaultClassnames:string = 'inline-flex py-2 mr-2 text-lg cursor-pointer underline text-primary-normal'
 
-interface IXDLinkProps {
-	entry: Record<string, any>;
-    className?: string;
-    key?: number;
-}
-const XDLink = ({entry, className=defaultClassnames}: IXDLinkProps) => {
+const XDLink = ({entry, className=defaultClassnames}: XDLinkProps) => {
+    const { fields } = entry;
+
     const buttonClasses: string = '';
     const linkClasses: string = '';
+
     return (
         <>
             {
-                entry.isExternal ? 
-                    <a target={entry.target} className={`${entry.displayStyle} === 'Button' : ${buttonClasses}: ${linkClasses}`}>{entry.label}</a>
+                fields?.isExternal ? 
+                    <a target={fields.target} className={`${fields.displayStyle} === 'Button' : ${buttonClasses}: ${linkClasses}`}>{fields.label}</a>
                 :
                 <>
-                    {entry.displayStyle === 'Button' ? 
+                    {fields?.displayStyle === 'Button' ? 
                         <>
                             <ButtonAnimated entry={entry} />
                         </>
                     :  
-                        <Link href={entry.href} passHref>
-                            <a target={entry.target} className={cn(className, {
-                                'link-primary': entry.theme === 'primary',
-                                'link-secondary': entry.theme === 'secondary',
-                                'link-tertiary': entry.theme === 'tertiary'
+                        <Link href={fields?.href} passHref>
+                            <a target={fields?.target} className={cn(className, {
+                                'link-primary': fields?.theme === 'primary',
+                                'link-secondary': fields?.theme === 'secondary',
+                                'link-tertiary': fields?.theme === 'tertiary'
                             })}>
-                                {entry.label}
+                                {fields?.label}
                             </a>
                         </Link>
                     }

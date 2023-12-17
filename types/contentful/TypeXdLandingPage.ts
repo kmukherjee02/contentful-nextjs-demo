@@ -21,3 +21,7 @@ export interface TypeXdLandingPageFields {
 
 export type TypeXdLandingPageSkeleton = EntrySkeletonType<TypeXdLandingPageFields, "xdLandingPage">;
 export type TypeXdLandingPage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdLandingPageSkeleton, Modifiers, Locales>;
+
+export function isTypeXdLandingPage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdLandingPage<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdLandingPage'
+}

@@ -9,3 +9,7 @@ export interface TypeTextWithImageFields {
 
 export type TypeTextWithImageSkeleton = EntrySkeletonType<TypeTextWithImageFields, "textWithImage">;
 export type TypeTextWithImage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeTextWithImageSkeleton, Modifiers, Locales>;
+
+export function isTypeTextWithImage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeTextWithImage<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'textWithImage'
+}

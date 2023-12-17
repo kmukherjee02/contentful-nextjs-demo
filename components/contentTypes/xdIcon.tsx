@@ -1,18 +1,16 @@
 import * as OutlinedIcon from '@heroicons/react/outline';
+import { XDIconProps } from 'types';
 
-type XdIconProps = {
-    entry: Record<string, unknown>;
-    id?: string;
-    className?: string;
-}
 
-const XDIcon = ({ entry, className = "", ...rest }: XdIconProps) => {
-	let iconName = entry.iconName;
+const XDIcon = ({ entry, className = "", id }: XDIconProps) => {
+    const { fields } = entry;
+	let iconName = fields.iconName;
+
 	const IconComponent = OutlinedIcon[iconName as keyof typeof OutlinedIcon] || OutlinedIcon['CogIcon']
 
 	return (
 		<>
-			<IconComponent className={`${className} heroIcon`} {...rest} />
+			<IconComponent className={`${className} heroIcon`} id={id} />
 		</>
 	)
 }

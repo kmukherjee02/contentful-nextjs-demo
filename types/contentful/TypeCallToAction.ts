@@ -8,3 +8,7 @@ export interface TypeCallToActionFields {
 
 export type TypeCallToActionSkeleton = EntrySkeletonType<TypeCallToActionFields, "callToAction">;
 export type TypeCallToAction<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeCallToActionSkeleton, Modifiers, Locales>;
+
+export function isTypeCallToAction<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeCallToAction<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'callToAction'
+}

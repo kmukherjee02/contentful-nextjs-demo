@@ -8,3 +8,7 @@ export interface TypeImageCarouselFields {
 
 export type TypeImageCarouselSkeleton = EntrySkeletonType<TypeImageCarouselFields, "imageCarousel">;
 export type TypeImageCarousel<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeImageCarouselSkeleton, Modifiers, Locales>;
+
+export function isTypeImageCarousel<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeImageCarousel<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'imageCarousel'
+}

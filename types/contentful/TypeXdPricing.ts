@@ -14,3 +14,7 @@ export interface TypeXdPricingFields {
 
 export type TypeXdPricingSkeleton = EntrySkeletonType<TypeXdPricingFields, "xdPricing">;
 export type TypeXdPricing<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdPricingSkeleton, Modifiers, Locales>;
+
+export function isTypeXdPricing<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdPricing<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdPricing'
+}

@@ -8,3 +8,7 @@ export interface TypeParagraphWithHeadlineFields {
 
 export type TypeParagraphWithHeadlineSkeleton = EntrySkeletonType<TypeParagraphWithHeadlineFields, "paragraphWithHeadline">;
 export type TypeParagraphWithHeadline<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeParagraphWithHeadlineSkeleton, Modifiers, Locales>;
+
+export function isTypeParagraphWithHeadline<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeParagraphWithHeadline<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'paragraphWithHeadline'
+}

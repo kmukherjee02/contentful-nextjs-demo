@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
-import { useCloseNavOnUrlChange } from '../../lib/hooks/hooks';
-import ContentfulImage from '../ContentfulImage';
 import Link from 'next/link';
-import XDNavigationMenu from './xdNavigationMenu';
-import XDCallToAction from './xdCallToAction';
-import MobileNavHamburgerIcon from '../../public/icons/mobile-nav-hamburger.svg';
-import XIcon from '../../public/icons/x.svg';
-import cn from 'classnames';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import ContentfulImage from '@components/ContentfulImage';
+import XDNavigationMenu from '@components/contentTypes/xdNavigationMenu';
+import XDCallToAction from '@components/contentTypes/xdCallToAction';
+import MobileNavHamburgerIcon from '@icons/mobile-nav-hamburger.svg';
+import XIcon from '@icons/x.svg';
+import { useCloseNavOnUrlChange } from '@lib/hooks/hooks';
+import { XDCallToActionProps, XDHeaderProps } from 'types';
+import cn from 'classnames';
 
-interface IXDHeaderProps {
-	entry: Record<string, any>;
-	sys: Record<string, unknown>;
-}
-const XDHeader = ({ entry, sys }: IXDHeaderProps) => {
+const XDHeader = ({ entry }: XDHeaderProps) => {
+	const { fields, sys } = entry;
+
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
 
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
@@ -62,28 +61,32 @@ const XDHeader = ({ entry, sys }: IXDHeaderProps) => {
 				)}>
 				<div className='container mx-auto flex items-center justify-between relative'>
 					<div {...inspectorProps({ fieldId: 'logo' })}>
-						<Link href={entry.logoHyperlink} passHref>
+						<Link href={fields.logoHyperlink} passHref>
 							<a className='flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0'>
 								<ContentfulImage
 									src={
 										fixedHeader
-											? entry.logoAlt.fields.file.url
-											: entry.logo.fields.file.url
+											? fields.logoAlt.fields.file.url
+											: fields.logo.fields.file.url
 									}
 									width={123}
 									height={35}
-									alt={entry.logo.fields.file.title}
+									alt={fields.logo.fields.file.fileName}
 								/>
 							</a>
 						</Link>
 					</div>
 					<div className='hidden flex-1 lg:flex justify-around'>
 						<XDNavigationMenu
-							entry={entry.navigation}
+							entry={fields.navigation}
 							fixedHeader={fixedHeader}
 						/>
 						<div {...inspectorProps({ fieldId: 'callToAction' })}>
-							<XDCallToAction entry={entry.callToAction} />
+							<XDCallToAction
+								entry={
+									fields.callToAction as XDCallToActionProps['entry']
+								}
+							/>
 						</div>
 					</div>
 
@@ -122,7 +125,7 @@ const XDHeader = ({ entry, sys }: IXDHeaderProps) => {
 						</button>
 					</div>
 					<XDNavigationMenu
-						entry={entry.navigation}
+						entry={fields.navigation}
 						fixedHeader={fixedHeader}
 						isMobile
 						isMobileNavOpen={isMobileNavOpen}

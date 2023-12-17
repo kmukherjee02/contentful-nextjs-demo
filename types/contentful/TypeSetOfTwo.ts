@@ -13,3 +13,7 @@ export interface TypeSetOfTwoFields {
 
 export type TypeSetOfTwoSkeleton = EntrySkeletonType<TypeSetOfTwoFields, "setOfTwo">;
 export type TypeSetOfTwo<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeSetOfTwoSkeleton, Modifiers, Locales>;
+
+export function isTypeSetOfTwo<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeSetOfTwo<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'setOfTwo'
+}

@@ -10,3 +10,7 @@ export interface TypeXdTestimonialCardFields {
 
 export type TypeXdTestimonialCardSkeleton = EntrySkeletonType<TypeXdTestimonialCardFields, "xdTestimonialCard">;
 export type TypeXdTestimonialCard<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdTestimonialCardSkeleton, Modifiers, Locales>;
+
+export function isTypeXdTestimonialCard<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdTestimonialCard<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdTestimonialCard'
+}

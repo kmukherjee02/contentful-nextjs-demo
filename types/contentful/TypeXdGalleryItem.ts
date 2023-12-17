@@ -10,3 +10,7 @@ export interface TypeXdGalleryItemFields {
 
 export type TypeXdGalleryItemSkeleton = EntrySkeletonType<TypeXdGalleryItemFields, "xdGalleryItem">;
 export type TypeXdGalleryItem<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdGalleryItemSkeleton, Modifiers, Locales>;
+
+export function isTypeXdGalleryItem<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdGalleryItem<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdGalleryItem'
+}

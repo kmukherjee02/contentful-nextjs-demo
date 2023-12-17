@@ -10,3 +10,7 @@ export interface TypeImageWithFocalPointFields {
 
 export type TypeImageWithFocalPointSkeleton = EntrySkeletonType<TypeImageWithFocalPointFields, "imageWithFocalPoint">;
 export type TypeImageWithFocalPoint<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeImageWithFocalPointSkeleton, Modifiers, Locales>;
+
+export function isTypeImageWithFocalPoint<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeImageWithFocalPoint<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'imageWithFocalPoint'
+}

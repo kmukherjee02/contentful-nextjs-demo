@@ -13,3 +13,7 @@ export interface TypeSetOfThreeFields {
 
 export type TypeSetOfThreeSkeleton = EntrySkeletonType<TypeSetOfThreeFields, "setOfThree">;
 export type TypeSetOfThree<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeSetOfThreeSkeleton, Modifiers, Locales>;
+
+export function isTypeSetOfThree<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeSetOfThree<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'setOfThree'
+}

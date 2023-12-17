@@ -1,31 +1,28 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
-import XDCallToAction from './xdCallToAction';
-import XDCounter from './xdCounter';
-import cn from 'classnames';
-import { getAbsoluteImageUrlInWebp } from '@lib/utilities';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import XDCallToAction from '@components/contentTypes/xdCallToAction';
+import XDCounter from '@components/contentTypes/xdCounter';
+import { getAbsoluteImageUrlInWebp } from '@lib/utilities';
+import { XDBannerProps } from 'types';
+import cn from 'classnames';
 
-interface IXDBanner {
-	entry: Record<string, any>;
-	sys: Record<string, unknown>;
-}
-const XDBanner = ({ entry, sys }: IXDBanner) => {
-	const { cta, counter, description, image } = entry;
+const XDBanner = ({ entry }: XDBannerProps) => {
+	const { fields: {cta, counter, description, image}, sys } = entry;
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
 
 	const bgImgSrc: string = getAbsoluteImageUrlInWebp(
 		image?.fields?.file?.url
 	);
 
-	const counters: JSX.Element = counter?.map(
-		(item: Record<string, any>, index: number) => (
-			<XDCounter entry={item} key={index} />
+	const counters = counter?.map(
+		counter => (
+			<XDCounter entry={counter} key={counter.sys.id} />
 		)
 	);
-	const buttons: JSX.Element = cta?.map(
-		(item: Record<string, any>, index: number) => (
-			<XDCallToAction entry={item} key={index} />
+	const buttons = cta?.map(
+		ctaEntry => (
+			<XDCallToAction entry={ctaEntry} key={ctaEntry.sys.id} />
 		)
 	);
 

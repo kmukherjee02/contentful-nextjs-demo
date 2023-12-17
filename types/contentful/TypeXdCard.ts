@@ -12,3 +12,7 @@ export interface TypeXdCardFields {
 
 export type TypeXdCardSkeleton = EntrySkeletonType<TypeXdCardFields, "xdCard">;
 export type TypeXdCard<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdCardSkeleton, Modifiers, Locales>;
+
+export function isTypeXdCard<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdCard<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdCard'
+}

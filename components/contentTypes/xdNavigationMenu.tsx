@@ -1,38 +1,33 @@
 import MobileNavItem from '@components/MobileNavItem';
-import XDNavItem from './xdNavItem';
+import XDNavItem from '@components/contentTypes/xdNavItem';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { XDNavigationMenuProps } from 'types';
 import cn from 'classnames';
-
-interface IXDNavigationMenuProps {
-	entry: Record<string, any>;
-	fixedHeader: boolean;
-	isMobile?: boolean;
-	isMobileNavOpen?: boolean;
-}
 
 const XDNavigationMenu = ({
 	entry,
 	fixedHeader,
 	isMobile = false,
 	isMobileNavOpen = false,
-}: IXDNavigationMenuProps) => {
+}: XDNavigationMenuProps) => {
+    const { fields, sys } = entry;
+
 	const inspectorProps = useContentfulInspectorMode({
-		entryId: entry.sys?.id,
+		entryId: sys?.id,
 	});
 
-	const navMenu = entry.fields.navigationItems.map(
-		(navItem: Record<string, any>, idx: number) => {
+	const navMenu = fields.navigationItems.map(navItem => {
 			return isMobile ? (
-				<ul className='mobile-nav-menu' key={idx}>
+				<ul className='mobile-nav-menu' key={navItem.sys.id}>
 					<MobileNavItem
-						entry={navItem.fields}
+						entry={navItem}
 						fixedHeader={fixedHeader}
 					/>
 				</ul>
 			) : (
-				<ul className='nav-menu' key={idx}>
+				<ul className='nav-menu' key={navItem.sys.id}>
 					<XDNavItem
-						entry={navItem.fields}
+						entry={navItem}
 						fixedHeader={fixedHeader}
 					/>
 				</ul>

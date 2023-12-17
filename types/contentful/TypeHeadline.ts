@@ -8,3 +8,7 @@ export interface TypeHeadlineFields {
 
 export type TypeHeadlineSkeleton = EntrySkeletonType<TypeHeadlineFields, "headline">;
 export type TypeHeadline<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeHeadlineSkeleton, Modifiers, Locales>;
+
+export function isTypeHeadline<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeHeadline<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'headline'
+}

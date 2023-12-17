@@ -12,3 +12,7 @@ export interface TypeXdBannerFields {
 
 export type TypeXdBannerSkeleton = EntrySkeletonType<TypeXdBannerFields, "xdBanner">;
 export type TypeXdBanner<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdBannerSkeleton, Modifiers, Locales>;
+
+export function isTypeXdBanner<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdBanner<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdBanner'
+}

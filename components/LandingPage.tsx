@@ -5,9 +5,7 @@ import Sections from './Sections';
 import { LandingPageProps } from 'types';
 
 export default function LandingPage(props: LandingPageProps) {
-    const { fields, preview } = props
-
-    console.log(fields.sections)
+    const { entry: { fields }, preview } = props
 
 	return (
 		<Layout preview={preview}>

@@ -8,3 +8,7 @@ export interface TypeImageWithAiTagsFields {
 
 export type TypeImageWithAiTagsSkeleton = EntrySkeletonType<TypeImageWithAiTagsFields, "imageWithAiTags">;
 export type TypeImageWithAiTags<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeImageWithAiTagsSkeleton, Modifiers, Locales>;
+
+export function isTypeImageWithAiTags<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeImageWithAiTags<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'imageWithAiTags'
+}

@@ -10,3 +10,7 @@ export interface TypeXdSetOfPricingFields {
 
 export type TypeXdSetOfPricingSkeleton = EntrySkeletonType<TypeXdSetOfPricingFields, "xdSetOfPricing">;
 export type TypeXdSetOfPricing<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdSetOfPricingSkeleton, Modifiers, Locales>;
+
+export function isTypeXdSetOfPricing<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdSetOfPricing<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdSetOfPricing'
+}

@@ -1,19 +1,14 @@
-import XDProgressBar from "./xdProgressBar";
+import XDProgressBar from '@components/contentTypes/xdProgressBar';
+import { XDSetOfProgressBarProps } from 'types';
 
-interface IXDProgressBarProps {
-	entry: Record<string, any>;
-}
+const XDSetOfProgressBar = ({ entry }: XDSetOfProgressBarProps) => {
+	const { fields } = entry;
 
-const XDSetOfProgressBar = ({entry}: IXDProgressBarProps) => {
-    const progressBars: JSX.Element = entry.map((item: Record<string, any>, index: number) => {
-        return ( <XDProgressBar entry={item.fields} key={index} /> )
-    })
-    
-    return (
-        <>
-            {progressBars}
-        </>
-    )
-}
+	const progressBars = fields.progressBars.map((pBar) => (
+		<XDProgressBar entry={pBar} key={pBar.sys.id} />
+	));
+
+	return <>{progressBars}</>;
+};
 
 export default XDSetOfProgressBar;

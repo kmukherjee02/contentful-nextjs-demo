@@ -14,3 +14,7 @@ export interface TypeXdHeaderFields {
 
 export type TypeXdHeaderSkeleton = EntrySkeletonType<TypeXdHeaderFields, "xdHeader">;
 export type TypeXdHeader<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdHeaderSkeleton, Modifiers, Locales>;
+
+export function isTypeXdHeader<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdHeader<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdHeader'
+}

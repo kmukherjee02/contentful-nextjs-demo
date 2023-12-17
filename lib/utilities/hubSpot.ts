@@ -8,8 +8,8 @@ export interface HubSpotFormDetails {
     target: string
 }
 
-export function hubSpotFormCreate(formDetail : HubSpotFormDetails){
+export function hubSpotFormCreate(formDetail : unknown){
     if(typeof hbspt !== "undefined") {
-        hbspt.forms.create(formDetail)
+        hbspt.forms.create(formDetail as HubSpotFormDetails)
     }
 }

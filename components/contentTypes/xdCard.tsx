@@ -1,28 +1,28 @@
-import XDLink from './xdLink';
-import cn from 'classnames';
-import XDIcon from './xdIcon';
-import {
-	initMouseInCardAnimation,
-	initMouseOutCardAnimation,
-} from '../animation/cardAnimation';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import XDLink from '@components/contentTypes/xdLink';
+import XDIcon from '@components/contentTypes/xdIcon';
+import {
+    initMouseInCardAnimation,
+	initMouseOutCardAnimation,
+} from '@components/animation/cardAnimation';
+import { XDCardProps } from 'types';
+import cn from 'classnames';
 
-interface IXDCardProps {
-	entry: Record<string, any>;
-	id: string;
-}
+export default function XDCard({ entry }: XDCardProps) {
+    const { fields, sys } = entry;
 
-export default function XDCard({ entry, id }: IXDCardProps) {
+    const id = sys.id;
+
 	const inspectorProps = useContentfulInspectorMode({
 		entryId: id,
 	});
 
 	const iconSize = 'h-14 w-14';
 	const cardId = `c${id}`;
-	const iconId = entry.icon ? `i${entry.icon.sys.id}` : '';
+	const iconId = fields.icon ? `i${fields.icon.sys.id}` : '';
 	const cardSelector = `#${cardId}`; //selector must start with a letter
-	const iconSelector = entry.icon ? `${cardSelector} #${iconId}` : '';
-
+	const iconSelector = fields.icon ? `${cardSelector} #${iconId}` : '';
+    
 	return (
 		<div
 			id={cardId}
@@ -34,56 +34,56 @@ export default function XDCard({ entry, id }: IXDCardProps) {
 				initMouseOutCardAnimation(cardSelector, iconSelector)
 			}>
 			<div className='py-[35px] px-[30px] rounded-lg shadow-lg'>
-				{entry.icon && (
+				{fields.icon && (
 					<div
 						className={cn(
 							`flex items-center justify-center rounded-full text-orange mb-4 ${iconSize}`,
 							{
-								'mx-auto': entry.alignment === 'center',
-								'ml-0 mr-auto': entry.alignment === 'left',
-								'mr-0 ml-auto': entry.alignment === 'right',
+								'mx-auto': fields.alignment === 'center',
+								'ml-0 mr-auto': fields.alignment === 'left',
+								'mr-0 ml-auto': fields.alignment === 'right',
 							}
 						)}
 						{...inspectorProps({ fieldId: 'icon' })}>
 						<XDIcon
 							className={`${iconSize} ml-1.5 stroke-1 group-hover:rotate-y-180 ease-in duration-500 transition-transform will-change-transform`}
 							id={iconId}
-							entry={entry.icon.fields}
+							entry={fields.icon}
 						/>
 					</div>
 				)}
-				{entry.title && (
+				{fields.title && (
 					<h3
 						className={cn('mt-12 mb-4', {
-							'text-center': entry.alignment === 'center',
-							'text-left': entry.alignment === 'left',
-							'text-right': entry.alignment === 'right',
+							'text-center': fields.alignment === 'center',
+							'text-left': fields.alignment === 'left',
+							'text-right': fields.alignment === 'right',
 						})}
 						{...inspectorProps({ fieldId: 'title' })}>
-						{entry.title}
+						{fields.title}
 					</h3>
 				)}
-				{entry.description && (
+				{fields.description && (
 					<p
 						className={cn('', {
-							'text-center': entry.alignment === 'center',
-							'text-left': entry.alignment === 'left',
-							'text-right': entry.alignment === 'right',
+							'text-center': fields.alignment === 'center',
+							'text-left': fields.alignment === 'left',
+							'text-right': fields.alignment === 'right',
 						})}
 						{...inspectorProps({ fieldId: 'description' })}>
-						{entry.description}
+						{fields.description}
 					</p>
 				)}
-				{entry.link && (
+				{fields.link && (
 					<div
 						className={cn('flex font-bold mt-4', {
-							'justify-center': entry.alignment === 'center',
-							'justify-start': entry.alignment === 'left',
-							'justify-end': entry.alignment === 'right',
+							'justify-center': fields.alignment === 'center',
+							'justify-start': fields.alignment === 'left',
+							'justify-end': fields.alignment === 'right',
 						})}
 						{...inspectorProps({ fieldId: 'link' })}>
 						<XDLink
-							entry={entry.link.fields}
+							entry={fields.link}
 							className={'inline-flex py-2 mr-2'}
 						/>
 					</div>

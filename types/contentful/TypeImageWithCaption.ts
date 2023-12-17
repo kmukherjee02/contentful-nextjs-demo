@@ -8,3 +8,7 @@ export interface TypeImageWithCaptionFields {
 
 export type TypeImageWithCaptionSkeleton = EntrySkeletonType<TypeImageWithCaptionFields, "imageWithCaption">;
 export type TypeImageWithCaption<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeImageWithCaptionSkeleton, Modifiers, Locales>;
+
+export function isTypeImageWithCaption<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeImageWithCaption<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'imageWithCaption'
+}

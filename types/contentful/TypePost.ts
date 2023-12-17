@@ -8,3 +8,7 @@ export interface TypePostFields {
 
 export type TypePostSkeleton = EntrySkeletonType<TypePostFields, "post">;
 export type TypePost<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypePostSkeleton, Modifiers, Locales>;
+
+export function isTypePost<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypePost<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'post'
+}

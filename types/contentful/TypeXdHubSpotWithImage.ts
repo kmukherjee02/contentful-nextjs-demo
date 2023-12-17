@@ -9,3 +9,7 @@ export interface TypeXdHubSpotWithImageFields {
 
 export type TypeXdHubSpotWithImageSkeleton = EntrySkeletonType<TypeXdHubSpotWithImageFields, "xdHubSpotWithImage">;
 export type TypeXdHubSpotWithImage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdHubSpotWithImageSkeleton, Modifiers, Locales>;
+
+export function isTypeXdHubSpotWithImage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdHubSpotWithImage<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdHubSpotWithImage'
+}

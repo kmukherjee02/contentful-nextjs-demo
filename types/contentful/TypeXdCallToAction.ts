@@ -10,3 +10,7 @@ export interface TypeXdCallToActionFields {
 
 export type TypeXdCallToActionSkeleton = EntrySkeletonType<TypeXdCallToActionFields, "xdCallToAction">;
 export type TypeXdCallToAction<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdCallToActionSkeleton, Modifiers, Locales>;
+
+export function isTypeXdCallToAction<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdCallToAction<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdCallToAction'
+}

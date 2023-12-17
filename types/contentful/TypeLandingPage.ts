@@ -19,3 +19,7 @@ export interface TypeLandingPageFields {
 
 export type TypeLandingPageSkeleton = EntrySkeletonType<TypeLandingPageFields, "landingPage">;
 export type TypeLandingPage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeLandingPageSkeleton, Modifiers, Locales>;
+
+export function isTypeLandingPage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeLandingPage<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'landingPage'
+}

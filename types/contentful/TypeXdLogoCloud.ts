@@ -14,3 +14,7 @@ export interface TypeXdLogoCloudFields {
 
 export type TypeXdLogoCloudSkeleton = EntrySkeletonType<TypeXdLogoCloudFields, "xdLogoCloud">;
 export type TypeXdLogoCloud<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdLogoCloudSkeleton, Modifiers, Locales>;
+
+export function isTypeXdLogoCloud<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdLogoCloud<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdLogoCloud'
+}

@@ -9,3 +9,7 @@ export interface TypeXdSetOfCardFields {
 
 export type TypeXdSetOfCardSkeleton = EntrySkeletonType<TypeXdSetOfCardFields, "xdSetOfCard">;
 export type TypeXdSetOfCard<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdSetOfCardSkeleton, Modifiers, Locales>;
+
+export function isTypeXdSetOfCard<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdSetOfCard<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdSetOfCard'
+}

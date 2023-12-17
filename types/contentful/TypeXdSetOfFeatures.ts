@@ -13,3 +13,7 @@ export interface TypeXdSetOfFeaturesFields {
 
 export type TypeXdSetOfFeaturesSkeleton = EntrySkeletonType<TypeXdSetOfFeaturesFields, "xdSetOfFeatures">;
 export type TypeXdSetOfFeatures<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdSetOfFeaturesSkeleton, Modifiers, Locales>;
+
+export function isTypeXdSetOfFeatures<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdSetOfFeatures<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdSetOfFeatures'
+}

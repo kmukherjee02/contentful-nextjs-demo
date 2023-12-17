@@ -1,30 +1,20 @@
-import XDCard from './xdCard';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import XDCard from '@components/contentTypes/xdCard';
+import { XDSetOfCardProps } from 'types';
 
-interface IXDSetOfCardProps {
-	entry: {
-		cards: Record<string, any>[];
-		[key: string]: any;
-	};
-	sys: Record<string, unknown>;
-}
+export default function XdSetOfCard({ entry }: XDSetOfCardProps) {
+    const { fields, sys } = entry;
 
-export default function XdSetOfCard({ entry, sys }: IXDSetOfCardProps) {
 	const inspectorProps = useContentfulInspectorMode({
 		entryId: sys?.id,
 	});
 
-	const cards = entry.cards
-		? entry.cards.map(
-				(
-					item: { sys: { id: string }; fields: Record<string, any> },
-					index: number
-				) => {
+	const cards = fields.cards
+		? fields.cards.map(card => {
 					return (
 						<XDCard
-							entry={item.fields}
-							id={item.sys.id}
-							key={index}
+							entry={card}
+							key={card.sys.id}
 						/>
 					);
 				}
@@ -36,23 +26,23 @@ export default function XdSetOfCard({ entry, sys }: IXDSetOfCardProps) {
 			{cards.length && (
 				<section className='container mx-auto body-font py-24'>
 					<div className=' px-5'>
-						{(entry.title || entry.caption) && (
+						{(fields.title || fields.caption) && (
 							<div className='text-center'>
-								{entry.caption && (
+								{fields.caption && (
 									<h6
 										{...inspectorProps({
 											fieldId: 'caption',
 										})}>
-										{entry.caption}
+										{fields.caption}
 									</h6>
 								)}
-								{entry.title && (
+								{fields.title && (
 									<h2
 										className='font-extrabold'
 										{...inspectorProps({
 											fieldId: 'title',
 										})}>
-										{entry.title}
+										{fields.title}
 									</h2>
 								)}
 							</div>

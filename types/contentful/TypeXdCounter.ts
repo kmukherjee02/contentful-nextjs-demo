@@ -9,3 +9,7 @@ export interface TypeXdCounterFields {
 
 export type TypeXdCounterSkeleton = EntrySkeletonType<TypeXdCounterFields, "xdCounter">;
 export type TypeXdCounter<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdCounterSkeleton, Modifiers, Locales>;
+
+export function isTypeXdCounter<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdCounter<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdCounter'
+}

@@ -1,24 +1,18 @@
 import { useEffect } from 'react';
-import { initHomeAnimation } from '../animation/homeSplashScreen';
-import ContentfulImage from '../ContentfulImage';
-import XDLink from './xdLink';
-import cn from 'classnames';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { initHomeAnimation } from '@components/animation/homeSplashScreen';
+import ContentfulImage from '@components/ContentfulImage';
+import XDLink from '@components/contentTypes/xdLink';
+import { XDHeroImageProps } from 'types';
+import cn from 'classnames';
 
-interface IXDHeroImageProps {
-	entry: Record<string, any>;
-	sys: Record<string, unknown>;
-}
-
-const XDHeroImage = ({ entry, sys }: IXDHeroImageProps) => {
+const XDHeroImage = ({ entry } : XDHeroImageProps) => {
+    const { fields, sys } = entry;
+   
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
 
-	const backgroundImage = entry.backgroundImage?.fields?.file?.url;
-	const buttons = entry.buttons?.map(
-		(item: Record<string, any>, index: number) => {
-			return <XDLink entry={item.fields} key={index} />;
-		}
-	);
+	const backgroundImage = fields.backgroundImage?.fields?.file?.url;
+	const buttons = fields.buttons?.map(link => (<XDLink entry={link} key={link.sys.id} />));
 
 	useEffect(() => {
 		initHomeAnimation();
@@ -40,12 +34,12 @@ const XDHeroImage = ({ entry, sys }: IXDHeroImageProps) => {
 						<h1
 							className='splash-title text-white text-center lg:text-left text-3xl lg:text-[3.4rem] leading-normal mb-5'
 							{...inspectorProps({ fieldId: 'title' })}>
-							{entry.title}
+							{fields.title}
 						</h1>
 						<p
 							className='splash-description text-center lg:text-left text-white mb-8'
 							{...inspectorProps({ fieldId: 'description' })}>
-							{entry.description}
+							{fields.description}
 						</p>
 						<div
 							className='splash-buttons mx-auto flex flex-col md:flex-row justify-center md:justify-evenly lg:justify-start w-1/2 lg:w-full'
@@ -53,13 +47,13 @@ const XDHeroImage = ({ entry, sys }: IXDHeroImageProps) => {
 							{buttons}
 						</div>
 					</div>
-					{entry.image?.fields?.file?.url && (
+					{fields.image?.fields?.file?.url && (
 						<div className='splash-image lg:max-w-lg lg:w-1/2'>
 							<ContentfulImage
-								src={entry.image.fields.file.url}
+								src={fields.image.fields.file.url}
 								width={550}
 								height={533}
-								alt={entry.image.fields.file.title}
+								alt={fields.image.fields.title}
 								{...inspectorProps({ fieldId: 'image' })}
 							/>
 						</div>

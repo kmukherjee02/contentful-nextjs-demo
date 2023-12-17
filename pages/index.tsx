@@ -4,12 +4,10 @@ import { fetchXDLandingEntriesBySlug } from '@lib/service/api';
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { IndexPageProps } from 'types';
 
-export default function Index(props: IndexPageProps) {
-	console.log(props);
-	const { page, preview } = props;
+export default function Index({ page, preview }: IndexPageProps) {
 	const data = useContentfulLiveUpdates(page);
 
-	return <LandingPage preview={preview} fields={data.fields} {...data} />;
+	return <LandingPage preview={preview} entry={data} />;
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {

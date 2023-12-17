@@ -9,3 +9,7 @@ export interface TypeXdProgressBarFields {
 
 export type TypeXdProgressBarSkeleton = EntrySkeletonType<TypeXdProgressBarFields, "xdProgressBar">;
 export type TypeXdProgressBar<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeXdProgressBarSkeleton, Modifiers, Locales>;
+
+export function isTypeXdProgressBar<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeXdProgressBar<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'xdProgressBar'
+}

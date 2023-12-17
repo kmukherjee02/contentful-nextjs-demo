@@ -12,7 +12,7 @@ export default function Slug({ preview, page }: SlugPageProps) {
 	const data = useContentfulLiveUpdates(page);
 
 	if (JSON.stringify(data) !== '{}') {
-		return <LandingPage preview={preview} fields={data.fields} {...data} />;
+		return <LandingPage preview={preview} entry={data} />;
 	}
 	return <PageNotFound preview={preview} />;
 }

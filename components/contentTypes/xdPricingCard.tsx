@@ -1,19 +1,15 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-
-interface IXDPricingCardProps {
-	entry: Record<string, any>;
-	sys: Record<string, unknown>;
-	pricingPeriod: string;
-}
+import { XDPricingCardProps } from 'types';
 
 export default function XDPricingCard({
 	entry,
-	sys,
 	pricingPeriod,
-}: IXDPricingCardProps) {
+}: XDPricingCardProps) {
+    const { fields, sys } = entry;
+
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
 
-	const pricingCardSDescription = entry.description.content[0].content.map(
+	const pricingCardSDescription = fields.description.content[0].content.map(
 		(item: any, index: number) => {
 			return (
 				<p className='flex items-center text-gray-600 mb-2' key={index}>
@@ -41,28 +37,28 @@ export default function XDPricingCard({
 			{...inspectorProps({ fieldId: 'title' })}>
 			<div
 				className={
-					entry.popular
+					fields.popular
 						? 'h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden  hover:border-indigo-500'
 						: 'h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden  hover:border-indigo-500'
 				}>
-				{entry.popular && (
+				{fields.popular && (
 					<span className='bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl'>
 						POPULAR
 					</span>
 				)}
 				<h2 className='text-sm tracking-widest title-font mb-1 font-medium'>
-					{entry.planName}
+					{fields.planName}
 				</h2>
 				<h1 className='text-5xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none'>
-					{entry.priceUnit ? entry.priceUnit : ''}
+					{fields.priceUnit ? fields.priceUnit : ''}
 					{pricingPeriod === 'annually'
-						? !isNaN(entry.price)
-							? entry.price * 12
-							: entry.price
-						: entry.price}
-					{entry.pricingPeriod && (
+						? !isNaN(Number(fields.price))
+							? Number(fields.price) * 12
+							: fields.price
+						: fields.price}
+					{fields.pricingPeriod && (
 						<span className='text-lg ml-1 font-normal text-gray-500'>
-							{entry.pricingPeriod ? '/' + pricingPeriod : ''}
+							{fields.pricingPeriod ? '/' + pricingPeriod : ''}
 						</span>
 					)}
 				</h1>
@@ -71,11 +67,11 @@ export default function XDPricingCard({
 
 				<button
 					className={
-						entry.popular
+						fields.popular
 							? 'flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded'
 							: 'flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded'
 					}>
-					{entry.button.fields.label}
+					{fields.button.fields.label}
 					<svg
 						fill='none'
 						stroke='currentColor'
@@ -87,7 +83,7 @@ export default function XDPricingCard({
 						<path d='M5 12h14M12 5l7 7-7 7'></path>
 					</svg>
 				</button>
-				<p className='text-xs text-gray-500 mt-3'>{entry.note}</p>
+				<p className='text-xs text-gray-500 mt-3'>{fields.note}</p>
 			</div>
 		</div>
 	);

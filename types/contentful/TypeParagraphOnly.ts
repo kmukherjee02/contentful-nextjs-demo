@@ -9,3 +9,7 @@ export interface TypeParagraphOnlyFields {
 
 export type TypeParagraphOnlySkeleton = EntrySkeletonType<TypeParagraphOnlyFields, "paragraphOnly">;
 export type TypeParagraphOnly<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeParagraphOnlySkeleton, Modifiers, Locales>;
+
+export function isTypeParagraphOnly<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeParagraphOnly<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'paragraphOnly'
+}

@@ -7,3 +7,7 @@ export interface TypeHeroImageFields {
 
 export type TypeHeroImageSkeleton = EntrySkeletonType<TypeHeroImageFields, "heroImage">;
 export type TypeHeroImage<Modifiers extends ChainModifiers, Locales extends LocaleCode> = Entry<TypeHeroImageSkeleton, Modifiers, Locales>;
+
+export function isTypeHeroImage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeHeroImage<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'heroImage'
+}

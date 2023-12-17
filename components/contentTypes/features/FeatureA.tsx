@@ -1,39 +1,37 @@
-import XDIcon from '../xdIcon';
-import XDLink from '../xdLink';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import XDIcon from '@components/contentTypes/xdIcon';
+import XDLink from '@components/contentTypes/xdLink';
+import { XDSetOfFeaturesProps } from 'types';
 
-type FeatureAProps = {
-	entry: Record<string, unknown>;
-	sys: Record<string, unknown>;
-};
+export default function FeatureA({ entry }: XDSetOfFeaturesProps) {
+    const { fields, sys } = entry;
 
-export default function FeatureA({ entry, sys }: FeatureAProps) {
 	const inspectorProps = useContentfulInspectorMode({});
 	const setId = sys.id as string;
 
 	//console.log(entry);
-	const title = entry.title;
+	const title = fields.title;
 
 	const features =
-		Array.isArray(entry.features) &&
-		entry.features.map((item, index) => {
-			if (!item || !item.fields) return null;
-			const featureTitle = item.fields.title;
-			const featureDescription = item.fields.description;
-			const featureLink = item.fields.link;
-			const featureIcon = item.fields.icon;
+		Array.isArray(fields.features) &&
+		fields.features.map(feature => {
+			if (!feature || !feature.fields) return null;
+			const featureTitle = feature.fields.title;
+			const featureDescription = feature.fields.description;
+			const featureLink = feature.fields.link;
+			const featureIcon = feature.fields.icon;
 
 			return (
 				<div
 					className='p-4 md:w-1/3 flex'
-					key={index}
+					key={feature.sys.id}
 					{...inspectorProps({
-						entryId: item?.sys?.id,
+						entryId: feature?.sys?.id,
 						fieldId: 'title',
 					})}>
 					{featureLink && featureIcon.fields && (
 						<div className='w-12 h-12 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4 flex-shrink-0'>
-							<XDIcon entry={featureIcon.fields} key={index} />
+							<XDIcon entry={featureIcon} id={featureIcon.sys.id} />
 						</div>
 					)}
 					<div className='flex-grow pl-6'>
@@ -44,7 +42,7 @@ export default function FeatureA({ entry, sys }: FeatureAProps) {
 							{featureDescription}
 						</p>
 						{featureLink && featureLink.fields && (
-							<XDLink entry={featureLink.fields} key={index} />
+							<XDLink entry={featureLink} />
 						)}
 					</div>
 				</div>

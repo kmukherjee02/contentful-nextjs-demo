@@ -1,18 +1,18 @@
 import Script from 'next/script';
-import { HubSpotForm } from '../HubSpotForm';
+import { HubSpotForm } from '@components/HubSpotForm';
 import { hubSpotFormCreate } from '@lib/utilities/hubSpot';
 import { getAbsoluteImageUrlInWebp } from '@lib/utilities/index';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { XDHubSpotWithImageProps } from 'types';
 
-interface IXDHubSpotImageProps {
-	entry: Record<string, any>;
-	sys: Record<string, unknown>;
-}
+const XDHubSpotWithImage = ({ entry }: XDHubSpotWithImageProps) => {
+    const { fields, sys } = entry;
 
-const XDHubSpotWithImage = ({ entry, sys }: IXDHubSpotImageProps) => {
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+    
+    const formDetails = fields.hubSpotDetail.fields.formDetails
 
-	const background = getAbsoluteImageUrlInWebp(entry.image.fields.file.url);
+	const background = getAbsoluteImageUrlInWebp(fields.image.fields.file.url);
 	return (
 		<div
 			className={`bg-no-repeat`}
@@ -24,12 +24,12 @@ const XDHubSpotWithImage = ({ entry, sys }: IXDHubSpotImageProps) => {
 				type='text/javascript'
 				src='//js.hsforms.net/forms/v2.js'
 				onLoad={() => {
-					hubSpotFormCreate(entry.hubSpotDetail.fields.formDetails);
+					hubSpotFormCreate(formDetails);
 				}}
 			/>
 			<HubSpotForm
-				formDetail={entry.hubSpotDetail.fields.formDetails}
-				height={entry.image.fields.file.details.image.height}
+				formDetail={formDetails}
+				height={fields.image.fields.file.details.image.height}
 			/>
 		</div>
 	);

@@ -1,20 +1,15 @@
-import XDCallToAction from "./xdCallToAction";
+import XDCallToAction from '@components/contentTypes/xdCallToAction';
+import { XDSetOfCallToActionProps } from 'types';
 
-interface IXDSetOfCallToActionProps {
-	entry: Record<string, any>;
-}
+const XDSetOfCallToAction = ({ entry }: XDSetOfCallToActionProps) => {
+	const { fields } = entry;
 
-const XDSetOfCallToAction = ({entry}: IXDSetOfCallToActionProps) => {
-    let setOfActions = entry.map((item: Record<string, any>, index: number) => {
-        return (
-            <XDCallToAction entry={item} key={index} />
-        )
-    })
-    return (
-        <>
-            {setOfActions}
-        </>
-    )
-}
+	const setOfActions = fields.setOfCta.map((cta) => (
+		<XDCallToAction entry={cta} key={cta.sys.id} />
+	));
+
+    
+	return <>{setOfActions}</>;
+};
 
 export default XDSetOfCallToAction;

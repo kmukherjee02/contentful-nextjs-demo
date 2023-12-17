@@ -1,16 +1,12 @@
-import ContentfulImage from '@components/ContentfulImage';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import { getAbsoluteImageUrlInWebp } from '@lib/utilities';
+import ContentfulImage from '@components/ContentfulImage';
+import { XDTeamMemberProps } from 'types';
 
-interface IXDTeamMemberProps {
-	entry: Record<string, any>;
-	sys: Record<string, unknown>;
-}
+export default function XDTeamMember({ entry }: XDTeamMemberProps) {
+    const { fields, sys } = entry;
 
-export default function XDTeamMember({ entry, sys }: IXDTeamMemberProps) {
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
 
-	const iconSize = 'h-14 w-14';
 	return (
 		<div
 			className='p-4 lg:w-1/4 md:w-1/2'
@@ -18,16 +14,16 @@ export default function XDTeamMember({ entry, sys }: IXDTeamMemberProps) {
 			<div className='h-full flex flex-col items-center text-center'>
 				<ContentfulImage
 					className='flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4'
-					width={250}
+					width={400}
 					height={450}
-					src={entry.image.fields.file.url}
-					alt={entry.image.fields.file.title}
+					src={fields.image.fields.file.url}
+					alt={fields.image.fields.title}
 				/>
 				<div className='w-full'>
 					<h2 className='title-font font-medium text-lg '>
-						{entry.name}
+						{fields.name}
 					</h2>
-					<h3 className='text-gray-500 mb-3'>{entry.designation}</h3>
+					<h3 className='text-gray-500 mb-3'>{fields.designation}</h3>
 					<span className='inline-flex'>
 						<a className='text-gray-700'>
 							<svg
