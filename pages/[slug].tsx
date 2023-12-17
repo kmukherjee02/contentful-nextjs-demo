@@ -6,12 +6,13 @@ import {
 	fetchAllXDLandingEntries,
 } from '@lib/service/api';
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+import { SlugPageProps } from 'types';
 
-export default function Slug({ preview, page }) {
+export default function Slug({ preview, page }: SlugPageProps) {
 	const data = useContentfulLiveUpdates(page);
 
 	if (JSON.stringify(data) !== '{}') {
-		return <LandingPage preview={preview} page={data.fields} />;
+		return <LandingPage preview={preview} fields={data.fields} {...data} />;
 	}
 	return <PageNotFound preview={preview} />;
 }

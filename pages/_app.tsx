@@ -6,11 +6,11 @@ import * as gtag from '@lib/analytics';
 import Script from 'next/script';
 import { GA_TRACKING_ID } from '@lib/analytics';
 import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
-import "@contentful/live-preview/style.css";
+import '@contentful/live-preview/style.css';
 
 function MyApp({ pageProps, Component }: AppProps) {
 	const router = useRouter();
-    
+
 	useEffect(() => {
 		const handleRouteChange = (url: URL) => {
 			gtag.pageview(url);
@@ -63,7 +63,10 @@ function MyApp({ pageProps, Component }: AppProps) {
 				async
 				src='https://apiv2.popupsmart.com/api/Bundle/377842'
 			/>
-			<ContentfulLivePreviewProvider locale='en-US' enableInspectorMode={pageProps.preview} enableLiveUpdates={pageProps.preview} >
+			<ContentfulLivePreviewProvider
+				locale='en-US'
+				enableInspectorMode={pageProps.preview}
+				enableLiveUpdates={pageProps.preview}>
 				<Component {...pageProps} />
 			</ContentfulLivePreviewProvider>
 		</>

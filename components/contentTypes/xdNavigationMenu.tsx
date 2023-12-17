@@ -16,7 +16,6 @@ const XDNavigationMenu = ({
 	isMobile = false,
 	isMobileNavOpen = false,
 }: IXDNavigationMenuProps) => {
-
 	const inspectorProps = useContentfulInspectorMode({
 		entryId: entry.sys?.id,
 	});
@@ -50,9 +49,10 @@ const XDNavigationMenu = ({
 				'h-0': isMobile && !isMobileNavOpen,
 				'ml-16 flex justify-center items-center': !isMobile,
 				'text-white': !isMobile && !fixedHeader,
-			})} {...inspectorProps({ fieldId: 'navigationItems' })}>
-                {navMenu}
-            </nav>
+			})}
+			{...inspectorProps({ fieldId: 'navigationItems' })}>
+			{navMenu}
+		</nav>
 	);
 };
 
