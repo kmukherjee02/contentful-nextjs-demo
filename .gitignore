@@ -36,4 +36,4 @@ yarn-error.log*
 .vercel
 
 # hidden so as to not push conentful env vars
-/contentful/exportContentModelConfig.json
+./contentful/exportContentModelConfig.json
