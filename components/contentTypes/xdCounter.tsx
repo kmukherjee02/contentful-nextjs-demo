@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { setInterval } from 'timers/promises';
-import { useOnScreen } from '../../lib/hooks/hooks'
+import { useOnScreen } from '@lib/hooks/hooks'
+import { XDCounterProps } from 'types';
 
-interface IXDCounterProps {
-	entry: Record<string, any>;
-}
 
-const  XDCounter= ({entry}: IXDCounterProps) => {
-    const { description, quantity, suffix } = entry.fields;
+const  XDCounter= ({entry}: XDCounterProps) => {
+    const { fields: { description, quantity, suffix } } = entry
+
     const [count, setCount] = useState(0);
     const [countRan, setCountRan] = useState(false);
     const divRef = useRef<HTMLDivElement | null>(null);
@@ -26,6 +24,7 @@ const  XDCounter= ({entry}: IXDCounterProps) => {
                 if (start >= quantity){window.clearInterval(counter) }
             }, incrementTime);
         } 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isVisible]);
 
     return (

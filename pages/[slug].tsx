@@ -1,17 +1,18 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import LandingPage from '@components/LandingPage';
-import PageNotFound from '@components/pageNotFound';
+import PageNotFound from '@components/PageNotFound';
 import {
 	fetchXDLandingEntriesBySlug,
 	fetchAllXDLandingEntries,
 } from '@lib/service/api';
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
+import { SlugPageProps } from 'types';
 
-export default function Slug({ preview, page }) {
+export default function Slug({ preview, page }: SlugPageProps) {
 	const data = useContentfulLiveUpdates(page);
 
 	if (JSON.stringify(data) !== '{}') {
-		return <LandingPage preview={preview} page={data.fields} />;
+		return <LandingPage preview={preview} entry={data} />;
 	}
 	return <PageNotFound preview={preview} />;
 }

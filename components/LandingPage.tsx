@@ -1,21 +1,19 @@
-import Container from './container';
+import Container from './Container';
 import Layout from './Layout';
 import Head from 'next/head';
-import Sections from './sections';
+import Sections from './Sections';
+import { LandingPageProps } from 'types';
 
-type LandingPageProps = {
-	preview: boolean;
-	page: Record<string, any>;
-};
+export default function LandingPage(props: LandingPageProps) {
+    const { entry: { fields }, preview } = props
 
-export default function LandingPage({ preview, page }: LandingPageProps) {
 	return (
 		<Layout preview={preview}>
 			<Head>
-				<title>{page.name}</title>
+				<title>{fields.name}</title>
 			</Head>
 			<Container>
-				<Sections sections={page.sections} />
+				<Sections sections={fields.sections} />
 			</Container>
 		</Layout>
 	);

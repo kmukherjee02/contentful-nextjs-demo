@@ -1,12 +1,7 @@
-import { ReactNode } from 'react'
-import Alert from './alert'
-import Footer from './footer'
-import Meta from './meta'
-
-type LayoutProps = {
-    preview?: boolean;
-    children: ReactNode;
-}
+import Alert from '@components/Alert';
+import Footer from '@components/Footer';
+import Meta from '@components/Meta';
+import { LayoutProps } from 'types';
 
 export default function Layout({ preview, children }: LayoutProps) {
   return (

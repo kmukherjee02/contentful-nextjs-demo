@@ -1,14 +1,14 @@
-import StarIcon from '../../public/icons/star.svg';
-import HalfStarIcon from '../../public/icons/half-star.svg';
+import StarIcon from '@icons/star.svg';
+import HalfStarIcon from '@icons/half-star.svg';
 import {getAbsoluteImageUrlInWebp} from '@lib/utilities';
+import { XDTestimonialCardProps } from 'types';
 
-interface IXDTestimonialCardProps {
-	entry: Record<string, any>;
-}
-const XDTestimonialCard = ({ entry }: IXDTestimonialCardProps) => {
-	const { testimonial, receivedFrom }: Record<string, any> = entry;
-	let { rating }: Record<string, any> = entry;
-	const { name, designation, image }: Record<string, any> = receivedFrom.fields;
+
+const XDTestimonialCard = ({ entry }: XDTestimonialCardProps) => {
+    let { fields: {testimonial, receivedFrom, rating }} = entry;
+	
+	const { name, designation, image } = receivedFrom.fields;
+
 	const personImgSrc: string = getAbsoluteImageUrlInWebp(image.fields.file.url);
 	const starGold: string = '#ffce39';
 
@@ -19,7 +19,8 @@ const XDTestimonialCard = ({ entry }: IXDTestimonialCardProps) => {
 		!Number.isInteger(rating) && numOfStarsArr.push(0.5);
 		return numOfStarsArr;
 	};
-	const stars: JSX.Element[] = convertNumOfStarsToArr().map((star: number, i: number) => (
+    
+	const stars = convertNumOfStarsToArr().map((star, i) => (
 		<li className='inline-block' key={i}>
 			{star === 0.5 ? (
 				<HalfStarIcon fill={starGold} height={25} width={25} />

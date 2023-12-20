@@ -1,17 +1,16 @@
-import Link from "next/link"
-import ButtonAnimated from '../ButtonAnimated'
+import ButtonAnimated from '@components/ButtonAnimated';
+import { XDCallToActionProps } from "types";
 
-interface IXDCallToActionProps {
-	entry: Record<string, any>;
-}
 
-const XDCallToAction = ({entry}: IXDCallToActionProps) =>  {   
+const XDCallToAction = ({entry}: XDCallToActionProps) =>  {   
+    const { fields } = entry;
+
     return (
         <>
-           {entry.fields.link ? 
-                <ButtonAnimated entry={entry.fields.link.fields} />
+           {fields.link ? 
+                <ButtonAnimated entry={fields.link} />
             : 
-                <ButtonAnimated entry={entry.fields} />
+                <ButtonAnimated entry={entry} />
             }
         </>
     )
