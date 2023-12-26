@@ -6,18 +6,21 @@ import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { XDHubSpotWithImageProps } from 'types';
 
 const XDHubSpotWithImage = ({ entry }: XDHubSpotWithImageProps) => {
-    const { fields, sys } = entry;
+	const { fields, sys } = entry;
 
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
-    
-    const formDetails = fields.hubSpotDetail.fields.formDetails
 
-	const background = getAbsoluteImageUrlInWebp(fields.image.fields.file.url);
+	const formDetails = fields?.hubSpotDetail?.fields.formDetails;
+
+	const background = getAbsoluteImageUrlInWebp(
+		fields?.image?.fields?.file?.url
+	);
 	return (
 		<div
-			className={`bg-no-repeat`}
+			className={`bg-no-repeat bg-cover`}
 			style={{ backgroundImage: `url(${background})` }}
-			{...inspectorProps({ fieldId: 'image' })}>
+			{...inspectorProps({ fieldId: 'image' })}
+		>
 			<Script
 				id='huspot-js'
 				strategy='afterInteractive'
@@ -29,7 +32,9 @@ const XDHubSpotWithImage = ({ entry }: XDHubSpotWithImageProps) => {
 			/>
 			<HubSpotForm
 				formDetail={formDetails}
-				height={fields.image.fields.file.details.image.height}
+				height={
+					fields?.image?.fields?.file?.details?.image?.height || 0
+				}
 			/>
 		</div>
 	);

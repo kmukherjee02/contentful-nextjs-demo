@@ -12,8 +12,9 @@ export function useOnScreen(ref: RefObject<HTMLElement>) {
   }, []);
 
   useEffect(() => {
-    observerRef.current.observe(ref.current);
-    return () => { observerRef.current.disconnect() };
+    if (!ref.current) return;
+    observerRef?.current?.observe(ref.current);
+    return () => { observerRef?.current?.disconnect() };
   }, [ref]);
 
   return isOnScreen;

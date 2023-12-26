@@ -29,7 +29,7 @@ export default function FeatureB({ entry }: XDSetOfFeaturesProps) {
 						entryId: feature?.sys?.id,
 						fieldId: 'title',
 					})}>
-					{featureLink && featureIcon.fields && (
+					{featureLink && featureIcon?.fields && (
 						<div className='w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0'>
 							<XDIcon entry={featureIcon} id={featureIcon.sys.id} />
 						</div>

@@ -9,6 +9,34 @@ import XIcon from '@icons/x.svg';
 import { useCloseNavOnUrlChange } from '@lib/hooks/hooks';
 import { XDCallToActionProps, XDHeaderProps } from 'types';
 import cn from 'classnames';
+import { Asset } from 'contentful';
+
+const XDHeaderLogo = ({
+	logo,
+	href,
+}: {
+	logo: Asset<'WITHOUT_UNRESOLVABLE_LINKS', 'en-US'>;
+	href?: string;
+}) => {
+	const src = logo?.fields?.file?.url;
+	return (
+		<>
+			{src && (
+				<Link
+					className='flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0'
+					href={href || '#'}
+				>
+					<ContentfulImage
+						src={src}
+						width={123}
+						height={35}
+						alt={logo?.fields?.file?.fileName || 'header logo'}
+					/>
+				</Link>
+			)}
+		</>
+	);
+};
 
 const XDHeader = ({ entry }: XDHeaderProps) => {
 	const { fields, sys } = entry;
@@ -21,12 +49,11 @@ const XDHeader = ({ entry }: XDHeaderProps) => {
 	useCloseNavOnUrlChange(setIsMobileNavOpen);
 
 	useEffect(() => {
-		const mobileNavMenu: HTMLElement =
-			document.querySelector('.mobile-nav-menu');
+		const mobileNavMenu = document.querySelector('.mobile-nav-menu');
 		window.addEventListener('resize', () => {
 			setIsMobileNavOpen(false);
 		});
-		if (!isMobileNavOpen) {
+		if (!isMobileNavOpen && mobileNavMenu) {
 			setTimeout(() => {
 				mobileNavMenu.scrollTop = 0;
 			}, 700);
@@ -58,29 +85,30 @@ const XDHeader = ({ entry }: XDHeaderProps) => {
 						'fixed bg-white shadow-fixed-header animate-fixed-header-fade-in':
 							fixedHeader,
 					}
-				)}>
+				)}
+			>
 				<div className='container mx-auto flex items-center justify-between relative'>
 					<div {...inspectorProps({ fieldId: 'logo' })}>
-						<Link href={fields.logoHyperlink} passHref>
-							<a className='flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0'>
-								<ContentfulImage
-									src={
-										fixedHeader
-											? fields.logoAlt.fields.file.url
-											: fields.logo.fields.file.url
-									}
-									width={123}
-									height={35}
-									alt={fields.logo.fields.file.fileName}
-								/>
-							</a>
-						</Link>
+						{!fixedHeader && fields.logo && (
+							<XDHeaderLogo
+								logo={fields.logo}
+								href={fields.logoHyperlink}
+							/>
+						)}
+						{fixedHeader && fields.logoAlt && (
+							<XDHeaderLogo
+								logo={fields.logoAlt}
+								href={fields.logoHyperlink}
+							/>
+						)}
 					</div>
 					<div className='hidden flex-1 lg:flex justify-around'>
-						<XDNavigationMenu
-							entry={fields.navigation}
-							fixedHeader={fixedHeader}
-						/>
+						{fields.navigation && (
+							<XDNavigationMenu
+								entry={fields.navigation}
+								fixedHeader={fixedHeader}
+							/>
+						)}
 						<div {...inspectorProps({ fieldId: 'callToAction' })}>
 							<XDCallToAction
 								entry={
@@ -95,11 +123,11 @@ const XDHeader = ({ entry }: XDHeaderProps) => {
 						<button
 							onClick={() => {
 								setIsMobileNavOpen(!isMobileNavOpen);
-							}}>
+							}}
+						>
 							<span
-								className={
-									isMobileNavOpen ? 'hidden' : 'block'
-								}>
+								className={isMobileNavOpen ? 'hidden' : 'block'}
+							>
 								<MobileNavHamburgerIcon
 									height={20}
 									width={40}
@@ -110,9 +138,8 @@ const XDHeader = ({ entry }: XDHeaderProps) => {
 								/>
 							</span>
 							<span
-								className={
-									isMobileNavOpen ? 'block' : 'hidden'
-								}>
+								className={isMobileNavOpen ? 'block' : 'hidden'}
+							>
 								<XIcon
 									height={25}
 									width={40}
@@ -124,12 +151,14 @@ const XDHeader = ({ entry }: XDHeaderProps) => {
 							</span>
 						</button>
 					</div>
-					<XDNavigationMenu
-						entry={fields.navigation}
-						fixedHeader={fixedHeader}
-						isMobile
-						isMobileNavOpen={isMobileNavOpen}
-					/>
+					{fields.navigation && (
+						<XDNavigationMenu
+							entry={fields.navigation}
+							fixedHeader={fixedHeader}
+							isMobile
+							isMobileNavOpen={isMobileNavOpen}
+						/>
+					)}
 				</div>
 			</header>
 		</div>

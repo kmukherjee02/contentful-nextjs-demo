@@ -17,9 +17,17 @@ const MobileNavItem = ({ entry, isChildNavItem }: XDNavItemProps) => {
 			'pl-16': isChildNavItem,
 		}
 	);
-	let childMenu = fields.children?.map((navItem) => (
-		<MobileNavItem entry={navItem} key={navItem.sys.id} isChildNavItem />
-	));
+
+	const childMenu = fields?.children?.map((navItem) => {
+		if (navItem)
+			return (
+				<MobileNavItem
+					entry={navItem}
+					key={navItem.sys.id}
+					isChildNavItem
+				/>
+			);
+	});
 
 	useCloseNavOnUrlChange(setIsChildMenuOpen);
 
@@ -28,7 +36,8 @@ const MobileNavItem = ({ entry, isChildNavItem }: XDNavItemProps) => {
 			className={cn('', {
 				'mobile-nav-item': isChildNavItem === undefined,
 				'mobile-nav-child-menu-item': isChildNavItem,
-			})}>
+			})}
+		>
 			{fields.slug ? (
 				<Link href={fields.slug} passHref>
 					<button className={mobileNavItemClasses}>
@@ -41,19 +50,18 @@ const MobileNavItem = ({ entry, isChildNavItem }: XDNavItemProps) => {
 						className='flex items-center'
 						onClick={() => {
 							setIsChildMenuOpen(!isChildMenuOpen);
-						}}>
+						}}
+					>
 						<button className={`${mobileNavItemClasses}`}>
 							{fields.label}
 							<span
-								className={
-									isChildMenuOpen ? 'hidden' : 'block'
-								}>
+								className={isChildMenuOpen ? 'hidden' : 'block'}
+							>
 								<PlusIcon height={20} width={20} />
 							</span>
 							<span
-								className={
-									isChildMenuOpen ? 'block' : 'hidden'
-								}>
+								className={isChildMenuOpen ? 'block' : 'hidden'}
+							>
 								<MinusIcon height={20} width={20} />
 							</span>
 						</button>
@@ -61,7 +69,8 @@ const MobileNavItem = ({ entry, isChildNavItem }: XDNavItemProps) => {
 					<nav
 						className={`${
 							isChildMenuOpen ? 'max-h-[1000px]' : 'max-h-0'
-						} overflow-hidden transition-[max-height] duration-500`}>
+						} overflow-hidden transition-[max-height] duration-500`}
+					>
 						<ul className='mobile-nav-child-menu'>{childMenu}</ul>
 					</nav>
 				</div>

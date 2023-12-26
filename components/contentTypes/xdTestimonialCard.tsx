@@ -5,12 +5,12 @@ import { XDTestimonialCardProps } from 'types';
 
 
 const XDTestimonialCard = ({ entry }: XDTestimonialCardProps) => {
-    let { fields: {testimonial, receivedFrom, rating }} = entry;
+    let { fields: {testimonial, receivedFrom, rating = 0 }} = entry;
 	
-	const { name, designation, image } = receivedFrom.fields;
+	const { name, designation, image } = {...receivedFrom?.fields};
 
-	const personImgSrc: string = getAbsoluteImageUrlInWebp(image.fields.file.url);
-	const starGold: string = '#ffce39';
+	const personImgSrc = getAbsoluteImageUrlInWebp(image?.fields?.file?.url);
+	const starGold = '#ffce39';
 
 	const convertNumOfStarsToArr = () : number[] => {
 		rating > 5 && (rating = 5);

@@ -14,13 +14,16 @@ const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 		setPricingPeriod(val);
 	};
 
-	const pricingCards = fields.pricingPlans.map((pricing) => (
-		<XDPricingCard
-			entry={pricing}
-			pricingPeriod={pricingPeriod}
-			key={pricing.sys.id}
-		/>
-	));
+	const pricingCards = fields.pricingPlans.map((pricing) => {
+		if (pricing)
+			return (
+				<XDPricingCard
+					entry={pricing}
+					pricingPeriod={pricingPeriod}
+					key={pricing.sys.id}
+				/>
+			);
+	});
 
 	return (
 		<>
@@ -30,7 +33,8 @@ const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 						{fields.title && (
 							<h1
 								className='sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900'
-								{...inspectorProps({ fieldId: 'title' })}>
+								{...inspectorProps({ fieldId: 'title' })}
+							>
 								{fields.title}
 							</h1>
 						)}
@@ -38,7 +42,8 @@ const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 						{fields.description && (
 							<p
 								className='lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500'
-								{...inspectorProps({ fieldId: 'description' })}>
+								{...inspectorProps({ fieldId: 'description' })}
+							>
 								{fields.description}
 							</p>
 						)}
@@ -50,8 +55,9 @@ const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 										? 'py-1 px-4 bg-indigo-500 text-white focus:outline-none'
 										: 'py-1 px-4 focus:outline-none'
 								}
-								onClick={(e) => setPricePeriod('mo')}>
-								{fields.pricingPeriod[0]}
+								onClick={(e) => setPricePeriod('mo')}
+							>
+								{fields?.pricingPeriod?.[0]}
 							</button>
 							<button
 								className={
@@ -59,14 +65,16 @@ const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 										? 'py-1 px-4 bg-indigo-500 text-white focus:outline-none'
 										: 'py-1 px-4 focus:outline-none'
 								}
-								onClick={(e) => setPricePeriod('annually')}>
-								{fields.pricingPeriod[1]}
+								onClick={() => setPricePeriod('annually')}
+							>
+								{fields?.pricingPeriod?.[1]}
 							</button>
 						</div>
 					</div>
 					<div
 						className='flex flex-wrap -m-4'
-						{...inspectorProps({ fieldId: 'pricingPlans' })}>
+						{...inspectorProps({ fieldId: 'pricingPlans' })}
+					>
 						{/* Repeate Card */}
 						{pricingCards}
 						{/* Repeate Card */}

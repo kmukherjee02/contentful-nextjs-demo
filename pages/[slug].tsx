@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
 	const homePage = await fetchXDLandingEntriesBySlug(
 		preview,
-		params.slug as string
+		params?.slug as string
 	);
 	if (homePage?.length > 0) {
 		return {

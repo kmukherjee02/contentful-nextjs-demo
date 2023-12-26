@@ -12,13 +12,13 @@ export default function XDTeamMember({ entry }: XDTeamMemberProps) {
 			className='p-4 lg:w-1/4 md:w-1/2'
 			{...inspectorProps({ fieldId: 'title' })}>
 			<div className='h-full flex flex-col items-center text-center'>
-				<ContentfulImage
+				{fields?.image?.fields.file && <ContentfulImage
 					className='flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4'
 					width={400}
 					height={450}
 					src={fields.image.fields.file.url}
-					alt={fields.image.fields.title}
-				/>
+					alt={fields.image.fields.title || 'Team Member Image'}
+				/>}
 				<div className='w-full'>
 					<h2 className='title-font font-medium text-lg '>
 						{fields.name}

@@ -11,6 +11,7 @@ export default function XdSetOfCard({ entry }: XDSetOfCardProps) {
 
 	const cards = fields.cards
 		? fields.cards.map(card => {
+                if (card)
 					return (
 						<XDCard
 							entry={card}

@@ -4,9 +4,9 @@ import { XDSetOfProgressBarProps } from 'types';
 const XDSetOfProgressBar = ({ entry }: XDSetOfProgressBarProps) => {
 	const { fields } = entry;
 
-	const progressBars = fields.progressBars.map((pBar) => (
-		<XDProgressBar entry={pBar} key={pBar.sys.id} />
-	));
+	const progressBars = fields?.progressBars?.map((pBar) => {
+		if (pBar) return <XDProgressBar entry={pBar} key={pBar.sys.id} />;
+	});
 
 	return <>{progressBars}</>;
 };

@@ -16,7 +16,7 @@ const XDSectionWithImage = ({ entry }: XDSectionWithImageProps) => {
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
 
 	const renderDetails = (): JSX.Element => {
-		switch (fields.detail.sys.contentType.sys.id) {
+		switch (fields?.detail?.sys.contentType.sys.id) {
 			case 'xdSetOfCallToAction':
 				return (
 					<div className='grid gap-6 mt-8 sm:grid-cols-2'>
@@ -42,7 +42,7 @@ const XDSectionWithImage = ({ entry }: XDSectionWithImageProps) => {
 			default:
 				console.log(
 					'Section type not found: ' +
-						fields.detail.sys.contentType.sys.id
+						fields?.detail?.sys.contentType.sys.id
 				);
 				return (
 					<div data-content-type='not-found'>
@@ -51,7 +51,7 @@ const XDSectionWithImage = ({ entry }: XDSectionWithImageProps) => {
 				);
 		}
 	};
-	const imgWithTextComponent: JSX.Element = fields?.imageWithText && (
+	const imgWithTextComponent = fields?.imageWithText && (
 		<div
 			className='mx-auto p-2 lg:p-0 lg:w-2/5'
 			{...inspectorProps({ fieldId: 'imageWithText' })}>

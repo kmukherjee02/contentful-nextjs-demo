@@ -16,16 +16,20 @@ const XDSetOfTestimonialCards = ({ entry }: XDSetOfTestimonialCardsProps) => {
 	const inspectorProps = useContentfulInspectorMode({});
 	const setId = sys.id as string;
 
-	const testimonialCard = testimonialCards.map((tCard) => (
-		<div
-			key={tCard.sys.id}
-			{...inspectorProps({
-				entryId: tCard?.sys?.id,
-				fieldId: 'title',
-			})}>
-			<XDTestimonialCard entry={tCard} />
-		</div>
-	));
+	const testimonialCard = testimonialCards?.map((tCard) => {
+		if (tCard)
+			return (
+				<div
+					key={tCard.sys.id}
+					{...inspectorProps({
+						entryId: tCard?.sys?.id,
+						fieldId: 'title',
+					})}
+				>
+					<XDTestimonialCard entry={tCard} />
+				</div>
+			);
+	});
 
 	return (
 		<div className='container mx-auto md:pt-24 pt-12 pb-12'>
@@ -35,7 +39,8 @@ const XDSetOfTestimonialCards = ({ entry }: XDSetOfTestimonialCardsProps) => {
 				</h6>
 				<h2
 					className='font-extrabold'
-					{...inspectorProps({ entryId: setId, fieldId: 'title' })}>
+					{...inspectorProps({ entryId: setId, fieldId: 'title' })}
+				>
 					{title}
 				</h2>
 			</div>
@@ -55,7 +60,8 @@ const XDSetOfTestimonialCards = ({ entry }: XDSetOfTestimonialCardsProps) => {
 						'0': { items: 1 },
 						'600': { items: 2 },
 						'1200': { items: 3 },
-					}}>
+					}}
+				>
 					{testimonialCard}
 				</OwlCarousel>
 			</div>

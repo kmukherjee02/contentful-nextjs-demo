@@ -5,11 +5,11 @@ export default function XDPricingCard({
 	entry,
 	pricingPeriod,
 }: XDPricingCardProps) {
-    const { fields, sys } = entry;
+	const { fields, sys } = entry;
 
 	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
 
-	const pricingCardSDescription = fields.description.content[0].content.map(
+	const pricingCardSDescription = fields?.description?.content[0].content.map(
 		(item: any, index: number) => {
 			return (
 				<p className='flex items-center text-gray-600 mb-2' key={index}>
@@ -21,7 +21,8 @@ export default function XDPricingCard({
 							strokeLinejoin='round'
 							strokeWidth='2.5'
 							className='w-3 h-3'
-							viewBox='0 0 24 24'>
+							viewBox='0 0 24 24'
+						>
 							<path d='M20 6L9 17l-5-5'></path>
 						</svg>
 					</span>
@@ -34,13 +35,15 @@ export default function XDPricingCard({
 	return (
 		<div
 			className='p-4 xl:w-1/4 md:w-1/2 w-full'
-			{...inspectorProps({ fieldId: 'title' })}>
+			{...inspectorProps({ fieldId: 'title' })}
+		>
 			<div
 				className={
 					fields.popular
 						? 'h-full p-6 rounded-lg border-2 border-indigo-500 flex flex-col relative overflow-hidden  hover:border-indigo-500'
 						: 'h-full p-6 rounded-lg border-2 border-gray-300 flex flex-col relative overflow-hidden  hover:border-indigo-500'
-				}>
+				}
+			>
 				{fields.popular && (
 					<span className='bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl'>
 						POPULAR
@@ -70,8 +73,9 @@ export default function XDPricingCard({
 						fields.popular
 							? 'flex items-center mt-auto text-white bg-indigo-500 border-0 py-2 px-4 w-full focus:outline-none hover:bg-indigo-600 rounded'
 							: 'flex items-center mt-auto text-white bg-gray-400 border-0 py-2 px-4 w-full focus:outline-none hover:bg-gray-500 rounded'
-					}>
-					{fields.button.fields.label}
+					}
+				>
+					{fields?.button?.fields.label}
 					<svg
 						fill='none'
 						stroke='currentColor'
@@ -79,7 +83,8 @@ export default function XDPricingCard({
 						strokeLinejoin='round'
 						strokeWidth='2'
 						className='w-4 h-4 ml-auto'
-						viewBox='0 0 24 24'>
+						viewBox='0 0 24 24'
+					>
 						<path d='M5 12h14M12 5l7 7-7 7'></path>
 					</svg>
 				</button>
