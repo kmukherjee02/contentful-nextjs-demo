@@ -5,10 +5,10 @@ import Sections from './Sections';
 import { LandingPageProps } from 'types';
 
 export default function LandingPage(props: LandingPageProps) {
-    const { entry: { fields }, preview } = props
+    const { entry: { fields }, draftMode } = props
 
 	return (
-		<Layout preview={preview}>
+		<Layout draftMode={draftMode}>
 			<Head>
 				<title>{fields.name}</title>
 			</Head>

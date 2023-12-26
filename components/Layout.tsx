@@ -3,17 +3,19 @@ import Footer from '@components/Footer';
 import Meta from '@components/Meta';
 import { LayoutProps } from 'types';
 
-export default function Layout({ preview, children }: LayoutProps) {
-  return (
-    <>
-      <Meta />
-      <div className="min-h-screen">
-        <main className={`${preview ? 'preview' : 'no-preview'}`}>
-          <Alert preview={preview} /> 
-          {children}
-        </main>
-      </div>
-      <Footer />
-    </>
-  )
+export default function Layout({ children, draftMode }: LayoutProps) {
+	return (
+		<>
+			<Meta />
+			<div className='min-h-screen'>
+				<main
+					className={`${draftMode ? 'draft-mode' : 'no-draft-mode'}`}
+				>
+					{draftMode && <Alert />}
+					{children}
+				</main>
+			</div>
+			<Footer />
+		</>
+	);
 }

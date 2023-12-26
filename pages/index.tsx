@@ -4,17 +4,17 @@ import { fetchXDLandingEntriesBySlug } from '@lib/service/api';
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { IndexPageProps } from 'types';
 
-export default function Index({ page, preview }: IndexPageProps) {
+export default function Index({ draftMode, page }: IndexPageProps) {
 	const data = useContentfulLiveUpdates(page);
 
-	return <LandingPage preview={preview} entry={data} />;
+	return <LandingPage draftMode={draftMode} entry={data} />;
 }
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-	const homePage = await fetchXDLandingEntriesBySlug(preview);
+export const getStaticProps: GetStaticProps = async ({ draftMode = false }) => {
+	const homePage = await fetchXDLandingEntriesBySlug(draftMode);
 	return {
 		props: {
-			preview: preview,
+			draftMode: draftMode,
 			page: homePage[0],
 		},
 	};

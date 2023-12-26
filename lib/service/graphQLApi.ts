@@ -20,7 +20,7 @@ content {
 `
 
 
-async function fetchGraphQL(query, preview = false) {
+async function fetchGraphQL(query, draftMode = false) {
     return fetch(
       `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
       {
@@ -28,7 +28,7 @@ async function fetchGraphQL(query, preview = false) {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${
-            preview
+            draftMode
               ? process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
               : process.env.CONTENTFUL_ACCESS_TOKEN
           }`,
@@ -49,7 +49,7 @@ function extractPostEntries(fetchResponse) {
 export async function getPreviewPostBySlug(slug) {
     const entry = await fetchGraphQL(
     `query {
-        postCollection(where: { slug: "${slug}" }, preview: true, limit: 1) {
+        postCollection(where: { slug: "${slug}" }, draftMode: true, limit: 1) {
         items {
             ${POST_GRAPHQL_FIELDS}
         }
@@ -73,44 +73,44 @@ export async function getAllPostsWithSlug() {
     return extractPostEntries(entries)
 }
   
-export async function getAllPostsForHome(preview) {
+export async function getAllPostsForHome(draftMode) {
     const entries = await fetchGraphQL(
         `query {
-        postCollection(order: date_DESC, preview: ${preview ? 'true' : 'false'}) {
+        postCollection(order: date_DESC, draftMode: ${draftMode ? 'true' : 'false'}) {
             items {
             ${POST_GRAPHQL_FIELDS}
             }
         }
         }`,
-        preview
+        draftMode
     )
     return extractPostEntries(entries)
 }
   
-export async function getPostAndMorePosts(slug, preview) {
+export async function getPostAndMorePosts(slug, draftMode) {
     const entry = await fetchGraphQL(
         `query {
-        postCollection(where: { slug: "${slug}" }, preview: ${
-        preview ? 'true' : 'false'
+        postCollection(where: { slug: "${slug}" }, draftMode: ${
+        draftMode ? 'true' : 'false'
         }, limit: 1) {
             items {
             ${POST_GRAPHQL_FIELDS}
             }
         }
         }`,
-        preview
+        draftMode
     )
     const entries = await fetchGraphQL(
         `query {
-        postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
-        preview ? 'true' : 'false'
+        postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, draftMode: ${
+        draftMode ? 'true' : 'false'
         }, limit: 2) {
             items {
             ${POST_GRAPHQL_FIELDS}
             }
         }
         }`,
-        preview
+        draftMode
     )
     return {
         post: extractPost(entry),

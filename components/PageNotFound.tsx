@@ -4,9 +4,9 @@ import Container from '@components/Container';
 import Layout from '@components/Layout';
 import { PageNotFoundProps } from 'types';
 
-export default function PageNotFound({ preview }: PageNotFoundProps) {
+export default function PageNotFound({ draftMode }: PageNotFoundProps) {
 	return (
-		<Layout preview={preview}>
+		<Layout draftMode={draftMode}>
 			<Head>
 				<title>404 Page Not Found</title>
 			</Head>
