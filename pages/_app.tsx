@@ -65,8 +65,8 @@ function MyApp({ pageProps, Component }: AppProps) {
 			/>
 			<ContentfulLivePreviewProvider
 				locale='en-US'
-				enableInspectorMode={pageProps.preview}
-				enableLiveUpdates={pageProps.preview}>
+				enableInspectorMode={pageProps.draftMode}
+				enableLiveUpdates={pageProps.draftMode}>
 				<Component {...pageProps} />
 			</ContentfulLivePreviewProvider>
 		</>

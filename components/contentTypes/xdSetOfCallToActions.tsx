@@ -4,11 +4,10 @@ import { XDSetOfCallToActionProps } from 'types';
 const XDSetOfCallToAction = ({ entry }: XDSetOfCallToActionProps) => {
 	const { fields } = entry;
 
-	const setOfActions = fields.setOfCta.map((cta) => (
-		<XDCallToAction entry={cta} key={cta.sys.id} />
-	));
+	const setOfActions = fields?.setOfCta?.map((cta) => {
+		if (cta) return <XDCallToAction entry={cta} key={cta.sys.id} />;
+	});
 
-    
 	return <>{setOfActions}</>;
 };
 

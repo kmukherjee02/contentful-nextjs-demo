@@ -1,36 +1,57 @@
 {
-	"compilerOptions": {
-		"baseUrl": "./",
-		"paths": {
-			"@components/*": ["components/*"],
-			"@styles/*": ["styles/*"],
-			"@lib/*": ["lib/*"],
-            "@icons/*": ["public/icons/*"],
-		},
-		"target": "es5",
-		"downlevelIteration": true,
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"strict": false,
-		"forceConsistentCasingInFileNames": true,
-		"noEmit": true,
-		"incremental": true,
-		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"jsx": "preserve"
-	},
-	"include": [
-		"next-env.d.ts",
-		"**/*.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		"pages/api/preview.js",
-		"pages/api/exitPreview.ts",
-		"components/contentTypes/features/FeatureA.tsx"
-	],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": [
+        "components/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@lib/*": [
+        "lib/*"
+      ],
+      "@icons/*": [
+        "public/icons/*"
+      ]
+    },
+    "target": "es5",
+    "downlevelIteration": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/api/preview.js",
+    "pages/api/exitPreview.ts",
+    "components/contentTypes/features/FeatureA.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

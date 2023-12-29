@@ -8,13 +8,13 @@ import {
 import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { SlugPageProps } from 'types';
 
-export default function Slug({ preview, page }: SlugPageProps) {
+export default function Slug({ draftMode, page }: SlugPageProps) {
 	const data = useContentfulLiveUpdates(page);
 
 	if (JSON.stringify(data) !== '{}') {
-		return <LandingPage preview={preview} entry={data} />;
+		return <LandingPage draftMode={draftMode} entry={data} />;
 	}
-	return <PageNotFound preview={preview} />;
+	return <PageNotFound draftMode={draftMode} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -27,16 +27,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({
 	params,
-	preview = false,
+	draftMode = false,
 }) => {
 	const homePage = await fetchXDLandingEntriesBySlug(
-		preview,
-		params.slug as string
+		draftMode,
+		params?.slug as string
 	);
 	if (homePage?.length > 0) {
 		return {
 			props: {
-				preview: preview,
+				draftMode: draftMode,
 				page: homePage[0],
 			},
 		};

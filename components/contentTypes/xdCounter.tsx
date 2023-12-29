@@ -4,7 +4,7 @@ import { XDCounterProps } from 'types';
 
 
 const  XDCounter= ({entry}: XDCounterProps) => {
-    const { fields: { description, quantity, suffix } } = entry
+    const { fields: { description, quantity = 0, suffix } } = entry
 
     const [count, setCount] = useState(0);
     const [countRan, setCountRan] = useState(false);

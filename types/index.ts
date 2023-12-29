@@ -3,9 +3,9 @@ import { ImageProps } from 'next/image';
 import * as Contentful from './contentful';
 
 type Children = ReactNode;
-type Preview = boolean;
+type DraftMode = boolean;
 
-type PreviewObj = { preview: Preview };
+type DraftModeObj = { draftMode: DraftMode };
 type ChildrenObj = { children: Children };
 
 type LandingPage = Contentful.TypeXdLandingPage<
@@ -14,11 +14,10 @@ type LandingPage = Contentful.TypeXdLandingPage<
 >;
 
 /** pages */
-export type IndexPageProps = { page: LandingPage } & PreviewObj;
+export type IndexPageProps = { page: LandingPage } & DraftModeObj;
 export type SlugPageProps = IndexPageProps;
 
 /** components */
-export type AlertProps = PreviewObj;
 export type ButtonAnimatedProps = XDLinkProps | XDCallToActionProps;
 export type ContainerProps = ChildrenObj;
 export type ContentfulImageProps = ImageProps;
@@ -29,10 +28,10 @@ export type HubSpotFormProps = {
 	formDetail: unknown;
 	height: number;
 };
-export type LayoutProps = PreviewObj & ChildrenObj;
-export type PageNotFoundProps = PreviewObj;
+export type LayoutProps = DraftModeObj & ChildrenObj;
+export type PageNotFoundProps = DraftModeObj;
 
-export type LandingPageProps = { entry: LandingPage } & PreviewObj;
+export type LandingPageProps = { entry: LandingPage } & DraftModeObj;
 export type SectionsProps = { sections: LandingPage['fields']['sections'] };
 export type SectionProps = {
 	sectionType: string;

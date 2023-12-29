@@ -1,31 +1,36 @@
+import { useEffect, useState } from 'react';
 import Container from '@components/Container';
 import Link from 'next/link';
-import { AlertProps } from 'types';
-import cn from 'classnames';
 
+export default function Alert() {
+	const [isInIFrame, setIsInIFrame] = useState(false);
 
-export default function Alert({ preview }: AlertProps) {
+	useEffect(() => {
+		if (typeof window !== 'undefined') {
+			setIsInIFrame(window.self !== window.top);
+		}
+	}, []);
+
 	return (
 		<div
-			className={cn('sticky top-0 z-50', {
-				'bg-accent-7 border-accent-7 text-white': preview,
-				'bg-accent-1 border-accent-2 hidden': !preview,
-			})}>
+			className={
+				'sticky top-0 z-50 bg-accent-7 border-accent-7 text-white'
+			}
+		>
 			<Container>
 				<div className='py-2 text-center text-sm'>
-					{preview ? (
-						<div className={'h-8'}>
-							This is page is a preview.{' '}
-							<Link href={'/api/exitPreview'} passHref>
-								<a className='underline hover:text-cyan duration-200 transition-colors'>
-									Click here
-								</a>
-							</Link>{' '}
-							to exit preview mode.
-						</div>
-					) : (
-						<></>
-					)}
+					<div className={'h-8'}>
+						This is page is{' '}
+						{isInIFrame ? 'in Live Preview mode' : 'a preview'}.
+						{!isInIFrame && (
+							<Link
+								className='underline hover:text-cyan duration-200 transition-colors ml-2'
+								href={'/api/disableDraft'}
+							>
+								Click here to exit.
+							</Link>
+						)}
+					</div>
 				</div>
 			</Container>
 		</div>

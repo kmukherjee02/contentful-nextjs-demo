@@ -12,8 +12,9 @@ export function useOnScreen(ref: RefObject<HTMLElement>) {
   }, []);
 
   useEffect(() => {
-    observerRef.current.observe(ref.current);
-    return () => { observerRef.current.disconnect() };
+    if (!ref.current) return;
+    observerRef?.current?.observe(ref.current);
+    return () => { observerRef?.current?.disconnect() };
   }, [ref]);
 
   return isOnScreen;
@@ -25,5 +26,6 @@ export function useCloseNavOnUrlChange(setState: Dispatch<SetStateAction<boolean
     const handleRouteChange = () => {setState(false)};
     router.events.on('routeChangeStart', handleRouteChange);
     return () => {router.events.off('routeChangeStart', handleRouteChange)};
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.events]);
 }

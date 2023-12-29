@@ -4,9 +4,9 @@ import Container from '@components/Container';
 import Layout from '@components/Layout';
 import { PageNotFoundProps } from 'types';
 
-export default function PageNotFound({ preview }: PageNotFoundProps) {
+export default function PageNotFound({ draftMode }: PageNotFoundProps) {
 	return (
-		<Layout preview={preview}>
+		<Layout draftMode={draftMode}>
 			<Head>
 				<title>404 Page Not Found</title>
 			</Head>
@@ -26,10 +26,11 @@ export default function PageNotFound({ preview }: PageNotFoundProps) {
 							<p className='mb-8 text-center text-gray-500 md:text-lg'>
 								The page you’re looking for doesn’t exist.
 							</p>
-							<Link href={'/'}>
-								<a className='px-6 py-2 text-sm font-semibold text-blue-800 bg-blue-100'>
-									Go home
-								</a>
+							<Link
+								className='px-6 py-2 text-sm font-semibold text-blue-800 bg-blue-100'
+								href={'/'}
+							>
+								Go home
 							</Link>
 						</div>
 					</div>

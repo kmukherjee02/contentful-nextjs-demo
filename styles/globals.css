@@ -63,7 +63,7 @@
 .owl-dots > .owl-dot.active > span {
     background-color: #7b68ee !important;
 }
-/* if not in preview mode, visibility will be set by gsap after pageload */
-main:not(.preview) [class^="splash-"] {
+/* if not in draft mode, visibility will be set by gsap after pageload */
+main:not(.draft-mode) [class^="splash-"] {
     visibility:hidden;
 } 

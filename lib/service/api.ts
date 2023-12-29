@@ -52,8 +52,8 @@ async function fetchEntries(contentType : string ,slug : string) {
 }
 
 
-export async function fetchXDLandingEntriesBySlug(preview, slug : string = "home"){
-   if(preview){
+export async function fetchXDLandingEntriesBySlug(draftMode: boolean, slug : string = "home"){
+   if(draftMode){
      console.log("Fetching Previews");
      return fetchPreviewEntries("xdLandingPage", slug);
    }

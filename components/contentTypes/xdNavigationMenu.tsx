@@ -10,30 +10,24 @@ const XDNavigationMenu = ({
 	isMobile = false,
 	isMobileNavOpen = false,
 }: XDNavigationMenuProps) => {
-    const { fields, sys } = entry;
+	const { fields, sys } = entry;
 
 	const inspectorProps = useContentfulInspectorMode({
 		entryId: sys?.id,
 	});
 
-	const navMenu = fields.navigationItems.map(navItem => {
+	const navMenu = fields?.navigationItems?.map((navItem) => {
+		if (navItem)
 			return isMobile ? (
 				<ul className='mobile-nav-menu' key={navItem.sys.id}>
-					<MobileNavItem
-						entry={navItem}
-						fixedHeader={fixedHeader}
-					/>
+					<MobileNavItem entry={navItem} fixedHeader={fixedHeader} />
 				</ul>
 			) : (
 				<ul className='nav-menu' key={navItem.sys.id}>
-					<XDNavItem
-						entry={navItem}
-						fixedHeader={fixedHeader}
-					/>
+					<XDNavItem entry={navItem} fixedHeader={fixedHeader} />
 				</ul>
 			);
-		}
-	);
+	});
 
 	return (
 		<nav
@@ -45,7 +39,8 @@ const XDNavigationMenu = ({
 				'ml-16 flex justify-center items-center': !isMobile,
 				'text-white': !isMobile && !fixedHeader,
 			})}
-			{...inspectorProps({ fieldId: 'navigationItems' })}>
+			{...inspectorProps({ fieldId: 'navigationItems' })}
+		>
 			{navMenu}
 		</nav>
 	);
