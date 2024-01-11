@@ -58,8 +58,8 @@ module.exports = {
 				'orange-light': '#FF9800',
 			},
 			fontFamily: {
-				'sans': ['Catamaran', 'sans-serif'],
-				'dosis': ['Dosis', 'sans-serif']
+				'sans': ['var(--font-catamaran)'],
+				'dosis': ['var(--font-dosis)']
 			},
 			fontSize: {
 				'sm': ['.94rem', '1.6rem'],
