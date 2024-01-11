@@ -1,7 +1,13 @@
 import '@styles/globals.css';
 import Script from 'next/script';
+import { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import { catamaran, dosis } from '@lib/fonts/fonts';
+
+export const metadata: Metadata = {
+    title: "Xtivia Demo",
+    description: "Xtivia Contentful Next.js Demo",
+};
 
 export default function RootLayout({
     // Layouts must accept a children prop.

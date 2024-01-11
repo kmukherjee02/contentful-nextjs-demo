@@ -29,7 +29,6 @@ export type HubSpotFormProps = {
 	height: number;
 };
 export type LayoutProps = DraftModeObj & ChildrenObj;
-export type PageNotFoundProps = DraftModeObj;
 
 export type LandingPageProps = { entry: LandingPage } & DraftModeObj;
 export type SectionsProps = { sections: LandingPage['fields']['sections'] };

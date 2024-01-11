@@ -1,14 +1,19 @@
-import Head from 'next/head';
+import { Metadata } from 'next';
+import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import Container from '@components/Container';
 import Layout from '@components/Layout';
 
-export default function PageNotFound({ draftMode }: { draftMode: boolean }) {
+export const metadata: Metadata = {
+    title: "404 Page Not Found",
+    description: "The page you're looking for doesn't exist.",
+};
+
+export default function NotFound() {
+    const {isEnabled} = draftMode();
+    
 	return (
-		<Layout draftMode={draftMode}>
-			<Head>
-				<title>404 Page Not Found</title>
-			</Head>
+		<Layout draftMode={isEnabled}>
 			<Container>
 				<div className='flex items-center justify-center h-screen bg-gradient-to-r from-indigo-600 to-blue-400'>
 					<div className='px-40 py-20 bg-white rounded-md shadow-xl'>

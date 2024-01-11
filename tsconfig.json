@@ -46,8 +46,8 @@
     "**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/api/preview.js",
-    "pages/api/exitPreview.ts",
+    "app/api/preview.js",
+    "app/api/exitPreview.ts",
     "components/contentTypes/features/FeatureA.tsx",
     ".next/types/**/*.ts"
   ],
