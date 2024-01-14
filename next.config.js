@@ -4,7 +4,6 @@ const withSvgr = require("next-svgr");
 module.exports = withSvgr({
 	images: {
 		domains: ['images.ctfassets.net'],
-		loader: 'custom',
 	},
 	webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
 		config.plugins.push(

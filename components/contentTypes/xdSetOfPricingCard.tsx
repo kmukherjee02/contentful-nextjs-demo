@@ -1,12 +1,14 @@
+'use client';
+
 import { useState } from 'react';
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import XDPricingCard from '@components/contentTypes/xdPricingCard';
 import { XDSetOfPricingCardProps } from 'types';
 
 const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 	const { fields, sys } = entry;
 
-	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+	const contentfulInspectorProps = { entryId: sys?.id };
 
 	const [pricingPeriod, setPricingPeriod] = useState('mo');
 
@@ -33,7 +35,10 @@ const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 						{fields.title && (
 							<h1
 								className='sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900'
-								{...inspectorProps({ fieldId: 'title' })}
+								{...ContentfulLivePreview.getProps({
+									...contentfulInspectorProps,
+									fieldId: 'title',
+								})}
 							>
 								{fields.title}
 							</h1>
@@ -42,7 +47,10 @@ const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 						{fields.description && (
 							<p
 								className='lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500'
-								{...inspectorProps({ fieldId: 'description' })}
+								{...ContentfulLivePreview.getProps({
+									...contentfulInspectorProps,
+									fieldId: 'description',
+								})}
 							>
 								{fields.description}
 							</p>
@@ -73,11 +81,12 @@ const XDSetOfPricingCard = ({ entry }: XDSetOfPricingCardProps) => {
 					</div>
 					<div
 						className='flex flex-wrap -m-4'
-						{...inspectorProps({ fieldId: 'pricingPlans' })}
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
+							fieldId: 'pricingPlans',
+						})}
 					>
-						{/* Repeate Card */}
 						{pricingCards}
-						{/* Repeate Card */}
 					</div>
 				</div>
 			</section>

@@ -14,7 +14,7 @@ export default function Alert() {
 	}, []);
 
 	return (
-		<div
+		<section
 			className={
 				'sticky top-0 z-50 bg-accent-7 border-accent-7 text-white'
 			}
@@ -27,7 +27,8 @@ export default function Alert() {
 						{!isInIFrame && (
 							<Link
 								className='underline hover:text-cyan duration-200 transition-colors ml-2'
-								href={'/api/disableDraft'}
+								href={'/api/disable-draft'}
+                                prefetch={false}
 							>
 								Click here to exit.
 							</Link>
@@ -35,6 +36,6 @@ export default function Alert() {
 					</div>
 				</div>
 			</Container>
-		</div>
+		</section>
 	);
 }

@@ -1,6 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS } from '@contentful/rich-text-types';
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import XDCallToAction from '@components/contentTypes/xdCallToAction';
 import XDCounter from '@components/contentTypes/xdCounter';
 import { getAbsoluteImageUrlInWebp } from '@lib/utilities';
@@ -12,7 +12,8 @@ const XDBanner = ({ entry }: XDBannerProps) => {
 		fields: { cta, counter, description, image },
 		sys,
 	} = entry;
-	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+
+	const contentfulInspectorProps = { entryId: sys?.id };
 
 	const bgImgSrc = getAbsoluteImageUrlInWebp(image?.fields?.file?.url);
 
@@ -48,16 +49,22 @@ const XDBanner = ({ entry }: XDBannerProps) => {
 				'bg-center bg-cover bg-no-repeat w-full border text-center py-12 px-8 relative z-10 before:content-[""] before:h-full before:w-full before:bg-black before:absolute before:top-0 before:left-0 before:opacity-60 before:-z-10',
 				{
 					'bg-fixed': counter,
-                    'h-80': !counter && !description
+					'h-80': !counter && !description,
 				}
 			)}
 			style={{ backgroundImage: `url(${bgImgSrc})` }}
-			{...inspectorProps({ fieldId: 'image' })}
+			{...ContentfulLivePreview.getProps({
+				...contentfulInspectorProps,
+				fieldId: 'image',
+			})}
 		>
 			{counter && (
 				<div
 					className='flex flex-col md:flex-row justify-around items-center my-8'
-					{...inspectorProps({ fieldId: 'counter' })}
+					{...ContentfulLivePreview.getProps({
+						...contentfulInspectorProps,
+						fieldId: 'counter',
+					})}
 				>
 					{counters}
 				</div>
@@ -65,7 +72,10 @@ const XDBanner = ({ entry }: XDBannerProps) => {
 			{description && (
 				<div
 					className='banner-description md:w-3/5 mx-auto'
-					{...inspectorProps({ fieldId: 'description' })}
+					{...ContentfulLivePreview.getProps({
+						...contentfulInspectorProps,
+						fieldId: 'description',
+					})}
 				>
 					<div className='mb-8'>
 						{documentToReactComponents(description, options)}
@@ -73,7 +83,10 @@ const XDBanner = ({ entry }: XDBannerProps) => {
 					{cta && (
 						<div
 							className='flex flex-col md:flex-row justify-center items-center'
-							{...inspectorProps({ fieldId: 'cta' })}
+							{...ContentfulLivePreview.getProps({
+								...contentfulInspectorProps,
+								fieldId: 'cta',
+							})}
 						>
 							{buttons}
 						</div>

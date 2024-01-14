@@ -1,14 +1,14 @@
 import Script from 'next/script';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { HubSpotForm } from '@components/HubSpotForm';
 import { hubSpotFormCreate } from '@lib/utilities/hubSpot';
 import { getAbsoluteImageUrlInWebp } from '@lib/utilities/index';
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { XDHubSpotWithImageProps } from 'types';
 
 const XDHubSpotWithImage = ({ entry }: XDHubSpotWithImageProps) => {
 	const { fields, sys } = entry;
 
-	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+	const contentfulInspectorProps = { entryId: sys?.id };
 
 	const formDetails = fields?.hubSpotDetail?.fields.formDetails;
 
@@ -19,7 +19,10 @@ const XDHubSpotWithImage = ({ entry }: XDHubSpotWithImageProps) => {
 		<div
 			className={`bg-no-repeat bg-cover`}
 			style={{ backgroundImage: `url(${background})` }}
-			{...inspectorProps({ fieldId: 'image' })}
+			{...ContentfulLivePreview.getProps({
+				...contentfulInspectorProps,
+				fieldId: 'image',
+			})}
 		>
 			<Script
 				id='huspot-js'

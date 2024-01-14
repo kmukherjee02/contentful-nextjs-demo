@@ -2,8 +2,11 @@
   "private": true,
   "scripts": {
     "preinstall": "npx only-allow yarn",
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run build:script && npm run dev:next",
+    "dev:next": "next dev",
+    "build": "npm run build:script && npm run build:next",
+    "build:next": "next build",
+    "build:script": "vite build",
     "start": "next start",
     "lint": "next lint",
     "cf-export-content-model": "cd ./contentful && node createExportContentModelConfigFile.js && contentful space export --config exportContentModelConfig.json",
@@ -34,6 +37,7 @@
     "eslint-config-next": "^14.0.4",
     "postcss": "^8.4.4",
     "tailwindcss": "^3.0.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11"
   }
 }

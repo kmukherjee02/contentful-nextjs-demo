@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from "react";
 import { hubSpotFormCreate } from '@lib/utilities/hubSpot';
 import { HubSpotFormProps } from "types";

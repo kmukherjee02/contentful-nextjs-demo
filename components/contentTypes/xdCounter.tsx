@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { useOnScreen } from '@lib/hooks/hooks'
 import { XDCounterProps } from 'types';

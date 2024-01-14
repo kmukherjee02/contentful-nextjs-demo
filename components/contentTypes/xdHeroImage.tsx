@@ -1,5 +1,7 @@
+'use client';
+
 import { useEffect } from 'react';
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { initHomeAnimation } from '@components/animation/homeSplashScreen';
 import ContentfulImage from '@components/ContentfulImage';
 import XDLink from '@components/contentTypes/xdLink';
@@ -9,7 +11,7 @@ import cn from 'classnames';
 const XDHeroImage = ({ entry }: XDHeroImageProps) => {
 	const { fields, sys } = entry;
 
-	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+    const contentfulInspectorProps = { entryId: sys?.id };
 
 	const backgroundImage = fields.backgroundImage?.fields?.file?.url;
 	const buttons = fields.buttons?.map((link) => {
@@ -36,19 +38,19 @@ const XDHeroImage = ({ entry }: XDHeroImageProps) => {
 					<div className='splash-stage lg:flex-grow lg:w-1/2 flex flex-col items-center mb-12 xl:pr-20 pr-5'>
 						<h1
 							className='splash-title text-white text-center lg:text-left text-3xl lg:text-[3.4rem] leading-normal mb-5'
-							{...inspectorProps({ fieldId: 'title' })}
+							{...ContentfulLivePreview.getProps({...contentfulInspectorProps, fieldId: 'title'})}
 						>
 							{fields.title}
 						</h1>
 						<p
 							className='splash-description text-center lg:text-left text-white mb-8'
-							{...inspectorProps({ fieldId: 'description' })}
+							{...ContentfulLivePreview.getProps({...contentfulInspectorProps, fieldId: 'description'})}
 						>
 							{fields.description}
 						</p>
 						<div
 							className='splash-buttons mx-auto flex flex-col md:flex-row justify-center md:justify-evenly lg:justify-start w-1/2 lg:w-full'
-							{...inspectorProps({ fieldId: 'buttons' })}
+							{...ContentfulLivePreview.getProps({...contentfulInspectorProps, fieldId: 'buttons'})}
 						>
 							{buttons}
 						</div>
@@ -60,7 +62,7 @@ const XDHeroImage = ({ entry }: XDHeroImageProps) => {
 								width={550}
 								height={533}
 								alt={fields.image.fields.title || 'hero image'}
-								{...inspectorProps({ fieldId: 'image' })}
+								{...ContentfulLivePreview.getProps({...contentfulInspectorProps, fieldId: 'image'})}
 							/>
 						</div>
 					)}

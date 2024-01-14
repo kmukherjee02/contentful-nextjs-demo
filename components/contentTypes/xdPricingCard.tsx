@@ -1,4 +1,4 @@
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import { XDPricingCardProps } from 'types';
 
 export default function XDPricingCard({
@@ -7,7 +7,7 @@ export default function XDPricingCard({
 }: XDPricingCardProps) {
 	const { fields, sys } = entry;
 
-	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+    const contentfulInspectorProps = { entryId: sys?.id };
 
 	const pricingCardSDescription = fields?.description?.content[0].content.map(
 		(item: any, index: number) => {
@@ -35,7 +35,10 @@ export default function XDPricingCard({
 	return (
 		<div
 			className='p-4 xl:w-1/4 md:w-1/2 w-full'
-			{...inspectorProps({ fieldId: 'title' })}
+			{...ContentfulLivePreview.getProps({
+                ...contentfulInspectorProps,
+                fieldId: 'title',
+            })}
 		>
 			<div
 				className={

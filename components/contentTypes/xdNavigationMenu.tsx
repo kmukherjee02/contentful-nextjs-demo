@@ -1,6 +1,6 @@
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import MobileNavItem from '@components/MobileNavItem';
 import XDNavItem from '@components/contentTypes/xdNavItem';
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { XDNavigationMenuProps } from 'types';
 import cn from 'classnames';
 
@@ -12,9 +12,7 @@ const XDNavigationMenu = ({
 }: XDNavigationMenuProps) => {
 	const { fields, sys } = entry;
 
-	const inspectorProps = useContentfulInspectorMode({
-		entryId: sys?.id,
-	});
+    const contentfulInspectorProps = { entryId: sys?.id };
 
 	const navMenu = fields?.navigationItems?.map((navItem) => {
 		if (navItem)
@@ -39,7 +37,10 @@ const XDNavigationMenu = ({
 				'ml-16 flex justify-center items-center': !isMobile,
 				'text-white': !isMobile && !fixedHeader,
 			})}
-			{...inspectorProps({ fieldId: 'navigationItems' })}
+			{...ContentfulLivePreview.getProps({
+                ...contentfulInspectorProps,
+                fieldId: 'navigationItems',
+            })}
 		>
 			{navMenu}
 		</nav>

@@ -1,21 +1,21 @@
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import XDIcon from '@components/contentTypes/xdIcon';
 import XDLink from '@components/contentTypes/xdLink';
 import { XDSetOfFeaturesProps } from 'types';
 
 export default function FeatureB({ entry }: XDSetOfFeaturesProps) {
-    const { fields, sys } = entry;
-
-	const inspectorProps = useContentfulInspectorMode({});
+	const { fields, sys } = entry;
 
 	const setId = sys.id as string;
 	const title = fields.title;
 	const description = fields.description;
 	const link = fields.link;
 
+	const contentfulInspectorProps = { entryId: setId };
+
 	const features =
 		Array.isArray(fields.features) &&
-		fields.features.map(feature => {
+		fields.features.map((feature) => {
 			if (!feature || !feature.fields) return null;
 			const featureTitle = feature.fields.title;
 			const featureDescription = feature.fields.description;
@@ -25,13 +25,17 @@ export default function FeatureB({ entry }: XDSetOfFeaturesProps) {
 				<div
 					className='p-4 md:w-1/3 flex flex-col text-center items-center'
 					key={feature.sys.id}
-					{...inspectorProps({
+					{...ContentfulLivePreview.getProps({
 						entryId: feature?.sys?.id,
 						fieldId: 'title',
-					})}>
+					})}
+				>
 					{featureLink && featureIcon?.fields && (
 						<div className='w-20 h-20 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-5 flex-shrink-0'>
-							<XDIcon entry={featureIcon} id={featureIcon.sys.id} />
+							<XDIcon
+								entry={featureIcon}
+								id={featureIcon.sys.id}
+							/>
 						</div>
 					)}
 					<div className='flex-grow'>
@@ -54,18 +58,20 @@ export default function FeatureB({ entry }: XDSetOfFeaturesProps) {
 				<div className='text-center mb-20'>
 					<h1
 						className='sm:text-3xl text-2xl font-medium title-font text-gray-900 mb-4'
-						{...inspectorProps({
-							entryId: setId,
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
 							fieldId: 'title',
-						})}>
+						})}
+					>
 						{title}
 					</h1>
 					<p
 						className='text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500s'
-						{...inspectorProps({
-							entryId: setId,
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
 							fieldId: 'description',
-						})}>
+						})}
+					>
 						{description}
 					</p>
 					<div className='flex mt-6 justify-center'>
@@ -78,10 +84,11 @@ export default function FeatureB({ entry }: XDSetOfFeaturesProps) {
 				{link && (
 					<button
 						className='flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg'
-						{...inspectorProps({
-							entryId: setId,
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
 							fieldId: 'link',
-						})}>
+						})}
+					>
 						Button
 					</button>
 				)}

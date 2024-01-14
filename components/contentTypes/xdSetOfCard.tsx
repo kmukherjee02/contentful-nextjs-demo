@@ -1,25 +1,16 @@
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import XDCard from '@components/contentTypes/xdCard';
 import { XDSetOfCardProps } from 'types';
 
 export default function XdSetOfCard({ entry }: XDSetOfCardProps) {
-    const { fields, sys } = entry;
+	const { fields, sys } = entry;
 
-	const inspectorProps = useContentfulInspectorMode({
-		entryId: sys?.id,
-	});
+	const contentfulInspectorProps = { entryId: sys?.id };
 
 	const cards = fields.cards
-		? fields.cards.map(card => {
-                if (card)
-					return (
-						<XDCard
-							entry={card}
-							key={card.sys.id}
-						/>
-					);
-				}
-		  )
+		? fields.cards.map((card) => {
+				if (card) return <XDCard entry={card} key={card.sys.id} />;
+		  })
 		: [];
 
 	return (
@@ -31,18 +22,22 @@ export default function XdSetOfCard({ entry }: XDSetOfCardProps) {
 							<div className='text-center'>
 								{fields.caption && (
 									<h6
-										{...inspectorProps({
+										{...ContentfulLivePreview.getProps({
+											...contentfulInspectorProps,
 											fieldId: 'caption',
-										})}>
+										})}
+									>
 										{fields.caption}
 									</h6>
 								)}
 								{fields.title && (
 									<h2
 										className='font-extrabold'
-										{...inspectorProps({
+										{...ContentfulLivePreview.getProps({
+											...contentfulInspectorProps,
 											fieldId: 'title',
-										})}>
+										})}
+									>
 										{fields.title}
 									</h2>
 								)}
@@ -50,7 +45,11 @@ export default function XdSetOfCard({ entry }: XDSetOfCardProps) {
 						)}
 						<div
 							className='flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6'
-							{...inspectorProps({ fieldId: 'cards' })}>
+							{...ContentfulLivePreview.getProps({
+								...contentfulInspectorProps,
+								fieldId: 'cards',
+							})}
+						>
 							{cards}
 						</div>
 					</div>

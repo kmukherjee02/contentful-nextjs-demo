@@ -1,4 +1,4 @@
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import XDImageWithText from '@components/contentTypes/xdImageWithText';
 import XDSetOfCallToAction from '@components/contentTypes/xdSetOfCallToActions';
 import XDSetOfProgressBar from '@components/contentTypes/xdSetOfProgressBar';
@@ -13,7 +13,7 @@ import cn from 'classnames';
 const XDSectionWithImage = ({ entry }: XDSectionWithImageProps) => {
 	const { fields, sys } = entry;
 
-	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+	const contentfulInspectorProps = { entryId: sys?.id };
 
 	const renderDetails = (): JSX.Element => {
 		switch (fields?.detail?.sys.contentType.sys.id) {
@@ -54,7 +54,11 @@ const XDSectionWithImage = ({ entry }: XDSectionWithImageProps) => {
 	const imgWithTextComponent = fields?.imageWithText && (
 		<div
 			className='mx-auto p-2 lg:p-0 lg:w-2/5'
-			{...inspectorProps({ fieldId: 'imageWithText' })}>
+			{...ContentfulLivePreview.getProps({
+				...contentfulInspectorProps,
+				fieldId: 'imageWithText',
+			})}
+		>
 			<XDImageWithText entry={fields?.imageWithText} />
 		</div>
 	);
@@ -70,26 +74,47 @@ const XDSectionWithImage = ({ entry }: XDSectionWithImageProps) => {
 							'text-primary-normal': fields.theme === 'primary',
 							'text-orange-light': fields.theme === 'secondary',
 						})}
-						{...inspectorProps({ fieldId: 'caption' })}>
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
+							fieldId: 'caption',
+						})}
+					>
 						{fields.caption}
 					</h6>
 					<h2
 						className='font-dosis text-2xl lg:text-4xl font-bold  mb-5'
-						{...inspectorProps({ fieldId: 'title' })}>
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
+							fieldId: 'title',
+						})}
+					>
 						{fields.title}
 					</h2>
 					<p
 						className='text-sm'
-						{...inspectorProps({ fieldId: 'description' })}>
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
+							fieldId: 'description',
+						})}
+					>
 						{fields.description}
 					</p>
-					<div {...inspectorProps({ fieldId: 'detail' })}>
+					<div
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
+							fieldId: 'detail',
+						})}
+					>
 						{renderDetails()}
 					</div>
 					{fields.button && (
 						<div
 							className='inline-block my-4'
-							{...inspectorProps({ fieldId: 'button' })}>
+							{...ContentfulLivePreview.getProps({
+								...contentfulInspectorProps,
+								fieldId: 'button',
+							})}
+						>
 							<ButtonAnimated entry={fields.button} />
 						</div>
 					)}

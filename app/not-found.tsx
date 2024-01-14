@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import Container from '@components/Container';
-import Layout from '@components/Layout';
+// import Layout from '@components/Layout';
 
 export const metadata: Metadata = {
     title: "404 Page Not Found",
@@ -13,7 +13,7 @@ export default function NotFound() {
     const {isEnabled} = draftMode();
     
 	return (
-		<Layout draftMode={isEnabled}>
+
 			<Container>
 				<div className='flex items-center justify-center h-screen bg-gradient-to-r from-indigo-600 to-blue-400'>
 					<div className='px-40 py-20 bg-white rounded-md shadow-xl'>
@@ -40,6 +40,6 @@ export default function NotFound() {
 					</div>
 				</div>
 			</Container>
-		</Layout>
+
 	);
 }

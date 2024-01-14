@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef } from 'react';
 import { useOnScreen } from '@lib/hooks/hooks'
 import { XDProgressBarProps } from 'types';

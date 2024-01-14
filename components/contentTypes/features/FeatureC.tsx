@@ -1,4 +1,4 @@
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import ContentfulImage from '@components/ContentfulImage';
 import XDIcon from '@components/contentTypes/xdIcon';
 import XDLink from '@components/contentTypes/xdLink';
@@ -7,9 +7,10 @@ import { XDSetOfFeaturesProps } from 'types';
 export default function FeatureC({ entry }: XDSetOfFeaturesProps) {
 	const { fields, sys } = entry;
 
-	const inspectorProps = useContentfulInspectorMode({});
 	const setId = sys.id;
 	const image = fields.image;
+
+	const contentfulInspectorProps = { entryId: setId };
 
 	const features =
 		Array.isArray(fields.features) &&
@@ -24,7 +25,7 @@ export default function FeatureC({ entry }: XDSetOfFeaturesProps) {
 				<div
 					className='flex flex-col mb-10 lg:items-start items-center'
 					key={feature.sys.id}
-					{...inspectorProps({
+					{...ContentfulLivePreview.getProps({
 						entryId: feature?.sys?.id,
 						fieldId: 'title',
 					})}
@@ -61,8 +62,8 @@ export default function FeatureC({ entry }: XDSetOfFeaturesProps) {
 							src={image.fields.file.url}
 							width={image.fields.file.details.image.width}
 							height={image.fields.file.details.image.height}
-							{...inspectorProps({
-								entryId: setId,
+							{...ContentfulLivePreview.getProps({
+								...contentfulInspectorProps,
 								fieldId: 'image',
 							})}
 						/>
@@ -70,8 +71,8 @@ export default function FeatureC({ entry }: XDSetOfFeaturesProps) {
 				</div>
 				<div
 					className='flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center'
-					{...inspectorProps({
-						entryId: setId,
+					{...ContentfulLivePreview.getProps({
+						...contentfulInspectorProps,
 						fieldId: 'features',
 					})}
 				>

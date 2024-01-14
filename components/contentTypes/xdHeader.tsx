@@ -1,6 +1,8 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 import ContentfulImage from '@components/ContentfulImage';
 import XDNavigationMenu from '@components/contentTypes/xdNavigationMenu';
 import XDCallToAction from '@components/contentTypes/xdCallToAction';
@@ -40,8 +42,7 @@ const XDHeaderLogo = ({
 
 const XDHeader = ({ entry }: XDHeaderProps) => {
 	const { fields, sys } = entry;
-
-	const inspectorProps = useContentfulInspectorMode({ entryId: sys?.id });
+	const contentfulInspectorProps = { entryId: sys?.id };
 
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
 	const [fixedHeader, setFixedHeader] = useState<boolean>(false);
@@ -88,7 +89,12 @@ const XDHeader = ({ entry }: XDHeaderProps) => {
 				)}
 			>
 				<div className='container mx-auto flex items-center justify-between relative'>
-					<div {...inspectorProps({ fieldId: 'logo' })}>
+					<div
+						{...ContentfulLivePreview.getProps({
+							...contentfulInspectorProps,
+							fieldId: 'logo',
+						})}
+					>
 						{!fixedHeader && fields.logo && (
 							<XDHeaderLogo
 								logo={fields.logo}
@@ -109,7 +115,12 @@ const XDHeader = ({ entry }: XDHeaderProps) => {
 								fixedHeader={fixedHeader}
 							/>
 						)}
-						<div {...inspectorProps({ fieldId: 'callToAction' })}>
+						<div
+							{...ContentfulLivePreview.getProps({
+								...contentfulInspectorProps,
+								fieldId: 'callToAction',
+							})}
+						>
 							<XDCallToAction
 								entry={
 									fields.callToAction as XDCallToActionProps['entry']

@@ -1,10 +1,10 @@
 import dynamic from 'next/dynamic';
 import XDTestimonialCard from '@components/contentTypes/xdTestimonialCard';
-import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { XDSetOfTestimonialCardsProps } from 'types';
 
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { ContentfulLivePreview } from '@contentful/live-preview';
 const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
 const XDSetOfTestimonialCards = ({ entry }: XDSetOfTestimonialCardsProps) => {
@@ -13,15 +13,15 @@ const XDSetOfTestimonialCards = ({ entry }: XDSetOfTestimonialCardsProps) => {
 		sys,
 	} = entry;
 
-	const inspectorProps = useContentfulInspectorMode({});
 	const setId = sys.id as string;
+	const contentfulInspectorProps = { entryId: setId };
 
 	const testimonialCard = testimonialCards?.map((tCard) => {
 		if (tCard)
 			return (
 				<div
 					key={tCard.sys.id}
-					{...inspectorProps({
+					{...ContentfulLivePreview.getProps({
 						entryId: tCard?.sys?.id,
 						fieldId: 'title',
 					})}
@@ -34,12 +34,20 @@ const XDSetOfTestimonialCards = ({ entry }: XDSetOfTestimonialCardsProps) => {
 	return (
 		<div className='container mx-auto md:pt-24 pt-12 pb-12'>
 			<div className='text-center'>
-				<h6 {...inspectorProps({ entryId: setId, fieldId: 'caption' })}>
+				<h6
+					{...ContentfulLivePreview.getProps({
+						...contentfulInspectorProps,
+						fieldId: 'caption',
+					})}
+				>
 					{caption}
 				</h6>
 				<h2
 					className='font-extrabold'
-					{...inspectorProps({ entryId: setId, fieldId: 'title' })}
+					{...ContentfulLivePreview.getProps({
+						...contentfulInspectorProps,
+						fieldId: 'title',
+					})}
 				>
 					{title}
 				</h2>
