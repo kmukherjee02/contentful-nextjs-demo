@@ -6,10 +6,12 @@ import { catamaran, dosis } from '@lib/fonts/fonts';
 import Alert from '@components/Alert';
 import Footer from '@components/Footer';
 import { GA_TRACKING_ID } from '@lib/analytics';
+import { CMS_NAME } from '@lib/utilities/constants';
+
 
 export const metadata: Metadata = {
-	title: 'Xtivia Demo',
-	description: 'Xtivia Contentful Next.js Demo',
+	title: `Xtivia Next.js & ${CMS_NAME} Demo`,
+	description: `A statically generated site demonstrating the power of Next.js and ${CMS_NAME}`
 };
 
 export default function RootLayout({

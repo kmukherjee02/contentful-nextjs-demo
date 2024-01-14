@@ -16,7 +16,7 @@ export default function Alert() {
 	return (
 		<section
 			className={
-				'sticky top-0 z-50 bg-accent-7 border-accent-7 text-white'
+				'sticky top-0 z-[100] bg-accent-7 border-accent-7 text-white'
 			}
 		>
 			<Container>

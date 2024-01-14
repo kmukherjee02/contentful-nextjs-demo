@@ -3729,7 +3729,7 @@ const kn = ["https://app.contentful.com", "https://app.eu.contentful.com"], L = 
 };
 m(L, "initialized", !1), m(L, "inspectorMode", null), m(L, "liveUpdates", null), m(L, "saveEvent", null), m(L, "inspectorModeEnabled", !0), m(L, "liveUpdatesEnabled", !0), m(L, "locale"), m(L, "sendMessage"), m(L, "targetOrigin");
 let pt = L;
-pt.init({ locale: "en-US", debugMode: !0, enableLiveUpdates: !0, enableInspectorMode: !0 });
+pt.init({ locale: "en-US", debugMode: !1, enableLiveUpdates: !0, enableInspectorMode: !0 });
 pt.subscribe("save", {
   callback: () => {
     window.location.reload();
