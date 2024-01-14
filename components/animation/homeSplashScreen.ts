@@ -1,11 +1,11 @@
 import { gsap } from "gsap";
 
-let homeAnimation = gsap.timeline({ defaults: { ease:"back" } });
 
 export function initHomeAnimation() {
-    //gsap.set(".splash-stage, .splash-title, .splash-description, .splash-buttons", { autoAlpha: 1 });
+    let tl = gsap.timeline({ defaults: { ease:"back" } });
+
     gsap.set("[class^=splash-]", { autoAlpha: 1});
-    homeAnimation.from(".splash-title",
+    tl.from(".splash-title",
         {
             opacity: 0,
             duration: 0.8,
