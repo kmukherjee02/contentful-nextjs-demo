@@ -1,3 +1,5 @@
+'use client';
+
 import dynamic from 'next/dynamic';
 import XDTestimonialCard from '@components/contentTypes/xdTestimonialCard';
 import { XDSetOfTestimonialCardsProps } from 'types';

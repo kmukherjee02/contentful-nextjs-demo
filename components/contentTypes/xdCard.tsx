@@ -1,3 +1,5 @@
+'use client';
+
 import { ContentfulLivePreview } from '@contentful/live-preview';
 import XDLink from '@components/contentTypes/xdLink';
 import XDIcon from '@components/contentTypes/xdIcon';

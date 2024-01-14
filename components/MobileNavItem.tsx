@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import PlusIcon from '@icons/plus.svg';
 import MinusIcon from '@icons/minus.svg';
-import { useCloseNavOnUrlChange } from '@lib/hooks/hooks';
+// import { useCloseNavOnUrlChange } from '@lib/hooks/hooks';
 import { XDNavItemProps } from 'types';
 import cn from 'classnames';
 
@@ -29,7 +29,7 @@ const MobileNavItem = ({ entry, isChildNavItem }: XDNavItemProps) => {
 			);
 	});
 
-	useCloseNavOnUrlChange(setIsChildMenuOpen);
+	// useCloseNavOnUrlChange(setIsChildMenuOpen);
 
 	return (
 		<li

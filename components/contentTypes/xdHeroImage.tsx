@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { ContentfulLivePreview } from '@contentful/live-preview';
 import { initHomeAnimation } from '@components/animation/homeSplashScreen';
 import ContentfulImage from '@components/ContentfulImage';

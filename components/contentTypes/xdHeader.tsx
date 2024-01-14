@@ -8,7 +8,7 @@ import XDNavigationMenu from '@components/contentTypes/xdNavigationMenu';
 import XDCallToAction from '@components/contentTypes/xdCallToAction';
 import MobileNavHamburgerIcon from '@icons/mobile-nav-hamburger.svg';
 import XIcon from '@icons/x.svg';
-import { useCloseNavOnUrlChange } from '@lib/hooks/hooks';
+// import { useCloseNavOnUrlChange } from '@lib/hooks/hooks';
 import { XDCallToActionProps, XDHeaderProps } from 'types';
 import cn from 'classnames';
 import { Asset } from 'contentful';
@@ -47,7 +47,7 @@ const XDHeader = ({ entry }: XDHeaderProps) => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false);
 	const [fixedHeader, setFixedHeader] = useState<boolean>(false);
 
-	useCloseNavOnUrlChange(setIsMobileNavOpen);
+	// useCloseNavOnUrlChange(setIsMobileNavOpen);
 
 	useEffect(() => {
 		const mobileNavMenu = document.querySelector('.mobile-nav-menu');
