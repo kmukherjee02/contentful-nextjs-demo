@@ -1,6 +1,7 @@
 'use client';
 
 import { ContentfulLivePreview } from '@contentful/live-preview';
+import { gsap } from "gsap";
 import XDLink from '@components/contentTypes/xdLink';
 import XDIcon from '@components/contentTypes/xdIcon';
 import {
@@ -9,6 +10,7 @@ import {
 } from '@components/animation/cardAnimation';
 import { XDCardProps } from 'types';
 import cn from 'classnames';
+import { useEffect } from 'react';
 
 export default function XDCard({ entry }: XDCardProps) {
 	const { fields, sys } = entry;
@@ -22,6 +24,16 @@ export default function XDCard({ entry }: XDCardProps) {
 	const iconId = fields.icon ? `i${fields.icon.sys.id}` : '';
 	const cardSelector = `#${cardId}`; //selector must start with a letter
 	const iconSelector = fields.icon ? `${cardSelector} #${iconId}` : '';
+
+    useEffect(() => {
+        // init animation on load
+        // gsap context added to alow for cleanup to stop running twice
+        const ctx = gsap.context(() => {
+            initMouseOutCardAnimation(cardSelector, iconSelector)
+          });
+          return () => ctx.revert();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 
 	return (
 		<div
