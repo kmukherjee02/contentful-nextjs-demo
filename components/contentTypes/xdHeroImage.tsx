@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-
+import { gsap } from "gsap";
 import { ContentfulLivePreview } from '@contentful/live-preview';
 import { initHomeAnimation } from '@components/animation/homeSplashScreen';
 import ContentfulImage from '@components/ContentfulImage';
@@ -20,7 +20,11 @@ const XDHeroImage = ({ entry }: XDHeroImageProps) => {
 	});
 
 	useEffect(() => {
-		initHomeAnimation();
+        // gsap context added to alow for cleanup to stop running twice
+        const ctx = gsap.context(() => {
+            initHomeAnimation();
+          });
+          return () => ctx.revert();
 	}, []);
 
 	return (

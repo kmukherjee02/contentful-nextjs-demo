@@ -4251,10 +4251,10 @@ graphql-tag@^2.12.6:
   dependencies:
     tslib "^2.1.0"
 
-gsap@^3.9.1:
-  version "3.9.1"
-  resolved "https://registry.npmjs.org/gsap/-/gsap-3.9.1.tgz"
-  integrity sha512-JSGVYoC6da4pIjdF/yxFU6Rz8OojOIDkbooveZlfNg0+JIoFoRruyfWAEi6R/gUeNcuOiTqUIb0gi1nCNrHf8w==
+gsap@^3.12.4:
+  version "3.12.4"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.12.4.tgz#b9383fe16bb14968e2c7db2a7c0e308edf551e7b"
+  integrity sha512-1ByAq8dD0W4aBZ/JArgaQvc0gyUfkGkP8mgAQa0qZGdpOKlSOhOf+WNXjoLimKaKG3Z4Iu6DKZtnyszqQeyqWQ==
 
 has-ansi@^2.0.0:
   version "2.0.0"
