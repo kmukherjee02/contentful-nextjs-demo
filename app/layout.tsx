@@ -1,16 +1,38 @@
 import '@styles/globals.css';
 import Script from 'next/script';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { draftMode } from 'next/headers';
 import { catamaran, dosis } from '@lib/fonts/fonts';
 import Footer from '@components/Footer';
 import { GA_TRACKING_ID } from '@lib/analytics';
-import { CMS_NAME } from '@lib/utilities/constants';
+import { BASE_URL, CMS_NAME } from '@lib/utilities/constants';
 
+export const viewport: Viewport = {
+    themeColor: '#000',
+}
 
 export const metadata: Metadata = {
 	title: `Xtivia Next.js & ${CMS_NAME} Demo`,
-	description: `A statically generated site demonstrating the power of Next.js and ${CMS_NAME}`
+	description: `A statically generated site demonstrating the power of Next.js and ${CMS_NAME}`,
+    metadataBase: new URL(`${BASE_URL}`),
+    icons: {
+        icon: '/favicon.ico',
+        shortcut: '/icon.jpg',
+    },
+    openGraph: {
+        siteName: 'Xtivia Next.js & Contentful Demo',
+        images: [
+            {
+                url: 'https://nextjs-contentful-demo.vercel.app/opengraph-image.png',
+                width: 400,
+                height: 300,
+                alt: 'Xtivia: We make it better.',
+            },
+        ],
+    },
+    robots: {
+        index: false,
+    }
 };
 
 export default function RootLayout({
