@@ -3,7 +3,6 @@ import Script from 'next/script';
 import { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import { catamaran, dosis } from '@lib/fonts/fonts';
-import Alert from '@components/Alert';
 import Footer from '@components/Footer';
 import { GA_TRACKING_ID } from '@lib/analytics';
 import { CMS_NAME } from '@lib/utilities/constants';
@@ -24,7 +23,6 @@ export default function RootLayout({
 	return (
 		<html lang='en' className={`${catamaran.variable} ${dosis.variable}`}>
 			<body>
-                {isEnabled && <Alert />}
 				<main
 					className={`${isEnabled ? 'draft-mode' : 'no-draft-mode'}`}
 				>
