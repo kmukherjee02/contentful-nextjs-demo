@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         siteName: 'Xtivia Next.js & Contentful Demo',
         images: [
             {
-                url: 'https://nextjs-contentful-demo.vercel.app/opengraph-image.png',
+                url: `${BASE_URL}/opengraph-image.png`,
                 width: 400,
                 height: 300,
                 alt: 'Xtivia: We make it better.',
