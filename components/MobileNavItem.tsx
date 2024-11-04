@@ -11,10 +11,10 @@ const MobileNavItem = ({ entry, isChildNavItem }: XDNavItemProps) => {
 	const [isChildMenuOpen, setIsChildMenuOpen] = useState<boolean>(false);
 
 	const mobileNavItemClasses: string = cn(
-		'flex justify-between text-sm  w-full py-3 pl-8 border-t',
+		'flex justify-between text-sm  w-full py-3 pl-8 border-t hover:bg-zinc-50 hover:text-primary-normal',
 		{
 			'text-trueGray-500': isChildNavItem === undefined,
-			'pl-16': isChildNavItem,
+			'!pl-10 !border-0': isChildNavItem,
 		}
 	);
 
@@ -39,7 +39,7 @@ const MobileNavItem = ({ entry, isChildNavItem }: XDNavItemProps) => {
 			})}
 		>
 			{fields.slug ? (
-				<Link href={fields.slug} passHref>
+				<Link className='w-full' href={fields.slug} passHref>
 					<button className={mobileNavItemClasses}>
 						{fields.label}
 					</button>
